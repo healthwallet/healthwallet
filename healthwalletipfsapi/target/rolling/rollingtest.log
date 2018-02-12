@@ -1,0 +1,5 @@
+2018-02-07 15:03:13,709 DEBUG c.i.healthwallet_ipfs_apiTest [main] This is a debug message
+2018-02-07 15:03:13,733 INFO c.i.healthwallet_ipfs_apiTest [main] This is an info message
+2018-02-07 15:03:13,734 WARN c.i.healthwallet_ipfs_apiTest [main] This is a warn message
+2018-02-07 15:03:13,734 ERROR c.i.healthwallet_ipfs_apiTest [main] This is an error message
+2018-02-07 15:03:13,734 FATAL c.i.healthwallet_ipfs_apiTest [main] This is a fatal message
