@@ -1,0 +1,8 @@
+<?xml version="2.0" encoding="UTF-8"?>
+<module type="WEB_MODULE" version="5">
+  <component name="NewModuleRootManager">
+    <content url="file://$MODULE_DIR$" />
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>

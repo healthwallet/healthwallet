@@ -1,0 +1,1443 @@
+html,
+body {
+  -webkit-text-size-adjust: none !important;
+}
+.font-write {
+  color: #ffffff;
+}
+.activeUl {
+  border: 0.1em solid #FF7D6F;
+}
+.activeLi {
+  color: #ffffff;
+  background: #3F3F3F;
+}
+.setBoxLi {
+  background: #888888;
+  color: #ffffff;
+}
+.directionStyle {
+  background: #565C6E !important;
+}
+.font12 {
+  font-size: 12px;
+}
+.font14 {
+  font-size: 14px;
+}
+.font10 {
+  font-size: 10px;
+}
+.activeStyle-background {
+  background: #888888 !important;
+}
+.activeStyle-boder {
+  border: 1px solid #888888 !important;
+}
+.publicTitle {
+  padding: 2px 0 2px 10px;
+  width: 100%;
+  height: 30px;
+  color: #ffffff;
+}
+.publicTitle .left {
+  float: left;
+}
+.publicTitle .left .info {
+  display: block;
+  height: 12px;
+  font-size: 12px;
+}
+.publicTitle .right {
+  line-height: 26px;
+  float: right;
+  width: 30px;
+  text-align: center;
+}
+.publicTitle .right .icon {
+  width: 100%;
+  line-height: 26px;
+}
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+li {
+  list-style: none;
+}
+input,
+select {
+  color: #000000 !important;
+}
+html {
+  width: 100%;
+  height: 100%;
+}
+html body {
+  font-size: 14px;
+  color: #ffffff;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+html body .main {
+  display: none;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  z-index: 10000;
+}
+html body .main .txt {
+  width: 100%;
+  height: 30px;
+  background: #888888;
+  color: #ffffff;
+  line-height: 30px;
+  text-align: center;
+  position: relative;
+}
+html body .main .txt .closeBtn {
+  position: absolute;
+  right: 10px;
+  top: 0;
+  letter-spacing: 2px;
+}
+html body .main .txt .closeBtn:hover {
+  cursor: pointer;
+}
+html body .main .context .leftBox {
+  position: absolute;
+  z-index: 6;
+  background: #060606;
+  width: 160px;
+  height: 100%;
+  padding: 0 0 5px 0;
+  overflow-y: scroll;
+  float: left;
+}
+html body .main .context .leftBox .title {
+  padding: 2px 0 2px 10px;
+  width: 100%;
+  height: 30px;
+  color: #ffffff;
+  background: #3F3F3F;
+}
+html body .main .context .leftBox .title .left {
+  float: left;
+}
+html body .main .context .leftBox .title .left .info {
+  display: block;
+  height: 12px;
+  font-size: 12px;
+}
+html body .main .context .leftBox .title .right {
+  line-height: 26px;
+  float: right;
+  width: 30px;
+  text-align: center;
+}
+html body .main .context .leftBox .title .right .icon {
+  width: 100%;
+  line-height: 26px;
+}
+html body .main .context .leftBox .imgBox .orderUl {
+  border: 1px solid #1D1D1D;
+  background: #1D1D1D;
+  height: 179px;
+  overflow: hidden;
+  cursor: pointer;
+}
+html body .main .context .leftBox .imgBox .orderUl .orderLi .orderTitle {
+  padding: 2px 0 2px 10px;
+  width: 100%;
+  height: 30px;
+  color: #ffffff;
+  line-height: 15px;
+}
+html body .main .context .leftBox .imgBox .orderUl .orderLi .orderTitle .left {
+  float: left;
+}
+html body .main .context .leftBox .imgBox .orderUl .orderLi .orderTitle .left .info {
+  display: block;
+  height: 12px;
+  font-size: 12px;
+}
+html body .main .context .leftBox .imgBox .orderUl .orderLi .orderTitle .right {
+  line-height: 26px;
+  float: right;
+  width: 30px;
+  text-align: center;
+}
+html body .main .context .leftBox .imgBox .orderUl .orderLi .orderTitle .right .icon {
+  width: 100%;
+  line-height: 26px;
+}
+html body .main .context .leftBox .imgBox .imgUl {
+  padding: 2px 5px;
+  background: #060606;
+}
+html body .main .context .leftBox .imgBox .imgUl .imgLi {
+  width: 130px;
+  height: 130px;
+  border: 1px solid #8D9192;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  position: relative;
+}
+html body .main .context .leftBox .imgBox .imgUl .imgLi .joinDiv {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  width: 130px;
+  height: 130px;
+  background-color: black;
+  opacity: 0.5;
+  display: none;
+}
+html body .main .context .leftBox .imgBox .imgUl .imgLi .joinDiv:hover {
+  background-color: gainsboro;
+  opacity: 0.2;
+}
+html body .main .context .leftBox .imgBox .imgUl .imgLiSelected {
+  border: 1px solid #00BC8C !important;
+}
+html body .main .context .contentBox {
+  width: 100%;
+  padding-left: 160px;
+  padding-right: 200px;
+  background: #E9E7E2;
+  height: 100%;
+}
+html body .main .context .contentBox .printPageBox {
+  width: 100%;
+  height: 100%;
+  padding: 2px;
+  position: relative;
+}
+html body .main .context .contentBox .printPageBox .printBtnaddArea {
+  width: 40px;
+  height: 40px;
+  background-color: transparent;
+  position: absolute;
+  float: right;
+  margin-top: 2px;
+  right: 0;
+  top: 0;
+}
+html body .main .context .contentBox .printPageBox .printBtnaddArea .printIcon {
+  background-color: #565C6E;
+  height: 34px;
+  width: 34px;
+}
+html body .main .context .contentBox .printPageBox .printPage {
+  width: 500px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  height: 500px;
+  background: #282222;
+  display: none;
+}
+html body .main .context .contentBox .printPageBox .printPage .printWrapper {
+  position: relative;
+  float: left;
+  border: 1px solid #282222;
+}
+html body .main .context .contentBox .printPageBox .printPage .printWrapper .singleViewport {
+  border: 1px solid #060606;
+  background: #060606;
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  float: left;
+}
+html body .main .context .contentBox .printPageBox .printPage .printWrapper .singleViewport .singleViewportInner {
+  background: #060606;
+  float: left;
+}
+html body .main .context .contentBox .printPageBox .printPage .printWrapper .singleViewport .singleMergeT1 {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+html body .main .context .contentBox .printPageBox .printPage .printWrapper .singleViewport .singleMergeT2 {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+html body .main .context .contentBox .printPageBox .printPage .printWrapper .singleViewport .singleMergeT3 {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+html body .main .context .contentBox .printPageBox .printPage .printWrapper .singleViewport .singleMergeT4 {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+html body .main .context .contentBox .printPageBox .printPage .printWrapper .singleViewport .singleViewportInnerBox {
+  position: relative;
+  background: #060606;
+  border: 1px solid mediumorchid !important;
+  float: left;
+}
+html body .main .context .contentBox .printPageBox .printPage .printWrapper .multiViewport {
+  border: 1px solid #060606;
+  position: relative;
+  background: #060606;
+  text-align: center;
+  float: left;
+}
+html body .main .context .contentBox .printPageBox .printPage .printWrapper .multiViewport .multiViewportInner {
+  background: #060606;
+  float: left !important;
+}
+html body .main .context .contentBox .printPageBox .printPage .printWrapper .multiViewport .multiMergeT1 {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+html body .main .context .contentBox .printPageBox .printPage .printWrapper .multiViewport .multiMergeT2 {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+html body .main .context .contentBox .printPageBox .printPage .printWrapper .multiViewport .multiMergeT3 {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+html body .main .context .contentBox .printPageBox .printPage .printWrapper .multiViewport .multiMergeT4 {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+html body .main .context .contentBox .printPageBox .printPage .printWrapper .multiViewport .multiViewportInnerBox {
+  background: #060606;
+  border: 1px solid mediumorchid !important;
+  float: left !important;
+}
+html body .main .context .contentBox .printPageBox .printPage .printWrapper .imgViewportSelected {
+  border: 1px solid #00BC8C !important;
+}
+html body .main .context .contentBox .printPageBox .printPage .printWrapper .imgBoxSelected {
+  border: 1px solid #00BC8C !important;
+}
+html body .main .context .contentBox .printPageBox .printPage .printWrapper .innerBoxBorder {
+  border: 1px solid #282222;
+}
+html body .main .context .contentBox .printPageBox .printPage .printWrapper .printOverlay {
+  position: absolute;
+  color: white;
+  font-size: 10px;
+}
+html body .main .context .rightBox {
+  width: 200px;
+  background: #3F3F3F;
+  position: absolute;
+  top: 30px;
+  height: 100%;
+  right: 0;
+  padding: 5px 5px;
+}
+html body .main .context .rightBox .rBoxTitle {
+  width: 49%;
+  color: #ffffff;
+  float: left;
+}
+html body .main .context .rightBox .publicSet {
+  width: 48%;
+  float: right;
+}
+html body .main .context .rightBox .publicSet i {
+  font-size: 16px;
+  float: right;
+  margin-right: 3px;
+  cursor: pointer;
+  /*  &:hover {
+                  background: darkseagreen;
+                }*/
+}
+html body .main .context .rightBox .filmBox,
+html body .main .context .rightBox .printBox,
+html body .main .context .rightBox .iconBox {
+  padding: 5px;
+  border: 0.1em solid #ffffff;
+  border-radius: 5px;
+}
+html body .main .context .rightBox .filmBox .filmBox-context,
+html body .main .context .rightBox .printBox .filmBox-context,
+html body .main .context .rightBox .iconBox .filmBox-context {
+  margin-top: 10px;
+}
+html body .main .context .rightBox .filmBox .filmBox-context .paperDirection,
+html body .main .context .rightBox .printBox .filmBox-context .paperDirection,
+html body .main .context .rightBox .iconBox .filmBox-context .paperDirection,
+html body .main .context .rightBox .filmBox .filmBox-context #paperSize,
+html body .main .context .rightBox .printBox .filmBox-context #paperSize,
+html body .main .context .rightBox .iconBox .filmBox-context #paperSize {
+  width: 113px;
+}
+html body .main .context .rightBox .filmBox .filmBox-context .filmLayout,
+html body .main .context .rightBox .printBox .filmBox-context .filmLayout,
+html body .main .context .rightBox .iconBox .filmBox-context .filmLayout {
+  width: 100% !important;
+}
+html body .main .context .rightBox .filmBox .filmBox-context .filmLayout,
+html body .main .context .rightBox .printBox .filmBox-context .filmLayout,
+html body .main .context .rightBox .iconBox .filmBox-context .filmLayout,
+html body .main .context .rightBox .filmBox .filmBox-context .merge,
+html body .main .context .rightBox .printBox .filmBox-context .merge,
+html body .main .context .rightBox .iconBox .filmBox-context .merge,
+html body .main .context .rightBox .filmBox .filmBox-context .breakup,
+html body .main .context .rightBox .printBox .filmBox-context .breakup,
+html body .main .context .rightBox .iconBox .filmBox-context .breakup {
+  display: inline-block;
+  width: 49%;
+  line-height: 25px;
+  outline: none;
+  color: #ffffff;
+  border: 1px solid #6C6F85;
+  background: -moz-linear-gradient(top, #B5B9C7 0%, #6C6F85 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #B5B9C7), color-stop(100%, #6C6F85));
+  background: -webkit-linear-gradient(top, #B5B9C7 0%, #6C6F85 100%);
+  background: -o-linear-gradient(top, #B5B9C7 0%, #6C6F85 100%);
+  background: -ms-linear-gradient(top, #B5B9C7 0%, #6C6F85 100%);
+  background: linear-gradient(to bottom, #B5B9C7 0%, #6C6F85 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#B5B9C7, endColorstr=#6C6F85, GradientType=0);
+  float: left;
+  border-radius: 5px;
+}
+html body .main .context .rightBox .filmBox .filmBox-context .breakup,
+html body .main .context .rightBox .printBox .filmBox-context .breakup,
+html body .main .context .rightBox .iconBox .filmBox-context .breakup {
+  width: 49% !important;
+  float: right !important;
+}
+html body .main .context .rightBox .filmBox .filmBox-context .printToolbar,
+html body .main .context .rightBox .printBox .filmBox-context .printToolbar,
+html body .main .context .rightBox .iconBox .filmBox-context .printToolbar {
+  width: 100%;
+  text-align: center;
+  font-size: 16px;
+}
+html body .main .context .rightBox .filmBox .filmBox-context .printToolbar .fa,
+html body .main .context .rightBox .printBox .filmBox-context .printToolbar .fa,
+html body .main .context .rightBox .iconBox .filmBox-context .printToolbar .fa {
+  font-size: 12px;
+  padding: 5px 5.1px;
+  cursor: pointer;
+  border-radius: 2px;
+  background: -moz-linear-gradient(top, #B5B9C7 0%, #6C6F85 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #B5B9C7), color-stop(100%, #6C6F85));
+  background: -webkit-linear-gradient(top, #B5B9C7 0%, #6C6F85 100%);
+  background: -o-linear-gradient(top, #B5B9C7 0%, #6C6F85 100%);
+  background: -ms-linear-gradient(top, #B5B9C7 0%, #6C6F85 100%);
+  background: linear-gradient(to bottom, #B5B9C7 0%, #6C6F85 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#B5B9C7, endColorstr=#6C6F85, GradientType=0);
+}
+html body .main .context .rightBox .filmBox .filmBox-context .printToolbar .fa:hover,
+html body .main .context .rightBox .printBox .filmBox-context .printToolbar .fa:hover,
+html body .main .context .rightBox .iconBox .filmBox-context .printToolbar .fa:hover {
+  background: #565C6E;
+}
+html body .main .context .rightBox .filmBox .filmBox-context .printToolbar input,
+html body .main .context .rightBox .printBox .filmBox-context .printToolbar input,
+html body .main .context .rightBox .iconBox .filmBox-context .printToolbar input {
+  width: 30px;
+}
+html body .main .context .rightBox .printBox {
+  background: #1D1D1D;
+  overflow: hidden;
+}
+html body .main .context .rightBox .printBox select {
+  width: 100%;
+  float: left;
+}
+html body .main .context .rightBox .printBox .inputBox .inputContent {
+  float: left;
+}
+html body .main .context .rightBox .printBox .inputBox .inputContent input {
+  width: 93px;
+}
+html body .main .context .rightBox .printBox .inputBox .inputBtnBox {
+  float: left;
+  width: 20px;
+  height: 20px;
+  position: relative;
+}
+html body .main .context .rightBox .printBox .inputBox .inputBtnBox .inputBtn {
+  color: #000000;
+  position: absolute;
+  width: 20px;
+  height: 12px;
+  line-height: 7px;
+  cursor: pointer;
+}
+html body .main .context .rightBox .printBox .inputBox .inputBtnBox .btn1 {
+  top: 0;
+}
+html body .main .context .rightBox .printBox .inputBox .inputBtnBox .btn2 {
+  top: 12px;
+}
+html body .main .context .rightBox .printBox .inputBox .btnAddNum {
+  margin-left: 1px;
+  margin-top: 5px;
+  text-align: center;
+  color: #0c390e;
+  width: 22px;
+  height: 19px;
+  float: right;
+}
+html body .main .context .rightBox .printBox .inputBox .btnAddNum:hover {
+  background: #888888;
+}
+html body .main .context .rightBox .printBox .inputBox .btnPlusNum {
+  margin-top: 5px;
+  margin-left: 1px;
+  text-align: center;
+  color: #0c390e;
+  width: 22px;
+  height: 19px;
+  float: right;
+}
+html body .main .context .rightBox .printBox .inputBox .btnPlusNum:hover {
+  background: #888888;
+}
+html body .main .context .rightBox .printBox .btn,
+html body .main .context .rightBox .printBox .pCurBtn,
+html body .main .context .rightBox .printBox .pAllBtn，.pLocal {
+  text-align: center;
+  display: inline-block;
+  width: 100%;
+  line-height: 25px;
+  padding: 0;
+  background: -moz-linear-gradient(top, #B5B9C7 0%, #6C6F85 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #B5B9C7), color-stop(100%, #6C6F85));
+  background: -webkit-linear-gradient(top, #B5B9C7 0%, #6C6F85 100%);
+  background: -o-linear-gradient(top, #B5B9C7 0%, #6C6F85 100%);
+  background: -ms-linear-gradient(top, #B5B9C7 0%, #6C6F85 100%);
+  background: linear-gradient(to bottom, #B5B9C7 0%, #6C6F85 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#B5B9C7, endColorstr=#6C6F85, GradientType=0);
+  border: 1px solid #6C6F85;
+  margin-top: 5px;
+}
+html body .main .context .rightBox .printBox .pCurBtn {
+  font-size: 12px;
+  width: 49% !important;
+  float: left;
+}
+html body .main .context .rightBox .printBox .pAllBtn {
+  font-size: 12px;
+  width: 49% !important;
+  float: right;
+}
+html body .main .context .rightBox .printBox .pLocal {
+  font-size: 12px;
+  width: 49% !important;
+  float: right;
+}
+html body .main .context .rightBox .iconBox {
+  overflow: hidden;
+}
+html body .main .context .rightBox .iconBox .radioBox {
+  width: 100%;
+  display: block;
+  float: left;
+}
+html body .main .context .rightBox .iconBox .radioBox .radio {
+  text-align: center;
+  float: left;
+}
+html body .main .context .rightBox .iconBox .radioBox .radioSpan {
+  padding: 1px 5px;
+  float: left;
+  margin-top: 2px;
+}
+html body .main .context .rightBox .iconBox .inputContent select {
+  width: 60px;
+}
+html body .main .context .rightBox .iconBox .inputContent input {
+  width: 50px;
+}
+html body .main .context .rightBox .iconBox .iconBtnBox {
+  margin-top: 10px;
+}
+html body .main .context .rightBox .iconBox .iconBtnBox li {
+  width: 40px;
+  height: 40px;
+  margin-left: 1px;
+  margin-right: 1px;
+  margin-bottom: 2px;
+  float: left;
+}
+html body .main .context .rightBox .iconBox .directionLi li {
+  width: 40px;
+  height: 40px;
+  margin-left: 1px;
+  margin-right: 1px;
+  float: left;
+  text-align: center;
+  line-height: 41.5px;
+  cursor: pointer;
+  background: -moz-linear-gradient(top, #B5B9C7 0%, #6C6F85 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #B5B9C7), color-stop(100%, #6C6F85));
+  background: -webkit-linear-gradient(top, #B5B9C7 0%, #6C6F85 100%);
+  background: -o-linear-gradient(top, #B5B9C7 0%, #6C6F85 100%);
+  background: -ms-linear-gradient(top, #B5B9C7 0%, #6C6F85 100%);
+  background: linear-gradient(to bottom, #B5B9C7 0%, #6C6F85 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#B5B9C7, endColorstr=#6C6F85, GradientType=0);
+}
+html body .main .context .rightBox .btnBox {
+  margin-top: 10px;
+  text-align: center;
+}
+html body .main .context .rightBox .btnBox button {
+  margin-left: 10px;
+  height: 25px;
+  line-height: 25px;
+  text-align: center;
+  background: -moz-linear-gradient(top, #B5B9C7 0%, #6C6F85 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #B5B9C7), color-stop(100%, #6C6F85));
+  background: -webkit-linear-gradient(top, #B5B9C7 0%, #6C6F85 100%);
+  background: -o-linear-gradient(top, #B5B9C7 0%, #6C6F85 100%);
+  background: -ms-linear-gradient(top, #B5B9C7 0%, #6C6F85 100%);
+  background: linear-gradient(to bottom, #B5B9C7 0%, #6C6F85 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#B5B9C7, endColorstr=#6C6F85, GradientType=0);
+  margin-right: 10px;
+  padding: 0 10px;
+  border: none;
+  outline: none;
+  color: #ffffff;
+}
+html body .main .context .rightBox .btnBox button:hover {
+  background: #565C6E !important;
+}
+html body .main .context .joinMainBox {
+  overflow-y: scroll;
+  margin-top: 40px;
+  display: none;
+  width: 100%;
+  height: 100%;
+  padding-left: 160px;
+  background: black;
+  z-index: 5;
+  position: absolute;
+}
+html body .main .context .joinMainBox .joinBox {
+  width: 100%;
+  height: 200%;
+  background-color: #cecece;
+  padding: 10px 10px 10px 10px;
+  position: relative;
+}
+html body .main .context .joinMainBox .joinBox .joinImg {
+  position: absolute;
+  width: 512px;
+  height: 512px;
+  background-color: gainsboro;
+  box-sizing: border-box;
+}
+html body .main .context .joinMainBox .joinBox .joinImg .active {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  right: 10px;
+  top: 10px;
+}
+html body .main .context .joinMainBox .joinBox .joinImg .active img {
+  width: 18px;
+  height: 18px;
+}
+html body .main .context .joinMainBox .joinBox .joinImg .adjustDiv {
+  padding: 2px 2px 2px 2px;
+  position: absolute;
+  width: 30%;
+  height: 30%;
+  top: 0;
+  left: 0;
+}
+html body .main .context .joinMainBox .joinBox .joinImg .adjustDiv .btn {
+  padding: 10px 10px 10px 10px;
+  float: left;
+  width: 30px;
+  height: 30px;
+  display: none;
+  text-align: center;
+}
+html body .main .context .joinMainBox .joinBox .joinImg .adjustDiv .btn img {
+  width: 20px;
+  height: 20px;
+}
+html body .main .context .joinMainBox .joinBox .joinImg .adjustDiv .btn:hover {
+  cursor: pointer;
+}
+html body .main .context .joinMainBox .joinBox .joinImg canvas {
+  cursor: move !important;
+}
+html body .main .context .joinMainBox .joinCutBox {
+  width: 100%;
+  height: 200%;
+  background-color: #cecece;
+  padding: 10px 10px 10px 10px;
+  display: none;
+}
+html body .main .context .joinMainBox .joinCutBox .cutBox {
+  margin: auto;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+}
+html body .main .context .joinMainBox .joinPreviewBox {
+  width: 100%;
+  height: 100%;
+  background-color: #cecece;
+  overflow-y: auto;
+  padding: 10px 10px 10px 10px;
+  position: relative;
+  display: none;
+}
+html body .main .context .joinMainBox .joinPreviewBox .joinPreview {
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  height: 100%;
+}
+html body .main .context .joinTitleBox {
+  display: none;
+  position: absolute;
+  padding-left: 160px;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 40px;
+  z-index: 6;
+}
+html body .main .context .joinTitleBox .describTxt {
+  color: gainsboro;
+  width: 100%;
+  height: 40px;
+  text-align: center;
+  line-height: 40px;
+  padding-right: 12px;
+  float: left;
+  background-color: #383838;
+  letter-spacing: 10px;
+}
+html body .main .context .joinTitleBox .join-close {
+  letter-spacing: 2px;
+  position: absolute;
+  top: 0;
+  right: 10px;
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  line-height: 40px;
+}
+html body .main .context .joinTitleBox .join-close img {
+  width: 40px;
+  height: 40px;
+}
+html body .main .context .joinTitleBox .join-close:hover {
+  cursor: pointer;
+}
+html body .main .context .joinCutToolBox {
+  display: none;
+  margin-left: 160px;
+  width: calc(100% -  175px);
+  height: 50px;
+  position: absolute;
+  bottom: 0px;
+  z-index: 5;
+  text-align: center;
+}
+html body .main .context .joinCutToolBox .cutBtnBox {
+  margin: auto;
+  height: 100%;
+  width: auto;
+  display: inline-block !important;
+  display: inline;
+}
+html body .main .context .joinCutToolBox .cutBtnBox .cutBtn {
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+  background-color: #383838;
+  float: left;
+  text-align: center;
+  line-height: 36px;
+}
+html body .main .context .joinCutToolBox .cutBtnBox .cutBtn:hover {
+  background-color: black;
+  cursor: pointer;
+}
+html body .main .context .joinCutToolBox .cutBtnBox .cutBtn img {
+  width: 20px;
+  height: 20px;
+}
+html body .main .context .joinCutToolBox .cutBtnBox .join-cancle,
+html body .main .context .joinCutToolBox .cutBtnBox .join-back,
+html body .main .context .joinCutToolBox .cutBtnBox .join-cutSure {
+  display: none;
+}
+html body .main .context .joinHelpBox {
+  position: absolute;
+  top: 5000px;
+  left: 5000px;
+  z-index: 4;
+}
+html body .main .context .joinHelpBox .joinOutPutBox {
+  width: 100%;
+  height: 100%;
+}
+html body .main .context .joinHelpBox .joinOutputCanvBox {
+  width: calc(100% -  50px);
+  height: 100%;
+  float: left;
+  position: relative;
+}
+.merge {
+  position: relative;
+}
+.merge .mergeUl {
+  padding: 10px 10px 10px 12px;
+  position: absolute;
+  border-radius: 5px;
+  top: 25px;
+  z-index: 999;
+  display: none;
+  left: -25px;
+  width: 200px;
+  background: #060606;
+}
+.merge .mergeUl li {
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  cursor: pointer;
+  float: left;
+  margin: 2px;
+}
+.merge .mergeUl li:hover {
+  background-color: #6493CF;
+  color: white;
+}
+.merge .mergeUl li img {
+  width: 100%;
+  height: 100%;
+}
+.magnifyBox {
+  width: 600px !important;
+  height: 500px !important;
+  z-index: 100003 !important;
+}
+.magnifyBox .calBox {
+  width: 100%;
+  height: 45px !important;
+  padding: 2.5px !important;
+}
+.magnifyBox .calBox li {
+  float: left;
+  width: 40px;
+  height: 40px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+.magnifyBox .ceilBox {
+  height: 420px !important;
+}
+.magnifyBox .annotationDialog,
+.magnifyBox .relabelDialog {
+  z-index: 1000;
+  position: absolute;
+  margin: 0px;
+  left: 40%;
+  top: 40%;
+  width: 300px;
+  border: 1px black solid;
+  border-radius: 5px;
+}
+.magnifyBox .annotationTextInputOptions {
+  padding: 5px 0px;
+}
+.magnifyBox .annotationTextInput {
+  margin-left: 5px;
+}
+.magnifyBox .annotationDialogConfirm {
+  float: right;
+}
+.layoutBox {
+  z-index: 100003 !important;
+}
+.layoutBox .ceilBox {
+  height: 325px !important;
+}
+.layoutBox .ceilBox li {
+  width: 33%;
+  padding-left: 10px;
+  line-height: 30px;
+  float: left;
+}
+.layoutBox .calBox {
+  text-align: right;
+}
+.filterBox {
+  z-index: 100003 !important;
+}
+.filterBox .ceilBox {
+  padding: 20px 30px !important;
+}
+.filterBox .ceilBox .ceilBoxDiv {
+  height: 30px;
+}
+.filterBox .ceilBox .ceilBoxDiv input {
+  width: 100px;
+}
+.wwwlBox .ceilBox {
+  color: #ffffff !important;
+  height: 365px !important;
+}
+.wwwlBox .ceilBox .tableOne {
+  margin-top: 10px;
+}
+.wwwlBox .ceilBox .tableOne .table2Box {
+  height: 250px;
+  overflow-y: scroll;
+  background: #181818;
+}
+.wwwlBox .ceilBox .tableOne .table1,
+.wwwlBox .ceilBox .tableOne .table2,
+.wwwlBox .ceilBox .tableOne .table1-1 {
+  width: 100%;
+  border-spacing: 0;
+  overflow-y: scroll;
+}
+.wwwlBox .ceilBox .tableOne .table1 thead tr th,
+.wwwlBox .ceilBox .tableOne .table2 thead tr th,
+.wwwlBox .ceilBox .tableOne .table1-1 thead tr th {
+  width: 25%;
+  height: 25px;
+  border: 0.1em dashed #333;
+  font-weight: normal;
+  text-align: center;
+}
+.wwwlBox .ceilBox .tableOne .table1 tbody tr td,
+.wwwlBox .ceilBox .tableOne .table2 tbody tr td,
+.wwwlBox .ceilBox .tableOne .table1-1 tbody tr td {
+  width: 25%;
+  text-align: center;
+  height: 30px !important;
+  border-bottom: 1px solid #ccc;
+  border-left: 1px solid #ccc;
+}
+.wwwlBox .ceilBox .tableOne .table1 tbody tr:hover,
+.wwwlBox .ceilBox .tableOne .table2 tbody tr:hover,
+.wwwlBox .ceilBox .tableOne .table1-1 tbody tr:hover {
+  background-color: #ccdbef;
+}
+.wwwlBox .ceilBox .yes {
+  margin-top: 10px;
+  cursor: pointer;
+  height: 24px;
+  line-height: 24px;
+  display: inline-block;
+  text-align: center;
+  background-color: #918b87;
+  margin-right: 15px;
+  width: 60px;
+  color: #E9E7E2;
+}
+.wwwlBox .ceilBox .yes:hover {
+  background-color: #77726e;
+}
+.wwwlSetBox {
+  height: 200px !important;
+  width: 300px !important;
+  z-index: 100003 !important;
+}
+.wwwlSetBox .ceilBox {
+  height: 120px !important;
+  color: #ffffff !important;
+}
+.wwwlSetBox .ceilBox .inputBox {
+  margin-top: 10px;
+  overflow: hidden;
+}
+.wwwlSetBox .ceilBox .inputBox .inputContent {
+  float: left;
+}
+.wwwlSetBox .ceilBox .inputBox .inputContent input {
+  width: 210px;
+}
+.wwwlSetBox .ceilBox .inputBox .inputBtnBox {
+  float: left;
+  width: 20px;
+  height: 20px;
+  position: relative;
+}
+.wwwlSetBox .ceilBox .inputBox .inputBtnBox .inputBtn {
+  color: #000000;
+  position: absolute;
+  width: 20px;
+  height: 12px;
+  line-height: 7px;
+  cursor: pointer;
+}
+.wwwlSetBox .ceilBox .inputBox .inputBtnBox .btn1 {
+  top: 0;
+}
+.wwwlSetBox .ceilBox .inputBox .inputBtnBox .btn2 {
+  top: 12px;
+}
+.wwwlSetBox .calBox {
+  text-align: right;
+  /* #addWwwlBtn,#modifyWwwlBtn{
+       display: none;
+     }*/
+}
+.setMask {
+  position: absolute;
+  left: 0;
+  display: none;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: #ccc;
+  filter: alpha(opacity=40);
+  opacity: 0.30;
+  font-size: 1px;
+  z-index: 100008;
+  overflow: hidden;
+}
+.setBox {
+  z-index: 100003 !important;
+}
+.setBox .ceilBox {
+  height: 325px !important;
+}
+.setBox .ceilBox .leftBox {
+  width: 70%;
+  float: left;
+  height: 100%;
+}
+.setBox .ceilBox .leftBox ul {
+  width: 100%;
+  height: 100%;
+  overflow-y: scroll;
+  background: #ffffff;
+}
+.setBox .ceilBox .leftBox ul li {
+  padding-left: 10px;
+  width: 100%;
+  height: 20px;
+  line-height: 20px;
+  cursor: pointer;
+}
+.setBox .ceilBox .rightBox {
+  width: 30%;
+  text-align: center;
+  float: right;
+}
+.setBox .ceilBox .rightBox .yes {
+  margin-top: 60px;
+  cursor: pointer;
+  height: 24px;
+  line-height: 24px;
+  display: inline-block;
+  text-align: center;
+  background-color: #918b87;
+  margin-left: 15px;
+  width: 60px;
+  color: #E9E7E2;
+}
+.setBox .ceilBox .rightBox .yes:hover {
+  background-color: #77726e;
+}
+.setBox .calBox {
+  text-align: right;
+}
+.printTagSetbox {
+  width: 750px !important;
+  z-index: 100003 !important;
+  height: 600px !important;
+}
+.printTagSetbox .ceilBox {
+  height: 565px !important;
+}
+.printTagSetbox .ceilBox #myTabContent {
+  padding: 10px 0;
+}
+.printTagSetbox .ceilBox #myTabContent .leftBox {
+  width: 20%;
+  float: left;
+  height: 460px;
+}
+.printTagSetbox .ceilBox #myTabContent .leftBox .yes {
+  cursor: pointer;
+  height: 24px;
+  line-height: 24px;
+  display: inline-block;
+  text-align: center;
+  background-color: #918b87;
+  width: 100%;
+  color: #E9E7E2;
+}
+.printTagSetbox .ceilBox #myTabContent .leftBox .yes:hover {
+  background-color: #77726e;
+}
+.printTagSetbox .ceilBox #myTabContent .leftBox ul {
+  width: 100%;
+  height: 100%;
+  overflow-y: scroll;
+  background: #ffffff;
+}
+.printTagSetbox .ceilBox #myTabContent .leftBox ul li {
+  padding-left: 10px;
+  width: 100%;
+  height: 20px;
+  line-height: 20px;
+  cursor: pointer;
+}
+.printTagSetbox .ceilBox #myTabContent .rightBox {
+  width: 80%;
+  text-align: center;
+  float: right;
+  height: 505px;
+}
+.printTagSetbox .ceilBox #myTabContent .rightBox .fontDiv {
+  width: 47%;
+  margin-left: 1.5%;
+  margin-right: 1.5%;
+  height: 40.7%;
+  float: left;
+  margin-bottom: 5%;
+}
+.printTagSetbox .ceilBox #myTabContent .rightBox .fontDiv ul {
+  height: 100%;
+  width: 100%;
+  overflow-y: scroll;
+  padding: 1%;
+  background: #ffffff;
+}
+.printTagSetbox .ceilBox #myTabContent .rightBox .fontDiv ul li {
+  height: 25px;
+  line-height: 25px;
+}
+.printTagSetbox .ceilBox #myTabContent .rightBox .fontDiv ul li .pull-right {
+  display: none;
+}
+.printTagSetbox .ceilBox #myTabContent .rightBox .yes {
+  cursor: pointer;
+  height: 24px;
+  line-height: 24px;
+  display: inline-block;
+  text-align: center;
+  background-color: #918b87;
+  width: 90px;
+  float: right;
+  margin-right: 1.5%;
+  color: #E9E7E2;
+}
+.printTagSetbox .ceilBox #myTabContent .rightBox .yes:hover {
+  background-color: #77726e;
+}
+.printTagSetbox .ceilBox #myTabContent #viewFont .yes {
+  cursor: pointer;
+  height: 24px;
+  line-height: 24px;
+  display: inline-block;
+  text-align: center;
+  background-color: #918b87;
+  width: 90px;
+  margin-right: 1.5%;
+  color: #E9E7E2;
+  margin-top: 10px;
+}
+.printTagSetbox .ceilBox #myTabContent #viewFont .yes:hover {
+  background-color: #77726e;
+}
+.printTagSetbox .ceilBox #myTabContent #viewFont .viewImgBox {
+  height: 470px;
+  overflow-y: scroll;
+  background: #E9E7E2;
+}
+.printTagSetbox .ceilBox #myTabContent #viewFont select {
+  width: 170px;
+  margin-top: 10px;
+}
+.printTagSetbox .versonText {
+  background-color: #77726e;
+}
+.printSetBox {
+  z-index: 100005 !important;
+}
+.printSetBox .ceilBox {
+  height: 325px !important;
+  color: #ffffff !important;
+  padding-top: 30px;
+}
+.printSetBox .ceilBox fieldset {
+  border: 0.1em solid #ffffff;
+  margin-top: 30px;
+  padding: 10px;
+}
+.printSetBox .ceilBox fieldset legend {
+  width: 100px;
+  font-size: 14px;
+  border-bottom: none;
+}
+.printSetBox .ceilBox fieldset .inputBox {
+  color: #000;
+  background: #ffffff;
+  display: inline-flex;
+}
+.printSetBox .ceilBox fieldset .inputBox .ipInput {
+  width: 25px;
+  border: none;
+  text-align: center;
+}
+.printSetBox .ceilBox fieldset .portInput {
+  width: 120px;
+}
+.printSetBox .ceilBox fieldset .portitle {
+  width: 210px;
+  margin-top: 10px;
+}
+.printSetBox .ceilBox fieldset .portitleLocal {
+  width: 210px;
+  margin-top: 10px;
+}
+.printSetBox .ceilBox .printSet-select {
+  margin-top: 30px;
+  overflow: hidden;
+}
+.printSetBox .ceilBox .printSet-select li {
+  width: 50%;
+  float: left;
+  height: 30px;
+  line-height: 30px;
+}
+.printSetBox .ceilBox .printSet-select li select {
+  width: 80px;
+}
+.printSetBox .ceilBox .printSet-radio {
+  width: 100%;
+  margin-top: 20px;
+}
+.printSetBox .calBox {
+  text-align: right;
+}
+.line {
+  background: url("../css/img/print/tool_line.bmp") no-repeat 0 0;
+}
+.line:hover {
+  background: url("../css/img/print/tool_line.bmp") no-repeat -40px 0 !important;
+}
+.arrows {
+  background: url("../css/img/print/tool_arrow.bmp") no-repeat 0 0;
+}
+.arrows:hover {
+  background: url("../css/img/print/tool_arrow.bmp") no-repeat -40px 0 !important;
+}
+.light {
+  background: url("../css/img/print/tool_wl.bmp") no-repeat 0 0;
+}
+.light:hover {
+  background: url("../css/img/print/tool_wl.bmp") no-repeat -40px 0 !important;
+}
+.rectangle {
+  background: url("../css/img/print/tool_rect.bmp") no-repeat 0 0;
+}
+.rectangle:hover {
+  background: url("../css/img/print/tool_rect.bmp") no-repeat -40px 0 !important;
+}
+.roundness {
+  background: url("../css/img/print/tool_ellipse.bmp") no-repeat 0 0;
+}
+.roundness:hover {
+  background: url("../css/img/print/tool_ellipse.bmp") no-repeat -40px 0 !important;
+}
+.role {
+  background: url("../css/img/print/tool_angle.bmp") no-repeat 0 0;
+}
+.role:hover {
+  background: url("../css/img/print/tool_angle.bmp") no-repeat -40px 0 !important;
+}
+.clear {
+  background: url("../css/img/print/tool_DelAll.bmp") no-repeat 0 0;
+}
+.clear:hover {
+  background: url("../css/img/print/tool_DelAll.bmp") no-repeat -40px 0 !important;
+}
+.select {
+  background: url("../css/img/print/tool_select.bmp") no-repeat 0 0;
+}
+.recover {
+  background: url("../css/img/print/tool_reset.bmp") no-repeat 0 0;
+  /* &:active{
+     background: url("../css/img/print/tool_reset.bmp") no-repeat  -120px 0 !important;
+   }*/
+}
+.recover:hover {
+  background: url("../css/img/print/tool_reset.bmp") no-repeat -40px 0 !important;
+}
+.magnify {
+  background: url("../css/img/print/tool_zoom.bmp") no-repeat 0 0;
+  /* &:active{
+     background: url("../css/img/print/tool_zoom.bmp") no-repeat  -80px 0 !important;
+   }*/
+}
+.magnify:hover {
+  background: url("../css/img/print/tool_zoom.bmp") no-repeat -40px 0 !important;
+}
+.move {
+  background: url("../css/img/print/tool_move.bmp") no-repeat 0 0;
+  /* &:active{
+     background: url("../css/img/print/tool_move.bmp") no-repeat  -80px 0 !important;
+   }*/
+}
+.move:hover {
+  background: url("../css/img/print/tool_move.bmp") no-repeat -40px 0 !important;
+}
+.horizontal {
+  background: url("../css/img/print/tool_hFlip.bmp") no-repeat 0 0;
+  /* &:active{
+     background: url("../css/img/print/tool_hFlip.bmp") no-repeat  -120px 0 !important;
+   }*/
+}
+.horizontal:hover {
+  background: url("../css/img/print/tool_hFlip.bmp") no-repeat -40px 0 !important;
+}
+.vertical {
+  background: url("../css/img/print/tool_vFlip.bmp") no-repeat 0 0;
+  /*  &:active{
+      background: url("../css/img/print/tool_vFlip.bmp") no-repeat  -120px 0 !important;
+    }*/
+}
+.vertical:hover {
+  background: url("../css/img/print/tool_vFlip.bmp") no-repeat -40px 0 !important;
+}
+.clockwise {
+  background: url("../css/img/print/tool_rRotate.bmp") no-repeat 0 0;
+  /*  &:active{
+      background: url("../css/img/print/tool_lRotate.bmp") no-repeat  -120px 0 !important;
+    }*/
+}
+.clockwise:hover {
+  background: url("../css/img/print/tool_rRotate.bmp") no-repeat -40px 0 !important;
+}
+.anticlockwise {
+  background: url("../css/img/print/tool_lRotate.bmp") no-repeat 0 0;
+  /* &:active{
+     background: url("../css/img/print/tool_lRotate.bmp") no-repeat  -120px 0 !important;
+   }*/
+}
+.anticlockwise:hover {
+  background: url("../css/img/print/tool_lRotate.bmp") no-repeat -40px 0 !important;
+}
+.reverse {
+  background: url("../css/img/print/tool_inv.bmp") no-repeat 0 0;
+  /*  &:active{
+      background: url("../css/img/print/tool_inv.bmp") no-repeat  -120px 0 !important;
+    }*/
+}
+.reverse:hover {
+  background: url("../css/img/print/tool_inv.bmp") no-repeat -40px 0 !important;
+}
+.wwwl {
+  background: url("../css/img/print/tool_wl.bmp") no-repeat 0 0;
+  /* &:active{
+     background: url("../css/img/print/tool_wl.bmp") no-repeat  -80px 0 !important;
+   }*/
+}
+.wwwl:hover {
+  background: url("../css/img/print/tool_wl.bmp") no-repeat -40px 0 !important;
+}
+#printFliter {
+  background: url("../css/img/print/tool_filter.jpg") no-repeat 0 0;
+}
+#printFliter:hover {
+  background: url("../css/img/print/tool_filter.jpg") no-repeat -40px 0 !important;
+}
+#printReferLine {
+  background: url("../css/img/print/tool_posLine.jpg") no-repeat 0 0;
+}
+#printReferLine:hover {
+  background: url("../css/img/print/tool_posLine.jpg") no-repeat -40px 0 !important;
+}
+.rotateMin {
+  background: url("../css/img/print/tool_rotate.jpg") no-repeat 0 0;
+}
+.rotateMin:hover {
+  background: url("../css/img/print/tool_rotate.jpg") no-repeat -40px 0 !important;
+}
+#imgjoin {
+  background: url("../css/img/print/join.bmp") no-repeat 0 0;
+}
+#imgjoin:hover {
+  background: url("../css/img/print/join.bmp") no-repeat -40px 0 !important;
+}
+.filter,
+.sort {
+  background: #6B6E84;
+  font-size: 30px;
+  text-align: center;
+  line-height: 40px;
+}
+.filter:hover,
+.sort:hover {
+  background: #6B6E84 !important;
+  border: 1px solid #4B4D5C;
+  -webkit-box-shadow: inset 0 0 10px #7A7D93;
+  -moz-box-shadow: inset 0 0 10px #7A7D93;
+  box-shadow: inset 0 0 10px #7A7D93;
+}
+.delete {
+  background: url("../css/img/print/tool_deleteimage.bmp") no-repeat 0 0;
+}
+.delete:hover {
+  background: url("../css/img/print/tool_deleteimage.bmp") no-repeat -40px 0 !important;
+}
+.ruler {
+  background: url("../css/img/print/tool_ruler.bmp") no-repeat 0 0;
+}
+.printMask {
+  position: absolute;
+  left: 0;
+  display: none;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  font-size: 1px;
+  z-index: 100002;
+  overflow: hidden;
+}
+#paperSize,
+.filmLayout,
+.merge,
+.breakup,
+.printToolbar,
+.printBox,
+.radioBox,
+.iconBox,
+.printBoxSelect,
+#printCurFilm,
+.inputContent,
+.inputBtnBox,
+#printAllFilm {
+  margin-top: 5px;
+}
+.nav-tabs > li.active > a,
+.nav-tabs > li.active > a:hover,
+.nav-tabs > li.active > a:focus {
+  background-color: #918b87 !important;
+}

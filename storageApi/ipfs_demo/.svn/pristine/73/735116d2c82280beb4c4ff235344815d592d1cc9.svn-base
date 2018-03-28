@@ -1,0 +1,506 @@
+#unitMask {
+  z-index: 9000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+#unitLayoutSelector,
+#unitInnerLayoutSelector {
+  position: absolute;
+  box-sizing: content-box;
+  border: 1px solid #5A5A5A;
+  padding: 1px;
+  background-color: #5A5A5A;
+  z-index: 10000;
+}
+#unitLayoutSelector .urow,
+#unitInnerLayoutSelector .urow {
+  margin-left: 0;
+  width: 100%;
+  margin-right: 0;
+}
+#unitLayoutSelector .urow:after,
+#unitInnerLayoutSelector .urow:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+#unitLayoutSelector .ucol,
+#unitInnerLayoutSelector .ucol {
+  float: left;
+  width: 20px;
+  height: 20px;
+  margin: 2px;
+  background-color: #828282;
+  box-sizing: border-box;
+  border: 1px solid transparent;
+}
+#unitLayoutSelector .ucol.lighten,
+#unitInnerLayoutSelector .ucol.lighten {
+  border: 1px solid white;
+  background-color: #B4B4B4;
+}
+/*#quickWWWLBox{
+  .absPosCenter;
+  z-index: @maskZ + 1000;
+  width: 360px;
+  height: 400px;
+  padding:0 5px 10px;background-color: #E9E7E2;font-size: 14px;
+  .topbar{
+    height: 30px;
+    .closeBtn{
+      font-size: 14px;
+      position: absolute;background-color: #FF7D6F;color: white;top:-2px;right:10px;padding: 2px 5px;
+    }
+  }
+  .calBox{
+    background-color: #4D4D4D;
+    height: 40px;
+    padding: 8px 10px;
+    .inputArea,.yes{
+      display: inline-block;
+    }
+    .inputArea{width: 120px;
+      input{
+        display: inline-block;color:black;
+        height: 24px;
+        padding-left: 8px;
+        background-color: #e9e7e2;
+        border: 0;
+        width: 60px;
+      }
+    }
+    .yes{
+      cursor: pointer;
+      height: 24px;
+      line-height: 24px;
+      display: inline-block;
+      text-align: center;
+      background-color: #918b87;
+      margin-right: 5px;
+      width: 45px;
+      color: #e9e7e2;
+    }
+    .yes:hover{
+      background-color: darken(#918b87,10%);
+    }
+  }
+  .ceilBox{
+    padding: 5px;height: 300px;
+    position: relative;
+    background-color: #3F3F3F;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    &::-webkit-scrollbar {!*滚动条，这里不倒腾用户体验了，暂时在满足webkit，这里主要是想节约空间，其实大可不必通过滚动条*!
+      width:8px;
+      height:8px;
+    }
+    &::-webkit-scrollbar-thumb{
+      background:#888888;
+      border-radius:4px;
+    }
+    &::-webkit-scrollbar-track{//外层轨道
+      background:#424242;width:8px;
+    }
+    &::-webkit-scrollbar-button    {
+      background-color:#424242;height:4px;
+    }
+    color:#888888;
+    .aCeil{
+      background-color: #E9E7E2;padding:6px 10px;cursor: pointer;
+      margin: 8px;text-align: center;display: block;float: left;
+    }
+    .aCeil:hover{
+      background-color: darken(#E9E7E2,20%);color:black;
+    }
+  }
+}*/
+#quickWWWLBox,
+#downloadBox,
+#commonSet,
+.magnifyBox,
+.layoutBox,
+.filterBox,
+.setBox,
+.printSetBox,
+.wwwlBox,
+.wwwlSetBox,
+.printTagSetbox {
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  position: absolute;
+  margin: auto;
+  z-index: 10000;
+  width: 360px;
+  height: 400px;
+  display: none;
+  padding: 0 5px 10px;
+  background-color: #E9E7E2;
+  font-size: 14px;
+}
+#quickWWWLBox .topbar,
+#downloadBox .topbar,
+#commonSet .topbar,
+.magnifyBox .topbar,
+.layoutBox .topbar,
+.filterBox .topbar,
+.setBox .topbar,
+.printSetBox .topbar,
+.wwwlBox .topbar,
+.wwwlSetBox .topbar,
+.printTagSetbox .topbar {
+  height: 30px;
+}
+#quickWWWLBox .topbar .closeBtn,
+#downloadBox .topbar .closeBtn,
+#commonSet .topbar .closeBtn,
+.magnifyBox .topbar .closeBtn,
+.layoutBox .topbar .closeBtn,
+.filterBox .topbar .closeBtn,
+.setBox .topbar .closeBtn,
+.printSetBox .topbar .closeBtn,
+.wwwlBox .topbar .closeBtn,
+.wwwlSetBox .topbar .closeBtn,
+.printTagSetbox .topbar .closeBtn {
+  font-size: 14px;
+  position: absolute;
+  background-color: #FF7D6F;
+  color: white;
+  top: -2px;
+  right: 10px;
+  padding: 2px 5px;
+}
+#quickWWWLBox .topbar .closeBtn:hover,
+#downloadBox .topbar .closeBtn:hover,
+#commonSet .topbar .closeBtn:hover,
+.magnifyBox .topbar .closeBtn:hover,
+.layoutBox .topbar .closeBtn:hover,
+.filterBox .topbar .closeBtn:hover,
+.setBox .topbar .closeBtn:hover,
+.printSetBox .topbar .closeBtn:hover,
+.wwwlBox .topbar .closeBtn:hover,
+.wwwlSetBox .topbar .closeBtn:hover,
+.printTagSetbox .topbar .closeBtn:hover {
+  cursor: pointer;
+}
+#quickWWWLBox .topbar .topbarTitle,
+#downloadBox .topbar .topbarTitle,
+#commonSet .topbar .topbarTitle,
+.magnifyBox .topbar .topbarTitle,
+.layoutBox .topbar .topbarTitle,
+.filterBox .topbar .topbarTitle,
+.setBox .topbar .topbarTitle,
+.printSetBox .topbar .topbarTitle,
+.wwwlBox .topbar .topbarTitle,
+.wwwlSetBox .topbar .topbarTitle,
+.printTagSetbox .topbar .topbarTitle {
+  color: #888;
+  display: block;
+  line-height: 30px;
+}
+#quickWWWLBox .calBox,
+#downloadBox .calBox,
+#commonSet .calBox,
+.magnifyBox .calBox,
+.layoutBox .calBox,
+.filterBox .calBox,
+.setBox .calBox,
+.printSetBox .calBox,
+.wwwlBox .calBox,
+.wwwlSetBox .calBox,
+.printTagSetbox .calBox {
+  background-color: #4D4D4D;
+  height: 40px;
+  overflow: hidden;
+  padding: 8px 10px;
+}
+#quickWWWLBox .calBox .inputArea,
+#downloadBox .calBox .inputArea,
+#commonSet .calBox .inputArea,
+.magnifyBox .calBox .inputArea,
+.layoutBox .calBox .inputArea,
+.filterBox .calBox .inputArea,
+.setBox .calBox .inputArea,
+.printSetBox .calBox .inputArea,
+.wwwlBox .calBox .inputArea,
+.wwwlSetBox .calBox .inputArea,
+.printTagSetbox .calBox .inputArea,
+#quickWWWLBox .calBox .yes,
+#downloadBox .calBox .yes,
+#commonSet .calBox .yes,
+.magnifyBox .calBox .yes,
+.layoutBox .calBox .yes,
+.filterBox .calBox .yes,
+.setBox .calBox .yes,
+.printSetBox .calBox .yes,
+.wwwlBox .calBox .yes,
+.wwwlSetBox .calBox .yes,
+.printTagSetbox .calBox .yes {
+  display: inline-block;
+}
+#quickWWWLBox .calBox .inputArea,
+#downloadBox .calBox .inputArea,
+#commonSet .calBox .inputArea,
+.magnifyBox .calBox .inputArea,
+.layoutBox .calBox .inputArea,
+.filterBox .calBox .inputArea,
+.setBox .calBox .inputArea,
+.printSetBox .calBox .inputArea,
+.wwwlBox .calBox .inputArea,
+.wwwlSetBox .calBox .inputArea,
+.printTagSetbox .calBox .inputArea {
+  width: 120px;
+}
+#quickWWWLBox .calBox .inputArea input,
+#downloadBox .calBox .inputArea input,
+#commonSet .calBox .inputArea input,
+.magnifyBox .calBox .inputArea input,
+.layoutBox .calBox .inputArea input,
+.filterBox .calBox .inputArea input,
+.setBox .calBox .inputArea input,
+.printSetBox .calBox .inputArea input,
+.wwwlBox .calBox .inputArea input,
+.wwwlSetBox .calBox .inputArea input,
+.printTagSetbox .calBox .inputArea input,
+#quickWWWLBox .calBox .inputArea select,
+#downloadBox .calBox .inputArea select,
+#commonSet .calBox .inputArea select,
+.magnifyBox .calBox .inputArea select,
+.layoutBox .calBox .inputArea select,
+.filterBox .calBox .inputArea select,
+.setBox .calBox .inputArea select,
+.printSetBox .calBox .inputArea select,
+.wwwlBox .calBox .inputArea select,
+.wwwlSetBox .calBox .inputArea select,
+.printTagSetbox .calBox .inputArea select {
+  display: inline-block;
+  color: black;
+  height: 24px;
+  padding-left: 8px;
+  background-color: #e9e7e2;
+  border: 0;
+  width: 60px;
+}
+#quickWWWLBox .calBox .yes,
+#downloadBox .calBox .yes,
+#commonSet .calBox .yes,
+.magnifyBox .calBox .yes,
+.layoutBox .calBox .yes,
+.filterBox .calBox .yes,
+.setBox .calBox .yes,
+.printSetBox .calBox .yes,
+.wwwlBox .calBox .yes,
+.wwwlSetBox .calBox .yes,
+.printTagSetbox .calBox .yes {
+  cursor: pointer;
+  height: 24px;
+  line-height: 24px;
+  display: inline-block;
+  text-align: center;
+  background-color: #918b87;
+  margin-right: 5px;
+  width: 45px;
+  color: #e9e7e2;
+}
+#quickWWWLBox .calBox .yes:hover,
+#downloadBox .calBox .yes:hover,
+#commonSet .calBox .yes:hover,
+.magnifyBox .calBox .yes:hover,
+.layoutBox .calBox .yes:hover,
+.filterBox .calBox .yes:hover,
+.setBox .calBox .yes:hover,
+.printSetBox .calBox .yes:hover,
+.wwwlBox .calBox .yes:hover,
+.wwwlSetBox .calBox .yes:hover,
+.printTagSetbox .calBox .yes:hover {
+  background-color: #77726e;
+}
+#quickWWWLBox .ceilBox,
+#downloadBox .ceilBox,
+#commonSet .ceilBox,
+.magnifyBox .ceilBox,
+.layoutBox .ceilBox,
+.filterBox .ceilBox,
+.setBox .ceilBox,
+.printSetBox .ceilBox,
+.wwwlBox .ceilBox,
+.wwwlSetBox .ceilBox,
+.printTagSetbox .ceilBox {
+  padding: 5px;
+  height: 300px;
+  position: relative;
+  background-color: #3F3F3F;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  color: #888888;
+}
+#quickWWWLBox .ceilBox::-webkit-scrollbar,
+#downloadBox .ceilBox::-webkit-scrollbar,
+#commonSet .ceilBox::-webkit-scrollbar,
+.magnifyBox .ceilBox::-webkit-scrollbar,
+.layoutBox .ceilBox::-webkit-scrollbar,
+.filterBox .ceilBox::-webkit-scrollbar,
+.setBox .ceilBox::-webkit-scrollbar,
+.printSetBox .ceilBox::-webkit-scrollbar,
+.wwwlBox .ceilBox::-webkit-scrollbar,
+.wwwlSetBox .ceilBox::-webkit-scrollbar,
+.printTagSetbox .ceilBox::-webkit-scrollbar {
+  /*滚动条，这里不倒腾用户体验了，暂时在满足webkit，这里主要是想节约空间，其实大可不必通过滚动条*/
+  width: 8px;
+  height: 8px;
+}
+#quickWWWLBox .ceilBox::-webkit-scrollbar-thumb,
+#downloadBox .ceilBox::-webkit-scrollbar-thumb,
+#commonSet .ceilBox::-webkit-scrollbar-thumb,
+.magnifyBox .ceilBox::-webkit-scrollbar-thumb,
+.layoutBox .ceilBox::-webkit-scrollbar-thumb,
+.filterBox .ceilBox::-webkit-scrollbar-thumb,
+.setBox .ceilBox::-webkit-scrollbar-thumb,
+.printSetBox .ceilBox::-webkit-scrollbar-thumb,
+.wwwlBox .ceilBox::-webkit-scrollbar-thumb,
+.wwwlSetBox .ceilBox::-webkit-scrollbar-thumb,
+.printTagSetbox .ceilBox::-webkit-scrollbar-thumb {
+  background: #888888;
+  border-radius: 4px;
+}
+#quickWWWLBox .ceilBox::-webkit-scrollbar-track,
+#downloadBox .ceilBox::-webkit-scrollbar-track,
+#commonSet .ceilBox::-webkit-scrollbar-track,
+.magnifyBox .ceilBox::-webkit-scrollbar-track,
+.layoutBox .ceilBox::-webkit-scrollbar-track,
+.filterBox .ceilBox::-webkit-scrollbar-track,
+.setBox .ceilBox::-webkit-scrollbar-track,
+.printSetBox .ceilBox::-webkit-scrollbar-track,
+.wwwlBox .ceilBox::-webkit-scrollbar-track,
+.wwwlSetBox .ceilBox::-webkit-scrollbar-track,
+.printTagSetbox .ceilBox::-webkit-scrollbar-track {
+  background: #424242;
+  width: 8px;
+}
+#quickWWWLBox .ceilBox::-webkit-scrollbar-button,
+#downloadBox .ceilBox::-webkit-scrollbar-button,
+#commonSet .ceilBox::-webkit-scrollbar-button,
+.magnifyBox .ceilBox::-webkit-scrollbar-button,
+.layoutBox .ceilBox::-webkit-scrollbar-button,
+.filterBox .ceilBox::-webkit-scrollbar-button,
+.setBox .ceilBox::-webkit-scrollbar-button,
+.printSetBox .ceilBox::-webkit-scrollbar-button,
+.wwwlBox .ceilBox::-webkit-scrollbar-button,
+.wwwlSetBox .ceilBox::-webkit-scrollbar-button,
+.printTagSetbox .ceilBox::-webkit-scrollbar-button {
+  background-color: #424242;
+  height: 4px;
+}
+#quickWWWLBox .ceilBox .aCeil,
+#downloadBox .ceilBox .aCeil,
+#commonSet .ceilBox .aCeil,
+.magnifyBox .ceilBox .aCeil,
+.layoutBox .ceilBox .aCeil,
+.filterBox .ceilBox .aCeil,
+.setBox .ceilBox .aCeil,
+.printSetBox .ceilBox .aCeil,
+.wwwlBox .ceilBox .aCeil,
+.wwwlSetBox .ceilBox .aCeil,
+.printTagSetbox .ceilBox .aCeil {
+  background-color: #E9E7E2;
+  padding: 6px 10px;
+  cursor: pointer;
+  margin: 8px;
+  text-align: center;
+  display: block;
+  float: left;
+}
+#quickWWWLBox .ceilBox .aCeil:hover,
+#downloadBox .ceilBox .aCeil:hover,
+#commonSet .ceilBox .aCeil:hover,
+.magnifyBox .ceilBox .aCeil:hover,
+.layoutBox .ceilBox .aCeil:hover,
+.filterBox .ceilBox .aCeil:hover,
+.setBox .ceilBox .aCeil:hover,
+.printSetBox .ceilBox .aCeil:hover,
+.wwwlBox .ceilBox .aCeil:hover,
+.wwwlSetBox .ceilBox .aCeil:hover,
+.printTagSetbox .ceilBox .aCeil:hover {
+  background-color: #bdb7a8;
+  color: black;
+}
+#downloadBox {
+  height: 210px;
+  display: none;
+}
+#downloadBox .calBoxLoad {
+  overflow: hidden;
+  padding: 8px 10px;
+}
+#downloadBox .calBoxLoad ul li {
+  width: 100%;
+  height: 40px;
+  padding-top: 10px;
+  padding-left: 10px;
+  margin-bottom: 10px;
+  background-color: #4D4D4D;
+  display: block;
+}
+#downloadBox .calBoxLoad ul li:hover {
+  background-color: cadetblue;
+}
+.processingBox {
+  width: 90%;
+  margin: 0 auto;
+  position: relative;
+}
+.processingBox .hidebtn {
+  font-size: 14px;
+  border-radius: 3px;
+  line-height: 16px;
+  cursor: pointer;
+  position: absolute;
+  background-color: #FF7D6F;
+  color: white;
+  top: 2px;
+  right: 0px;
+  padding: 1px 3px;
+}
+.processingBox .loadingTxt {
+  font-size: 14px;
+}
+.processingBox .failed {
+  font-size: 14px;
+  display: inline-block;
+}
+.processingBox .failed .tryAgain {
+  color: #00aaff;
+  cursor: pointer;
+}
+#playSpeedSet {
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  position: absolute;
+  margin: auto;
+  z-index: 11000;
+  width: 300px;
+  height: 40px;
+  background-color: #0b97c4;
+  padding-left: 10px;
+  padding-top: 10px;
+}
+#playSpeedSet .rangeBar,
+#playSpeedSet span {
+  display: inline-block;
+}
+#playSpeedSet span {
+  text-align: center;
+  width: 30px;
+  font-size: 14px;
+}
+#playSpeedSet .rangeBar {
+  width: 200px;
+}

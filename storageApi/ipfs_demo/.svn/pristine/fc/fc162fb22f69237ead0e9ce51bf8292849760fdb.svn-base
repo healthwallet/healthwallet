@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MPR</title>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <!-- CSS debug start -->
+    <link rel="stylesheet" type="text/css" href="../src/css/viewer/base.css?v=3"/>
+    <link rel="stylesheet" type="text/css" href="../src/css/ui/toolbar.css?v=3"/>
+    <link rel="stylesheet" type="text/css" href="../src/css/ui/menu.css?v=3"/>
+    <link rel="stylesheet" type="text/css" href="../src/css/ui/dialog.css?v=3"/>
+    <link rel="stylesheet" type="text/css" href="../src/css/utilities/nojs.css?v=3"/>
+    <link rel="stylesheet" type="text/css" href="../src/css/utilities/unsupported.css?v=3"/>
+    <link rel="stylesheet" type="text/css" href="../src/css/viewer/viewer.css?v=3.0"/>
+
+
+
+    <link rel="stylesheet" type="text/css" href="../src/css/mprMain.css?v=3.10"/>
+    <script>
+        var mode = true;
+        var toolbarObj;//papaya.ui.Toolbar的实例化
+        var isDataArray = true;//用来把我的数据直接给papa走的路线
+        var params = [];//---------这是papa的，不加没 Swap Main Slice那些  我去啊
+        var infoData;//主页面参数传递
+    </script>
+
+    <!--<script type="text/javascript" src="../src/js/data/sample-image.js"></script>-->
+    <!--<script type="text/javascript" src="../src/js/data/talairach-atlas-image.js"></script>-->
+    <!--<script type="text/javascript" src="../src/js/data/talairach-atlas.js"></script>-->
+    <!--<script type="text/javascript" src="../src/js/data/talairach-atlas-image.js"></script>-->
+
+
+    <script type="text/javascript" src="../papalib/base64-binary.js"></script>
+    <script type="text/javascript" src="../papalib/bowser.js"></script>
+    <script type="text/javascript" src="../papalib/daikon.js?v=1.1"></script>
+    <script type="text/javascript" src="../papalib/nifti-reader.js"></script>
+    <script type="text/javascript" src="../papalib/jquery.js"></script>
+    <script type="text/javascript" src="../papalib/numerics.js"></script>
+    <script type="text/javascript" src="../papalib/pako-inflate.js"></script>
+    <script type="text/javascript" src="../papalib/gl-matrix.js"></script>
+    <script type="text/javascript" src="../papalib/gifti-reader.js"></script>
+
+    <script type="text/javascript" src="../papalib/GLU.js"></script>
+
+    <script type="text/javascript" src="../src/js/constants.js"></script>
+
+    <script type="text/javascript" src="../src/js/utilities/array-utils.js"></script>
+    <script type="text/javascript" src="../src/js/utilities/math-utils.js"></script>
+    <script type="text/javascript" src="../src/js/utilities/object-utils.js"></script>
+    <script type="text/javascript" src="../src/js/utilities/platform-utils.js"></script>
+
+    <script type="text/javascript" src="../src/js/utilities/string-utils.js"></script>
+    <script type="text/javascript" src="../src/js/utilities/url-utils.js"></script>
+
+    <script type="text/javascript" src="../src/js/core/coordinate.js"></script>
+    <script type="text/javascript" src="../src/js/core/point.js"></script>
+
+    <script type="text/javascript" src="../src/js/volume/header.js"></script>
+    <script type="text/javascript" src="../src/js/volume/imagedata.js"></script>
+    <script type="text/javascript" src="../src/js/volume/imagedescription.js"></script>
+    <script type="text/javascript" src="../src/js/volume/imagedimensions.js"></script>
+    <script type="text/javascript" src="../src/js/volume/imagerange.js"></script>
+    <script type="text/javascript" src="../src/js/volume/imagetype.js"></script>
+    <script type="text/javascript" src="../src/js/volume/nifti/header-nifti.js"></script>
+    <script type="text/javascript" src="../src/js/volume/dicom/header-dicom.js?v=1.51"></script>
+    <script type="text/javascript" src="../src/js/volume/orientation.js?v=1.0"></script>
+    <script type="text/javascript" src="../src/js/volume/transform.js?v=1.0"></script>
+    <script type="text/javascript" src="../src/js/volume/volume.js?v=1.51"></script>
+    <script type="text/javascript" src="../src/js/volume/voxeldimensions.js?v=1.0"></script>
+    <script type="text/javascript" src="../src/js/volume/voxelvalue.js?v=1.0"></script>
+
+
+    <script type="text/javascript" src="../src/js/surface/surface.js?v=1.50"></script>
+    <script type="text/javascript" src="../src/js/surface/surface-gifti.js"></script>
+    <script type="text/javascript" src="../src/js/surface/surface-mango.js"></script>
+    <script type="text/javascript" src="../src/js/surface/surface-vtk.js"></script>
+
+    <script type="text/javascript" src="../src/js/ui/dialog.js?v=1.01"></script>
+    <script type="text/javascript" src="../src/js/ui/menu.js"></script>
+    <script type="text/javascript" src="../src/js/ui/menuitem.js"></script>
+    <script type="text/javascript" src="../src/js/ui/menuitemcheckbox.js"></script>
+    <script type="text/javascript" src="../src/js/ui/menuitemradiobutton.js"></script>
+    <script type="text/javascript" src="../src/js/ui/menuitemfilechooser.js"></script>
+    <script type="text/javascript" src="../src/js/ui/menuitemrange.js"></script>
+    <script type="text/javascript" src="../src/js/ui/menuitemslider.js?v=1.0"></script>
+    <script type="text/javascript" src="../src/js/ui/menuitemspacer.js"></script>
+    <script type="text/javascript" src="../src/js/ui/toolbar.js?v=1.11"></script>
+
+
+
+    <script type="text/javascript" src="../src/js/viewerdist/viewer.min.js?v=2.12100000"></script>
+
+
+    <script type="text/javascript" src="../src/js/main.js?v=1.11211001"></script>
+    <script type="text/javascript" src="../src/js/main/common.js"></script>
+
+
+
+    <script type="text/javascript" src="../src/js/papaya.min.js?v=1.1"></script>
+    <!--<script type="text/javascript" src="../src/js/license.js?v=1.2001"></script>-->
+
+    <script>
+        <!--自定义全局变量-->
+        var sliceTypeArr = ["AXIAL", "CORONAL", "SAGITTAL"];
+        var mesureMode = false;//当前是否在测绘页面
+        var palyStart;//标志播放状态
+        var playSpeed=350;//初始播放速度
+    </script>
+
+
+</head>
+<body>
+
+<div class="main">
+    <div class="closeBtn">
+        <img src="../src/css/img/mprclose.png"/>
+    </div>
+    <div class="mprMainBox">
+        <div class="mprPatientInfoBox">
+            <div class="topBox">
+
+                <div class="infoBox">
+                    <div class="title"><img src="../src/css/img/logo_mpr.png"/></div>
+                    <div class="infoLeftBox">
+                        <div class="txt"><span>姓名：</span><span class="name">小小了</span></div>
+                        <!--<div class="txt"><span>性别：</span><span class="sex">男</span></div>-->
+                        <!--<div class="txt"><span>年龄：</span><span class="age">58</span></div>-->
+                        <div class="txt"><span>检查日期：</span><span class="time">2015/05/09</span></div>
+                    </div>
+
+                    <!--<div class="txt"><span>检查日期：</span><span class="date">2015/05/09</span></div>-->
+                    <div class="infoRightBox">
+                        <div class="positionTxt"><span>Value: </span><span class="value">1000</span></div>
+                        <div class="positionTxt"><span>Y: </span><span class="posY">222</span></div>
+                        <div class="positionTxt"><span>Z: </span><span class="posZ">222</span></div>
+                        <div class="positionTxt"><span>X: </span><span class="posX">222</span></div>
+
+                        <div class="wwwcBox">
+                            <div class="wwwcSet  "><img src="../src/css/img/quickwwwc.png"/></div>
+                            <div class="wwwcTxt  "><span>窗宽:</span><input id="windowInput" type="text"
+                                                                          class="wwwcInput"/></div>
+                            <div class="wwwcTxt  "><span>窗位:</span><input id="centerInput" type="text"
+                                                                          class="wwwcInput"/></div>
+                        </div>
+
+
+                    </div>
+
+                    <!--<div style=" display: inline-block; text-align: center; line-height: 80px;   font-size: 14px;margin-left: 5px;margin-right: 5px; " >窗位: <input  id="centerInput" type="text" class="windowInput centerInput"    style="color:#ffffff; margin-right: 4px;"/>  窗宽: <input    id="widthInput" type="text" class="windowInput widthInput" style="color: #ffffff;"/></div>-->
+
+
+                </div>
+            </div>
+        </div>
+
+
+        <div class="mprImgBox">
+            <!--默认模式-->
+            <div style="width: 100%;height: 100%;background-color: white;">
+                <div class="papaya" data-params="params"></div>
+            </div>
+            <!--默认功能-->
+            <div class="changeLocationBox">
+                <div class="btn" id="back">复位</div>
+                <div class="originBtn btn" id="origin">起点</div>
+                <div class="centerBtn btn" id="center">中心</div>
+                <div class="swapBtn btn" id="swap">切换</div>
+                <div class="playBtn btn"  >播放</div>
+                <div class="fast btn playTool">加速</div>
+                <div class="stopBtn btn playTool" >停止</div>
+                <div class="slow btn playTool">减速</div>
+            </div>
+            <!--旋转功能-->
+            <div class="rotateBox">
+                <div class="rotateDirectBtn" value="0" ><img src="../src/css/img/X.png"></div>
+                <input  class="rotateBtn" id="rotate" min='0' max='100' value=" 50 "   type='range'/>
+            </div>
+
+
+            <!--测绘模式-->
+            <div class="wrapperBox">
+                <div class="leftBox">
+                    <div class="viewportWrapper axialWrapper">
+                        <div class="axialSliceOut  viewport active" sliceType="AXIAL">
+                        </div>
+                        <div class="max"><img src="../src/css/img/fullScreen.png"/></div>
+
+                    </div>
+                </div>
+                <div class="rightBox">
+
+                    <div class="viewportWrapper sagittalWrapper">
+                        <div class="sagittalSliceOut viewport " sliceType="SAGITTAL">
+                        </div>
+                        <div class="max"><img src="../src/css/img/fullScreen.png"/></div>
+
+                    </div>
+                    <div class="viewportWrapper cornoalWrapper">
+                        <div class="coronalSliceOut viewport " sliceType="CORONAL">
+                        </div>
+                        <div class="max"><img src="../src/css/img/fullScreen.png"/></div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="magnifyBox" state="hide">
+                <div class="min"><img src="../src/css/img/restore.png"/></div>
+                <div class="magnifyViewportWrapper">
+                    <div class="magnifyViewport"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mprToolBox">
+            <div class="btnBox">
+                <div class="btn js-crossline toolM checked">定位</div>
+                <div class="btn js-wwwc toolM">调窗</div>
+                <div class="btn js-point toolM">点</div>
+                <div class="btn js-length toolM">长度</div>
+                <div class="btn js-angle toolM">角度</div>
+                <div class="btn js-rect toolM">矩形</div>
+                <div class="btn js-ellipse toolM">椭圆</div>
+                <div class="btn js-zoom toolM">缩放</div>
+                <div class="btn js-clear toolM2 toolM1">清除</div>
+                <div class="btn js-reset toolM2 toolM1">重置</div>
+                <div class="btn js-mouse toolM toolM1">鼠标</div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script type="text/javascript">
+    function load(file) {
+        toolbarObj.doAction('OpenFolder', file);
+    }
+    var nothing = true;
+    function clearAll() {
+        nothing = true;
+        toolbarObj.doAction("CloseAllImages");
+    }
+    function checkAndLoad() {
+        if (window.parent.dvStruct.mprOpen) {
+            var arr = window.parent.dvStruct.seriesForMpr;
+            if (nothing) {
+                nothing = false;
+                if (arr && arr.length > 0)load(arr);
+            }
+            infoData = window.parent.dvStruct.mprDataInfo;
+
+
+            $('.name').text(infoData.patientName);
+            $('.sex').text(infoData.sex);
+            $('.age').text(infoData.age);
+            $('.time').text(infoData.studyDate);
+
+
+        }
+    }
+</script>
+</html>

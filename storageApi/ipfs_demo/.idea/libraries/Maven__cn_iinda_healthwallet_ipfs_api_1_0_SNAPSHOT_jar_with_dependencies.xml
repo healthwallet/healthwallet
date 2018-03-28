@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: cn.iinda:healthwallet-ipfs-api:1.0-SNAPSHOT-jar-with-dependencies">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/cn/iinda/healthwallet-ipfs-api/1.0-SNAPSHOT-jar-with-dependencies/healthwallet-ipfs-api-1.0-SNAPSHOT-jar-with-dependencies.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/cn/iinda/healthwallet-ipfs-api/1.0-SNAPSHOT-jar-with-dependencies/healthwallet-ipfs-api-1.0-SNAPSHOT-jar-with-dependencies-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/cn/iinda/healthwallet-ipfs-api/1.0-SNAPSHOT-jar-with-dependencies/healthwallet-ipfs-api-1.0-SNAPSHOT-jar-with-dependencies-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

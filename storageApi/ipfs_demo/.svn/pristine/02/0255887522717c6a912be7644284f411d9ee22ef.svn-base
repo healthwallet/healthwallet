@@ -1,0 +1,64 @@
+$(function () {
+    //上传图片事件
+    $('.fileupload-upload').bind('click', function () {
+        layer.prompt({title: '文件密码', formType: 0}, function (pass, index) {
+            layer.close(index);
+            var formData = new FormData();
+            console.log(document.getElementById("inputFile").files[0]);
+            formData.append("myfile", document.getElementById("inputFile").files[0]);
+            formData.append("pass", pass);
+            console.log(formData);
+            console.log(pass);
+            $.ajax({
+                url: "testuploadimg",
+                type: "POST",
+                data: formData,
+                contentType: false,
+                processData: false,
+                success: function (data) {
+                    console.log(data);
+                    $('.showHash').html(data);
+                },
+                error: function () {
+                }
+            });
+        });
+
+    });
+    //点击获取hash事件
+    $('.read-hash-btn').bind('click', function () {
+        var _hashVal = $('#inputHash').val();
+        var password = $('#password').val();
+        if (_hashVal == '' || _hashVal == null) {
+            console.log(3223);
+            $('.hashError').show();
+            $('.errorSpan').text('hash值不能为空');
+            return
+        }
+        if (password == '' || password == null) {
+            console.log(1111);
+            $('.hashError').show();
+            $('.errorSpan').text('密码不能为空');
+            return
+        } else {
+            $('.hashError').hide();
+            console.log('333');
+            //成功后跳转地址
+            window.open('http://127.0.0.1:8087/dicomviewer?urls=["http://127.0.0.1:8087/3162a35b8b7446afe6da40d69e1f2305"]', 'dicom', "_blank", "toolbar=yes, location=yes, directories=no, status=no, menubar=yes, scrollbars=yes, resizable=no, copyhistory=yes, width=728, height=500");
+            $.ajax({
+                url: "showImg/" + _hashVal + "/" + password,
+                success: function (result) {
+                    console.log(result.data);
+                    console.log('http://127.0.0.1:8087/dicomviewer?'+result.data+'', 'dicom', "_blank", "toolbar=yes, location=yes, directories=no, status=no, menubar=yes, scrollbars=yes, resizable=no, copyhistory=yes, width=728, height=500");
+                    window.open('http://127.0.0.1:8087/dicomviewer?'+result.data+'', 'dicom', "_blank", "toolbar=yes, location=yes, directories=no, status=no, menubar=yes, scrollbars=yes, resizable=no, copyhistory=yes, width=728, height=500");
+                    //window.open('http://127.0.0.1:8087/dicomviewer?'+result.data+'', 'dicom', "_blank", "toolbar=yes, location=yes, directories=no, status=no, menubar=yes, scrollbars=yes, resizable=no, copyhistory=yes, width=728, height=500");
+                    //console.log('http://127.0.0.1:8087/dicomviewer?urls=' + result.data + '', 'dicom', "_blank", "toolbar=yes, location=yes, directories=no, status=no, menubar=yes, scrollbars=yes, resizable=no, copyhistory=yes, width=728, height=500");
+                    //window.open('http://127.0.0.1:8087/dicomviewer?urls=' + result.data + '', 'dicom', "_blank", "toolbar=yes, location=yes, directories=no, status=no, menubar=yes, scrollbars=yes, resizable=no, copyhistory=yes, width=728, height=500");
+                    //window.open('http://127.0.0.1:8087/dicomviewer?urls=["http://127.0.0.1:8087/1519788792143"]', 'dicom', "_blank", "toolbar=yes, location=yes, directories=no, status=no, menubar=yes, scrollbars=yes, resizable=no, copyhistory=yes, width=728, height=500");
+                },
+            });
+//                window.open('http://127.0.0.1:8087/dicomviewer?urls=["http://127.0.0.1:8087/1519788792143"]', 'dicom', "_blank", "toolbar=yes, location=yes, directories=no, status=no, menubar=yes, scrollbars=yes, resizable=no, copyhistory=yes, width=728, height=500");
+        }
+
+    });
+});

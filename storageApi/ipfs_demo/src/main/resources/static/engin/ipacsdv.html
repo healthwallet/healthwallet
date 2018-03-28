@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <script type="text/javascript">
+        console.time('time1');
+    </script>
+
+    <script type="text/javascript">
+        var iconvForUse = iconv;
+        console.log(iconvForUse);var preparedData;
+    </script>
+
+    <script type="text/javascript" src="ipacsdv/js/lib/jquery-2.1.4.min.js" ></script>
+    <script type="text/javascript" src="ipacsdv/js/lib/underscore-min.js" ></script>
+    <script type="text/javascript" src="ipacsdv/js/lib/dataDictionary.js"></script>
+    <script type="text/javascript" src="ipacsdv/js/comm/outputTranslate.js"></script>
+	 <script type="text/javascript" src="ipacsdv/js/comm/inputTranslate.js"></script>
+    <script type="text/javascript" src="ipacsdv/js/lib/nouislider.min.js"></script>
+
+
+    <script type="text/javascript" src="ipacsdv/js/lib/device.min.js"></script>
+   <title></title>
+   <script type="text/javascript">
+       console.timeEnd('time1');
+   </script>
+</head>
+<body>
+
+
+
+<script type="text/javascript">
+ var id = GetRequest("id").id;	
+    $(document).ready(function(){
+//        device judge
+        if(device.mobile()){
+            window.location ="ipacsdvmobi.html?id="+id;  //手机页面
+			 
+        }
+       else if(device.tablet())
+        {
+            http://120.27.29.91:8888/index.action
+        }
+        else
+        {
+            window.location ="ipacsdvpc.html?id="+id;  //PC页面
+        }
+
+//        device judge end
+
+    });
+</script>
+</body>
+</html>

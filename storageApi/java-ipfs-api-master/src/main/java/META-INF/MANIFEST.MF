@@ -1,0 +1,4 @@
+Manifest-Version: 1.0
+Class-Path: java-cid-v1.1.0.jar java-multiaddr-v1.1.1.jar java-multiha
+ sh-v1.1.0.jar java-multibase-v1.0.0.jar
+

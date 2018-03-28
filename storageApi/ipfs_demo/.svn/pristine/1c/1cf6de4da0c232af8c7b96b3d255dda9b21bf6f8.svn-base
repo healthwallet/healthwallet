@@ -1,0 +1,693 @@
+<html lang="en">
+<head>
+    <script type="text/javascript">
+        function GetUrlParam(paraName) {
+            var url = document.location.toString();
+            var arrObj = url.split("?");
+
+            if (arrObj.length > 1) {
+                var arrPara = arrObj[1].split("&");
+                var arr;
+
+                for (var i = 0; i < arrPara.length; i++) {
+                    arr = arrPara[i].split("=");
+
+                    if (arr != null && arr[0] == paraName) {
+                        return arr[1];
+                    }
+                }
+                return "";
+            }
+            else {
+                return "";
+            }
+        }
+
+        function  Getshareflag()
+        {
+            return 1;//shareflag;
+        }
+        function getRID()
+        {
+            var id=GetUrlParam("rid");
+            return id;
+        }
+        function getUrls()
+        {
+            var urls=GetUrlParam("urls");
+            return decodeURI(urls);
+        }
+        function GetdicomPath()
+        {
+            var dicomPath="";
+            // var dicomPath="http://127.0.0.1:8080";
+            return dicomPath;
+        }
+        function GetpacsUrl()
+        {
+            var pacsUrl="";
+            // var pacsUrl=window.location.host;
+            return pacsUrl;
+        }
+        function GetUserCode()
+        {
+
+            var usercode="gly";
+            // var usercode="<%=UserCode%>";
+            return usercode;
+        }
+        function GetHospitalCode()
+        {
+            var usercode="gly";
+            //var usercode="<%=HospitalCode%>";
+            return usercode;
+        }
+        function GetLocalIP()
+        {
+            //192.168.9.36
+            //  var IP="ws://10.36.128.221:8181";
+            var IP="ws://127.0.0.1:8181";
+            return IP;
+        }
+        function GetDrawType()
+        {
+            //var type="background";
+            //var usercode="<%=HospitalCode%>";
+            //if(usercode=='5580095'){type='web';}
+            var type='web';
+            return type;
+        }
+        function GetPlatCode()
+        {
+
+            var platcode=GetUrlParam("pcode");
+            return platcode;
+        }
+        function GetLocalurl()
+        {
+            //  var Localurl="http://127.0.0.1:8080/LocalImageServlet";
+            var Localurl="http://127.0.0.1:88881/LocalImageServlet";
+            return Localurl;
+        }
+
+
+    </script>
+    <!-- support for mobile touch devices -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="renderer" content="webkit" /><!--给360-->
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1, minimal-ui">
+    <meta name="apple-touch-fullscreen" content="yes"><meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta charset="utf-8">
+    <meta name="x5-fullscreen" content="true">
+    <meta name="full-screen" content="yes"><!--qq，uc浏览器使用全屏模式，全屏模式里uc浏览器是不会上下左右滑动出现背景的，但是qq...管它了，暂时到顶才会出北京-->
+    <!--<link href="ipacsdv/css/bootstrap.min.css" rel="stylesheet">-->
+    <link href="ipacsdv/css/font-awesome.min.css" rel="stylesheet">
+    <link href="ipacsdv/css/cornerstone.min.css" rel="stylesheet">
+    <link href="ipacsdv/css/nouislider.min.css?v=10" rel="stylesheet"/>
+    <link href="ipacsdv/css/modal.css?v=1.11" rel="stylesheet" />
+    <link href="ipacsdv/css/pop-up-tab.css" rel="stylesheet" />
+    <link href="ipacsdv/css/dvtabVersion2.css?v=1.1111" rel="stylesheet" />
+    <script type="text/javascript">
+        console.time('time1');var jschardet = '';
+    </script>
+    <!--<script type="text/javascript" src="testfile.js"></script>&lt;!&ndash;实验从网络获取&ndash;&gt;-->
+    <script type="text/javascript" src="ipacsdv/js/lib/iconv.js?v=1"></script>
+    <script type="text/javascript">
+        var iconvForUse = iconv;//。。。。又特么改回来了，写得蛋疼
+        console.log(iconvForUse);var preparedData;
+    </script>
+ <script type="text/javascript" src="ipacsdv/js/lib/jquery-2.1.4.min.js" ></script>
+ <script type="text/javascript" src="ipacsdv/js/lib/underscore-min.js" ></script>
+ <script type="text/javascript" src="ipacsdv/js/lib/dataDictionary.js"></script>
+ <script type="text/javascript" src="ipacsdv/js/comm/inputTranslate.js"></script>
+ <script type="text/javascript" src="ipacsdv/js/comm/outputTranslate1.js?v=1.112"></script>
+ <script type="text/javascript" src="ipacsdv/js/lib/hammer.min.js"></script>
+ <script type="text/javascript" src="ipacsdv/js/lib/jquery.hammer.js"></script>
+ <script type="text/javascript" src="ipacsdv/js/lib/nouislider.min.js"></script>
+
+    <script type="text/javascript" src="ipacsdv/disttab/ipacstab.min.js?v=1.002"></script>
+    <script type="text/javascript" src="ipacsdv/js/lib/device.min.js"></script>
+    <title></title>
+    <script type="text/javascript">
+        console.timeEnd('time1');
+    </script>
+    <style type="text/css">
+        html,body{height:100%;}
+    </style>
+</head>
+<body draggable="false" ondragstart="return false;" >
+<div id="container" style="width: 100%;height:100%;overflow: hidden;">
+    <div class="modal">
+        <div class="addBtn" onclick="addData()">新增</div>
+        <table class="tableTitle"  cellspacing="0">
+            <thead>
+            <tr>
+                <th class="td40">名称</th>
+                <th class="td20">窗位</th>
+                <th class="td20 ">窗宽</th>
+                <th class="td20 ">操作</th>
+            </tr>
+            </thead>
+        </table>
+        <div class="tableDiv">
+            <table class="tableBody"  id="presetTable" cellspacing="0">
+                <tbody>
+
+                <!--<tr>
+                    <td class="td40 padding-10 wwwlName">肺窗</td>
+                    <td class="td20 text-center wwVal">1</td>
+                    <td class="td20 text-center wlVal">2</td>
+                    <td class="td20 text-center operation"><img src="ipacsdv/css/img/tab/icon_editor01.png" /></td>
+                </tr>
+                <tr>
+                    <td class="td40 padding-10 wwwlName">骨窗</td>
+                    <td class="td20 text-center wwVal">3</td>
+                    <td class="td20 text-center wlVal">4</td>
+                    <td class="td20 text-center operation"><img src="ipacsdv/css/img/tab/icon_editor01.png" /></td>
+                </tr>-->
+
+
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+    <div class="mask">
+
+    </div>
+    <div class="maskTwo">
+
+    </div>
+    <!--设置WW\WL-->
+    <div class="otherConfirm addWLDataBox ">
+        <div class="confirm-title text-center" >
+            设置窗位窗宽
+        </div>
+        <div class="confirm-message  ">
+
+            <div class="confirm-context text-center">
+                <dl>
+                    <dt>名称：</dt>
+                    <dd><input type="text" placeholder="请输入名称" class="name" /></dd>
+                </dl>
+                <dl>
+                    <dt>窗位：</dt>
+                    <dd><input type="text" placeholder="请输入ww"  class="ww" data-name="窗位" /></dd>
+                </dl>
+                <dl>
+                    <dt>窗宽：</dt>
+                    <dd><input type="text" placeholder="请输入wl"  class="wl"  data-name="窗宽" /></dd>
+                </dl>
+                <span class="errorSpan"></span>
+            </div>
+            <div class="confirm-btns text-center">
+
+                <div class="m_btn grayBtn" onclick="divHide('.addWLDataBox','.maskTwo')"><span>取消</span></div>
+
+                <div class="m_btn greenBtn " onclick="saveData()" ><span>确定</span></div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+
+<!--缩略图-->
+<script type="template" id = 'dvPreviewTemp'>
+    <div class="imgBox" draggable="false" draggable="false" ondragstart="return false;">
+        <div class="img js-dragToCanv" iid="<%=iid %>" id="<%=id %>" suid="<%=suid %>" imageid="<%=imageId %>" draggable="false" ondragstart="return false;" >
+        </div>
+
+        <div class="tagBottom ">
+            <span class="se"></span>
+            <span>_</span>
+            <span class="total"></span>
+
+        </div>
+        <!--<div class="tag">
+            <span class="right"><span class="total"></span></span>
+        </div>
+        <div class="tagL">
+            <span class="left"><span class="se"></span></span>
+        </div>-->
+        <!-- <div class="imgIn">
+             <span class="fa fa-long-arrow-right"></span>
+         </div>-->
+    </div>
+</script>
+<!--图像窗口-->
+<script type="template" id="seriesWindowTemp" >
+    <div id="<%=id %>" class="seriesWindow"  no="<%=no %>">
+
+
+        <div class="prevPage page" style="display: none">
+            <img   src="ipacsdv/css/img/tab/icon_right@3x.png" />
+        </div>
+
+        <div class="nextPage page" style="display: none">
+            <img  src="ipacsdv/css/img/tab/icon_left@3x.png" />
+        </div>
+    </div>
+</script>
+<!--图像容器-->
+<script type="template" id="viewportWrapperTemp" >
+
+
+
+    <div id="<%=id %>" class="viewportWrapper" no="<%=no %>"  unselectable="on" onselectstart="return false;" onmousedown="return false;">
+        <!-- Viewport -->
+        <div id="<%=eid %>" class="viewport ui-droppable" style="touch-action: none; -webkit-user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
+        </div>
+        <!-- Overlays -->
+        <div class="overlay js-lt" style="top:10px; left:10px">
+
+
+            <div class="js-info-PatientID js-info"></div>
+            <div class="js-info-PatientName js-info"></div>
+            <div class="js-info-Modality js-modality"></div>
+            <div><span class="js-info-PatientSex js-info"></span></div>
+            <div class="js-info-PatientAge js-info"></div>
+            <div class="js-info-time js-info"></div>
+            <div class="js-info-date js-info"></div>
+        </div>
+
+        <div class="overlay js-rt" style="top:10px; right:10px;text-align: right">
+            <!--<div class="js-info-InstitutionName js-info"></div>-->
+            <!--<div class="js-info-ProtocolName js-info"></div>-->
+            <!--<div class="js-info-StudyDescription js-info"></div>-->
+            <div class=""><span class="js-info-SeNo js-info"></span><span class="js-info js-info-nowNo"></span><span class="js-info js-info-totalNo"></span></div>
+
+        </div>
+        <div class="overlay js-lb" style="bottom:10px; left:10px">
+            <!--<div class="js-info-zoom js-info"></div>-->
+
+            <div class="js-info-wc js-info"></div>
+            <div class="js-info-ww js-info"></div>
+            <div class="js-info-kvp js-info"></div>
+            <div class="js-info-mA js-info"></div>
+            <div class="js-info-Thickness js-info"></div>
+
+
+        </div>
+        <!--<div class="overlay js-rb" style="bottom:10px; right:10px;text-align: right">
+            <span class="js-info-kvp js-info"></span>
+            <span class="js-info-mA js-info"></span>
+            <div class="js-info-fov js-info"></div>
+            <div class="js-info-MagneticFieldStrength js-info"></div>
+            <div class="js-info-TrTe js-info"></div>
+            <div class="js-info-datetime js-info"></div>
+             <div class="js-info-CBZ js-info"></div>
+              <div class="js-info-PatientBirthDate js-info"></div>
+        </div>-->
+    </div>
+</script>
+<!--页面容器-->
+<script type="template" id="dvContainerTemp" >
+    <div class='dvContainer' draggable="false" ondragstart="return false;"  style="touch-action:none;" id='<%=containerId %>'  >
+        <div class="viewer">
+
+
+            <div id="playSpeedSet" style="display: none;">
+                <span style="font-size: 20px;padding-right: 10px;padding-left: 10px;"><i class="fa fa-minus" aria-hidden="true"></i></span>
+                <div class="rangeBar"></div>
+                <span style="padding-left: 28px;font-size: 20px;padding-right: 10px;"><i class="fa fa-plus" aria-hidden="true"></i></span>
+            </div><!--为tab版增加播放速度调节滑竿-->
+
+
+            <div class="rightTool">
+                <!--播放按钮-->
+                <div class="btn playCtrl" ><img style="width: 40px;height: 40px;" data-img="icon_paly" src="ipacsdv/css/img/tab/icon_paly01@3x.png" /></div>
+
+                <!--重置图像-->
+                <div class="btn reset">  <img style="width: 40px;height: 40px;" data-img="icon_reset" src="ipacsdv/css/img/tab/icon_reset@3x.png" /></div>
+
+            </div>
+
+
+        </div>
+        <div class="operationBox">
+            <!--底部滚动条-->
+            <!--<div class="progressBarBox" style="display: none">
+                <div class="playBtn"><img id="playUrl" src="ipacsdv/css/img/tab/icon_pause@3x.png" /></div>
+                &lt;!&ndash;<div class="previousPage"><img src="ipacsdv/css/img/tab/icon_left@3x.png" /></div>&ndash;&gt;
+
+                <div class="progressBar">
+                    <div class="rect"></div>
+                </div>
+                &lt;!&ndash;<div class="nextPage"><img src="ipacsdv/css/img/tab/icon_right@3x.png" /></div>&ndash;&gt;
+            </div>-->
+            <!-- <div class="progressBarBox" >
+             </div>-->
+            <div class="operationBtnGroup">
+                <ul class="firstMenu">
+                    <li class="firstMenuActive" id="seriesBtn"><img  data-img="icon_order" src="ipacsdv/css/img/tab/icon_order02@3x.png" /><span >序列</span></li>
+                    <li class="functionOptions js-wwwl" id="wwwlBtn"><img data-img="icon_tiaochuang" src="ipacsdv/css/img/tab/icon_tiaochuang01@3x.png" /><span class="firstMenuSpanActive ">调窗</span>
+                    </li>
+                    <li class="functionOptions" id="measureBtn"><img data-img="icon_measure" src="ipacsdv/css/img/tab/icon_measure01@3x.png" /><span >测量</span>
+                    </li>
+                    <li class="functionOptions" id="panBtn"><img data-img="icon_tool" src="ipacsdv/css/img/tab/icon_tool01@3x.png" /><span >工具</span>
+                    </li>
+                    <li class="functionOptions" id="moreBtn"><img data-img="icon_more" src="ipacsdv/css/img/tab/icon_more01@3x.png" /><span >更多</span>
+                    </li>
+                    <div class="secondMenu">
+
+                        <!--调窗二级菜单-->
+                        <!--<span id="preWwwl" class="secondMenuSpan wwwlTool method"   toolType = "preWwwl" state="method">预设调窗</span>-->
+                        <span id="fakeColor" class="secondMenuSpan wwwlTool state  nochild"  toolType = "fakeColor" state="state">伪彩</span>
+                        <span class="secondMenuSpan wwwlTool method js-invert  nochild" toolType = "invert" state="method">反显</span>
+
+
+                        <!--移动二级菜单-->
+                        <span class="secondMenuSpan panTool state2 js-pan  nochild" data="pan"   state="state2">移动</span>
+                        <span class="secondMenuSpan panTool state2 js-magnify  nochild" data="magnify"  state="state2">放大镜</span>
+                        <span class="secondMenuSpan panTool method js-rotateL  nochild" toolType = "rotateL" state="method">左旋</span>
+                        <!--<span class="secondMenuSpan panTool ">自由旋</span>-->
+                        <span class="secondMenuSpan panTool method js-rotateR  nochild" toolType = "rotateR" state="method">右旋</span>
+                        <span class="secondMenuSpan panTool method js-flipH  nochild" toolType = "flipH" state="method">水平镜像</span>
+                        <span class="secondMenuSpan panTool method js-flipV  nochild" toolType = "flipV" state="method">垂直镜像</span>
+
+
+
+                        <!--测量二级菜单-->
+                        <span class="secondMenuSpan measureTool state2 nochild" data="point"   state="state2" >点</span>
+                        <span class="secondMenuSpan measureTool state2 js-length nochild" data="length"   state="state2">直线</span>
+                        <span class="secondMenuSpan measureTool state2 js-rect nochild" data="rect"   state="state2">矩形</span>
+                        <span class="secondMenuSpan measureTool state2 nochild" data="ellipse"   state="state2">椭圆</span>
+                        <span class="secondMenuSpan measureTool method js-clearToolState  nochild" toolType = "clear" state="method">清除</span>
+
+                        <!--更多二级菜单-->
+                        <span class="secondMenuSpan moreTool state js-presetWWWL  nochild" data="preSetWWWL"  state="state">预设调窗</span>
+                        <span class="secondMenuSpan moreTool state js-reference  nochild" data="reference"  state="state">定位线</span>
+                        <!--<span class="secondMenuSpan moreTool method">MPR</span>-->
+                        <!--<span class="secondMenuSpan moreTool js-refresh">图像重置</span>-->
+                        <span class="secondMenuSpan moreTool state js-infoVisible  nochild" data="infoVisible"  state="state">信息隐藏</span>
+                        <span id="outerLayout" class="secondMenuSpan moreTool method   " toolType = "outerLayout" state="method">影像布局</span>
+                        <!--<span id="innerLayout" class="secondMenuSpan moreTool " toolType = "innerLayout">序列布局</span>-->
+
+
+                        <!--影像布局子菜单-->
+                        <span class="secondMenuSpan outerLayout  method nochild" row="1" col="1"    >1X1</span>
+                        <span class="secondMenuSpan outerLayout  method nochild" row="1" col="2"    >1X2</span>
+                        <span class="secondMenuSpan outerLayout  method nochild" row="2" col="1"    >2X1</span>
+                        <span class="secondMenuSpan outerLayout  method nochild" row="2" col="2"    >2X2</span>
+                        <!--序列布局子菜单-->
+                        <span class="secondMenuSpan innerLayout  method nochild" row="1" col="1"   >1X1</span>
+                        <span class="secondMenuSpan innerLayout  method nochild" row="1" col="2"   >1X2</span>
+                        <span class="secondMenuSpan innerLayout  method nochild" row="2" col="1"    >2X1</span>
+                        <span class="secondMenuSpan innerLayout  method nochild" row="2" col="2"    >2X2</span>
+
+
+                        <!--伪彩子菜单-->
+                        <span class="secondMenuSpan fakeColorTool state3 nochild" data="color1"  state="state3">热金属</span>
+                        <span class="secondMenuSpan fakeColorTool state3 nochild"  data="color2" state="state3">彩色1</span>
+                        <span class="secondMenuSpan fakeColorTool state3 nochild"  data="color3" state="state3">彩色2</span>
+
+                        <!--预设调窗子菜单-->
+                        <span class="secondMenuSpan position head  method  " toolType = "head" state="method">头部</span>
+                        <span class="secondMenuSpan position lungs  method  " toolType = "lungs" state="method">肺部</span>
+                        <span class="secondMenuSpan position paranasalSinus  method  " toolType = "paranasalSinus" state="method">鼻窦</span>
+                        <span class="secondMenuSpan position intervertebradisc  method  " toolType = "intervertebradisc" state="method">椎间盘</span>
+                        <span class="secondMenuSpan position else  method " toolType = "else" state="method">其他</span>
+
+                        <!--头部-->
+                        <span class="secondMenuSpan preWwwlTool headS state1 nochild" ww="90" wc="35"   state="state1">头颅平扫</span>
+                        <span class="secondMenuSpan preWwwlTool headS state1 nochild" ww="85" wc="40"    state="state1">头颅增强</span>
+                        <span class="secondMenuSpan preWwwlTool headS state1 nochild" ww="1600" wc="450"    state="state1">头颅骨窗</span>
+                        <span class="secondMenuSpan preWwwlTool headS state1 nochild" ww="4000" wc="650"    state="state1">乳突</span>
+                        <!--肺部-->
+                        <span class="secondMenuSpan preWwwlTool lungsS state1 nochild" ww="1000" wc="-650"    state="state1">肺窗</span>
+                        <span class="secondMenuSpan preWwwlTool lungsS state1 nochild" ww="350" wc="40"    state="state1">纵隔窗</span>
+                        <span class="secondMenuSpan preWwwlTool lungsS state1 nochild" ww="1500" wc="-500"    state="state1">肺高分辨率</span>
+
+                        <!--鼻窦-->
+                        <span class="secondMenuSpan preWwwlTool paranasalSinusS   state1 nochild" ww="350" wc="35"    state="state1">鼻窦软组织窗</span>
+                        <span class="secondMenuSpan preWwwlTool paranasalSinusS    state1 nochild" ww="2000" wc="450"   state="state1">鼻窦骨窗</span>
+                        <!--椎间盘-->
+                        <span class="secondMenuSpan preWwwlTool intervertebradiscS state1 nochild" ww="350" wc="40"    state="state1">椎间盘软组织窗</span>
+                        <span class="secondMenuSpan preWwwlTool intervertebradiscS state1 nochild" ww="2000" wc="450"   state="state1">椎间盘骨窗</span>
+
+                        <!--其他-->
+                        <span class="secondMenuSpan preWwwlTool elseS state1 nochild" ww="200" wc="50"    state="state1">肝脏</span>
+                        <span class="secondMenuSpan preWwwlTool elseS state1 nochild" ww="350" wc="40"   state="state1">肾脏</span>
+                        <span class="secondMenuSpan preWwwlTool elseS  state1 nochild" ww="300" wc="40"  state="state1">关节软组织窗</span>
+
+                    </div>
+                    <div class="sequenceMenu" ><!--style="display: none"-->
+                        <!--<span class="sequence sequenceActive"></span>
+                        <span class="sequence"></span>
+                        <span class="sequence"></span>
+                        <span class="sequence"></span>-->
+                    </div>
+                    <!--底部滚动条-->
+                    <div class="scrollBox"  enable=false>
+                        <div class="speed js-slow" style="left: 0; ">-</div>
+                        <!--   <div class="startBox" >
+                               <div class="start"><img id="playUrl" src="ipacsdv/css/img/tab/icon_pause@3x.png" /></div>
+                           </div>
+   -->
+                        <!--<div class="previousPage"><img src="ipacsdv/css/img/tab/icon_left@3x.png" /></div>-->
+                        <div class="scrollBarBox" >
+                            <div class="scrollBar" >
+                                <div class="rectBox" >
+                                    <img  class="rect" id="playUrl2" src="ipacsdv/css/img/tab/icon_capsule@3x.png" />
+                                </div>
+                            </div>
+
+
+
+                        </div>
+                        <div class="speed js-fast"  style="right: 0; ">+</div>
+                        <!--<div class="nextPage"><img src="ipacsdv/css/img/tab/icon_right@3x.png" /></div>-->
+                    </div>
+
+                </ul>
+
+            </div>
+        </div>
+
+
+        <!--<div class='leftGallery' onscroll="return false;" draggable="false" ondragstart="return false;" style="touch-action: none;-webkit-user-drag: none;-moz-user-select: none; -webkit-user-select: none; -ms-user-select:none; user-select:none; ">
+            <div class="hideBtn">
+                <span class="fa fa-long-arrow-left js-hideGallery"></span>
+            </div>
+            <div class="gallery js-gallery">
+
+            </div>
+        </div>
+        <div class="viewer">
+            <div></div>
+            &lt;!&ndash; Toolbar &ndash;&gt;
+            <div class="topPannel js-topPannel" style="display: block">
+                <div style="margin-right:80px" class='btnArea js-openGallery'><div class='btn'><div class="icon"><span class="fa fa-chevron-down"></span></div></div></div>
+                <div  class='btnArea js-refresh'><div class='btn'><div class="icon icon-refresh"></div></div></div>
+
+                <div  class='btnArea js-mpr'><div class='btn'><div class="icon ">MPR</div></div></div>
+
+
+                <div class='btnArea leftBtnActive js-wwwl'><div class='btn'><div class="icon icon-wwwl"></div></div></div>
+                <div  class='btnArea js-invert'><div class='btn'><div class="icon icon-inv"></div></div></div>
+                <div  class='btnArea js-pan'><div class='btn'><div class="icon icon-drag"></div></div></div>
+                <div  class='btnArea js-cw'><div class='btn'><div class="icon icon-rotateR"></div></div></div>
+                <div class='btnArea js-reference'><div class='btn'><div class="icon icon-pos"></div></div></div>
+                <div class='btnArea js-length'><div class='btn'><div class="icon icon-line"></div></div></div>
+                <div class='btnArea js-rect '><div class='btn'><div class="icon icon-rect"></div></div></div>&lt;!&ndash;再加一个的话注意不要超出去了比如加速度配置的时候&ndash;&gt;
+                <div class='btnArea js-clearToolState'><div class='btn'><div class="icon icon-clear"></div></div></div>
+                <div class='btnArea js-layoutSelector '><div class='btn'><div class="icon icon-map"></div></div></div>
+                <div class='btnArea js-innerlayoutSelector '><div class='btn'><div class="icon icon-mapInner"></div></div></div>
+                <div class='btnArea  checked js-infoVisible'><div class='btn'><div class="icon icon-font"></div></div></div>
+                <div  class='btnArea js-play'><div class='btn'><div class="icon"><span class="fa fa-play"></span></div></div></div>
+                <div style="display: none;" class='btnArea js-stop'><div class='btn'><div class="icon"><span class="fa fa-stop"></span></div></div></div>
+                <div class="btnArea playSpeedSetBtn" style="display: none;"> <div class='btn'> <div class="icon "><span class="fa fa-cog"></span>
+                </div> </div> </div>&lt;!&ndash;为tab版增加播放速度设置按钮&ndash;&gt;
+                <div class="rightPaging">
+                    <div class='btnArea js-scrollAll'><div class='btn'><div class="icon icon-scrollSync"></div></div></div>
+                    <div class="prev js-paging" ><span class="fa fa-caret-left"></span></div>
+                    <div class="next js-paging" ><span class="fa fa-caret-right"></span></div>
+                </div>
+            </div>
+            &lt;!&ndash; Viewer &ndash;&gt;
+            <div class="imageViewer js-imageViewer"  oncontextmenu="return false;">
+                <div id="playSpeedSet" style="display: none;">
+                    <span style="font-size: 20px;padding-right: 10px;padding-left: 10px;"><i class="fa fa-minus" aria-hidden="true"></i></span>
+                    <div class="rangeBar"></div>
+                    <span style="padding-left: 28px;font-size: 20px;padding-right: 10px;"><i class="fa fa-plus" aria-hidden="true"></i></span>
+                </div>&lt;!&ndash;为tab版增加播放速度调节滑竿&ndash;&gt;
+            </div>
+        </div>-->
+    </div>
+</script>
+
+
+<!--<div id="dicomOutput"  style="display: none"><?php echo $dicomOutputStr; ?></div>-->
+<div id="dicomOutput"  style="display: none">
+</div>
+<div id="shareflag"  style="display: none"><?php echo isset($_REQUEST['shareflag'])&&!empty($_REQUEST['shareflag']); ?></div>
+
+<div id="papaFrame" style="visibility: hidden">
+    <div class="bg"></div>
+    <div class="mprClose js-mprClose">✖</div>
+    <!--<div class="mprSmall js-mprHide">-</div>-->
+    <div style="text-align:center;background-color: white;width: 80px;height: 30px;line-height: 30px;font-size: 18px;position: absolute;top:0;left: 0;color: black;z-index: 100000000000">
+        BETA版
+
+        <!--<button id="test1" style="float: left">test1 </button>-->
+        <!--<button id="test2" style="float: left">test2 </button>-->
+        <!--<button id="test3" style="float: left">test3 </button>-->
+        <!--<button id="test4" style="float: left">test4 </button>-->
+        <!--<button id="test5" style="float: left">test5 </button>-->
+        <!--<button id="test6" style="float: left">test6 </button>-->
+        <!--<button id="test7" style="float: left">test7 </button>-->
+        <!--<button id="test8" style="float: left">test8 </button>-->
+
+    </div>
+
+   <!--  <iframe id="mprFrame" name="mprFrame" style="width: 95%;height: 95%;" src="papa_gai/html/main.html" width="95%" height="95%">
+    </iframe> -->
+
+</div>
+
+<script type="text/javascript">
+    function outputTranslate1(dataArr){
+        var a=dataArr;
+        var backArr=[];
+        console.log("in outputTranslate:--------------------------");
+        console.log("a.length:"+a.length);
+        console.log(a);   /* */
+
+        for(var i=0;i< a.length;i++){
+            backArr.push({
+                No:i,
+                total:a[i].items.length,
+                dicoms:[],
+                suid:a[i].CSeriesID
+            });
+            console.log("a[i].items.length:"+a[i].items.length); /**/
+            for(var j=0;j<a[i].items.length;j++){//插入序列的原始信息
+                //dicom文件对象原始信息--后台给的
+                var o=a[i].items[j];
+                /* ;*/ console.log("a[i].items[j]===================");
+                console.log(o);
+                urlFlawArr.push(o.czip);//数据解冻 如果这里添加，就无论是否解冻都会提示
+                var spaces=infoFormat(o.CSpace);//貌似是ruler用
+                var cutInfo=infoFormat(o.CRect);
+                var size = parseInt(o.ICol)*parseInt(o.IRow);//判断宽高大致推算大小
+                var oriInfo={
+                    cutPoint:!cutInfo?undefined:[parseInt(cutInfo[1]),parseInt(cutInfo[0])],//0行 1列 即 0y 1x
+                    iw:!cutInfo?undefined:parseInt(cutInfo[2]),
+                    ih:!cutInfo?undefined:parseInt(cutInfo[3]),
+                    seriesNo : i,
+                    No : j,
+                    iCol: parseInt(o.ICol),
+                    iRow:parseInt(o.IRow),
+                    preview:o.jpg,
+                    rulerX:!spaces?undefined:spaces[0],
+                    rulerY:!spaces?undefined:spaces[1],
+                    wl: parseInt(o.IWL),
+                    ww:parseInt(o.IWW),
+                    maxCt:(parseInt(o.IWL)+parseInt(o.IWW)/2),//最大的用于判断用什么类型装数
+                    dTime: o.dsj,
+                    age: o.age,
+                    sex: o.csex,
+                    studynum:o.tre,//studynum sj add
+                    CPName: o.cpname,
+                    CHos:o.chos,
+                    CLocalStr: o.CLocalStr,
+                    CVec: o.CVec,//这个格式有两种，貌似都没什么用//cvec就是locStr后面一坨
+                    CModality:o.cmodality,//MR 类型
+                    CImageType:o.CImageType,
+                    CThick:o.CThick,//切片厚度
+                    CTre: o.CTre,
+                    CDes:o.cdes,//部位？
+                    theUrl:o.czip?o.czip:'',
+                    ISNum:o.ISNum,
+                    IQNum:o.IQNum,
+                    IINum:parseInt(o.IINum),
+                    INum:o.INum,
+                    CRGB:o.CRGB,
+                    CBZ: o.CBZ? o.CBZ:'',
+                    imageId: o.cimageid
+                };
+                backArr[i].dicoms.push(oriInfo);
+            }
+        }
+        /* console.log("backArr===================");
+         console.log(backArr); */
+        return backArr;
+    }
+    $(document).ready(function() {
+        $("#papaFrame").hide();
+        var dvIniSetOpts = {};
+        try {
+            var id = getRID();
+            var pcode= GetPlatCode();
+            var localurl=GetLocalurl();
+            var urls = getUrls();
+            console.log(id);//2016-12-29
+            console.log(pcode);//2016-12-29
+           // var outputObj = JSON.parse(Getoutput(id,pcode,localurl));//JSON.parse($("#dicomOutput").text());console.log(outputObj);
+            var outputObj = JSON.parse(Getoutput1(urls));
+           console.log(outputObj);
+            if (_.isNull(outputObj)) {
+                alert("无数据或数据异常");
+            }
+            if (_.isArray(outputObj.dicom) && outputObj.dicom.length > 0) {
+                if(outputObj.edu){
+                    var outputSeriesArr = outputTranslateEdu(outputObj.dicom);
+                }else{
+				console.log("-----------------------no edu");
+                    var outputSeriesArr = outputTranslate1(outputObj.dicom);
+                }
+
+                console.log(outputSeriesArr);
+				
+                dvIniSetOpts.defaultShow = {
+                    num: outputSeriesArr.length,
+                    suidArr: []
+                }
+                for (var i = 0; i < outputSeriesArr.length; i++) {
+                    dvIniSetOpts.defaultShow.suidArr.push(outputSeriesArr[i].suid);
+                }
+                dvStruct.outputSeriesArr = outputSeriesArr;
+                // var shareflag=$("#shareflag").text();
+                var shareflag= Getshareflag();
+                if(shareflag=="1")
+                {
+
+                    dvStruct.share=false;
+                }
+                else
+                {
+                    dvStruct.share=true;
+                }
+               dvStruct.userCode=GetUserCode();
+               dvStruct.hospitalCode=GetHospitalCode();
+			   dvStruct.localIP = null;//用于socket通信
+            }
+        } catch (e) {
+            console.error(e);
+        }
+
+        var dv = $('#container').dv(dvIniSetOpts);
+        var initcnt = 0;
+        if(_.isArray(outputSeriesArr)){
+            for(var i=0;i<outputSeriesArr.length;i++){
+                initcnt+=outputSeriesArr[i].dicoms.length;
+            }
+            unit.loadingProcessing.init(initcnt);
+        }
+        if(_.isArray(outputSeriesArr)){
+            for(var i=0;i<outputSeriesArr.length;i++){
+                for(var j=0;j<outputSeriesArr[i].dicoms.length;j++){
+                    var dO = outputSeriesArr[i].dicoms[j];
+					console.log("dO====");
+					console.log(dO);
+                    if(dO.theUrl)io.Url.load(dO.theUrl);
+                }
+            }
+        }
+    });
+
+</script>
+</body>
+</html>

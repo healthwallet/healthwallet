@@ -1,0 +1,31 @@
+/*垂直居中*/
+/*简写*/
+.relative {
+  position: relative;
+}
+/*三角形小标 （利用border）    t为三角形的高 o为三角形的底*/
+.clear:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+/*景图像等比缩放到宽度或高度与容器的宽度或高度相等，背景图像始终包含在容器内*/
+.x-img {
+  -webkit-background-size: contain;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.noselect {
+  moz-user-select: -moz-none;
+  -moz-user-select: none;
+  -o-user-select: none;
+  -khtml-user-select: none;
+  /* you could also put this in a class */
+  -webkit-user-select: none;
+  /* and add the CSS class here instead */
+  -ms-user-select: none;
+  user-select: none;
+}

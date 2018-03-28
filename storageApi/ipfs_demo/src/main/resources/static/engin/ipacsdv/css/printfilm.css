@@ -1,0 +1,159 @@
+@media print {
+  size: auto;
+  margin: 0;
+}
+@page {
+  margin: 0;
+}
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+@media print {
+  .film {
+    overflow: hidden;
+    padding: 20mm 0 10mm 0;
+    page-break-before: always;
+    margin: auto;
+    position: relative;
+  }
+  .film .header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    text-align: center;
+    line-height: 20mm;
+    height: 20mm;
+    width: 100%;
+    margin: auto;
+  }
+  .film .header .box {
+    height: 20mm;
+    width: auto;
+  }
+  .film .header .box .logo {
+    padding: 0  3mm 3mm 0 ;
+    width: 20mm;
+    height: 20mm;
+    vertical-align: middle;
+  }
+  .film .header .box .name {
+    font-size: 32px;
+    letter-spacing: 3px;
+  }
+  .film .filmImg {
+    height: 100%;
+    width: 100%;
+  }
+  .film .footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 10mm;
+    width: 100%;
+    text-align: left;
+    line-height: 10mm;
+    padding-right: 20px;
+  }
+  .film .footer .txt {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+  ._A4_1 {
+    width: 210mm;
+    height: 296mm;
+  }
+  ._A4_0 {
+    height: 209mm;
+    width: 297mm;
+  }
+  ._A3_1 {
+    width: 297mm;
+    height: 419mm;
+  }
+  ._A3_0 {
+    width: 420mm;
+    height: 296mm;
+  }
+  ._8INX10IN_1 {
+    width: 203mm;
+    height: 254mm;
+  }
+  ._8INX10IN_0 {
+    width: 254mm;
+    height: 203mm;
+  }
+  ._8_5INX11IN_1 {
+    width: 215mm;
+    height: 279mm;
+  }
+  ._8_5INX11IN_0 {
+    width: 279mm;
+    height: 215mm;
+  }
+  ._10INX12IN_1 {
+    width: 254mm;
+    height: 304mm;
+  }
+  ._10INX12IN_0 {
+    width: 304mm;
+    height: 254mm;
+  }
+  ._10INX14IN_1 {
+    width: 254mm;
+    height: 355mm;
+  }
+  ._10INX14IN_0 {
+    width: 355mm;
+    height: 254mm;
+  }
+  ._11INX14IN_1 {
+    width: 279mm;
+    height: 355mm;
+  }
+  ._11INX14IN_0 {
+    width: 355mm;
+    height: 279mm;
+  }
+  ._11INX17IN_1 {
+    width: 279mm;
+    height: 431mm;
+  }
+  ._11INX17IN_0 {
+    width: 431mm;
+    height: 279mm;
+  }
+  ._14INX17IN_1 {
+    width: 355mm;
+    height: 431mm;
+  }
+  ._14INX17IN_0 {
+    width: 431mm;
+    height: 355mm;
+  }
+  ._14INX14IN_1 {
+    width: 355mm;
+    height: 355mm;
+  }
+  ._14INX14IN_0 {
+    width: 355mm;
+    height: 355mm;
+  }
+  ._24CMX24CM_1 {
+    width: 240mm;
+    height: 240mm;
+  }
+  ._24CMX24CM_0 {
+    width: 240mm;
+    height: 240mm;
+  }
+  ._24CMX30CM_1 {
+    width: 240mm;
+    height: 300mm;
+  }
+  ._24CMX30CM_0 {
+    width: 300mm;
+    height: 240mm;
+  }
+}

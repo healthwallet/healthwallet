@@ -1,0 +1,2381 @@
+﻿<!DOCTYPE html>
+<!--<%-->
+<!--String id="<"+"%"+"=id"+"%"+">";-->
+<!--String iid="<"+"%"+"=iid"+"%"+">";-->
+<!--String eid="<"+"%"+"=eid"+"%"+">";-->
+<!--String suid="<"+"%"+"=suid"+"%"+">";-->
+<!--String imageId="<"+"%"+"=imageId"+"%"+">";-->
+<!--String no="<"+"%"+"=no"+"%"+">";-->
+<!--String containerId="<"+"%"+"=containerId"+"%"+">";-->
+<!--%>-->
+<!-- meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /> -->
+<!-- support for mobile touch devices -->
+<html lang="en">
+<head>
+<script type="text/javascript">
+    function GetUrlParam(paraName) {
+        var url = document.location.toString();
+        var arrObj = url.split("?");
+
+        if (arrObj.length > 1) {
+            var arrPara = arrObj[1].split("&");
+            var arr;
+
+            for (var i = 0; i < arrPara.length; i++) {
+                arr = arrPara[i].split("=");
+
+                if (arr != null && arr[0] == paraName) {
+                    return arr[1];
+                }
+            }
+            return "";
+        }
+        else {
+            return "";
+        }
+    }
+
+    function  Getshareflag()
+    {
+        return 1;//shareflag;
+    }
+    function getRID()
+    {
+        var id=GetUrlParam("rid");
+        return id;
+    }
+    function getUrls()
+    {
+        var urls=GetUrlParam("urls");
+        return decodeURI(urls);
+    }
+    function GetdicomPath()
+    {
+        var dicomPath="";
+        // var dicomPath="http://127.0.0.1:8080";
+        return dicomPath;
+    }
+    function GetpacsUrl()
+    {
+        var pacsUrl="";
+        // var pacsUrl=window.location.host;
+        return pacsUrl;
+    }
+    function GetUserCode()
+    {
+
+        var usercode="gly";
+        // var usercode="<%=UserCode%>";
+        return usercode;
+    }
+    function GetHospitalCode()
+    {
+        var usercode="gly";
+        //var usercode="<%=HospitalCode%>";
+        return usercode;
+    }
+    function GetLocalIP()
+    {
+        //192.168.9.36
+        //  var IP="ws://10.36.128.221:8181";
+        var IP="ws://127.0.0.1:8181";
+        return IP;
+    }
+    function GetDrawType()
+    {
+        //var type="background";
+        //var usercode="<%=HospitalCode%>";
+        //if(usercode=='5580095'){type='web';}
+        var type='web';
+        return type;
+    }
+    function GetPlatCode()
+    {
+
+        var platcode=GetUrlParam("pcode");
+        return platcode;
+    }
+    function GetLocalurl()
+    {
+        //  var Localurl="http://127.0.0.1:8080/LocalImageServlet";
+        var Localurl="http://127.0.0.1:88881/LocalImageServlet";
+        return Localurl;
+    }
+
+
+</script>
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="renderer" content="webkit"/><!--给360111111111-->
+<meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1, minimal-ui">
+<!--<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />-->
+
+
+<meta http-equiv="pragma" content="no-cache"/>
+<meta http-equiv="content-type" content="no-cache, must-revalidate"/>
+<meta http-equiv="expires" content="Wed, 26 Feb 1997 08:21:57 GMT"/>
+
+
+<link href="ipacsdv/css/bootstrap.min.css" rel="stylesheet">
+<link href="ipacsdv/css/font-awesome.min.css" rel="stylesheet">
+<link href="ipacsdv/css/cornerstone.min.css" rel="stylesheet">
+<link href="ipacsdv/css/nouislider.min.css" rel="stylesheet"/>
+
+
+<link href="ipacsdv/css/print.css?v=2.31" rel="stylesheet">
+<link href="ipacsdv/css/tagInfo.css?v=2.011011" rel="stylesheet">
+<link href="ipacsdv/css/dv.css?v=120" rel="stylesheet"/>
+<link href="ipacsdv/css/pop_up.css" rel="stylesheet"/>
+<link href="ipacsdv/css/jquery-ui.css" rel="stylesheet"/>
+<link href="ipacsdv/css/cropper.css" rel="stylesheet"/>
+
+<script type="text/javascript">
+    console.time('time1');
+</script>
+<!--<script type="text/javascript" src="testfile.js"></script>&lt;!&ndash;实验从网络获取&ndash;&gt;-->
+<script type="text/javascript" src="ipacsdv/js/lib/iconv.min.js"></script>
+<script type="text/javascript"
+        src="ipacsdv/js/lib/jschardet.min.js"></script><!--探针，但是300k难道前端还是有点蛋疼，开页面加载所有文件就要走1M啊，我勒个去-->
+<script type="text/javascript">
+    var iconvForUse = iconv;
+    // console.log(iconvForUse);
+</script>
+<script type="text/javascript" src="ipacsdv/js/lib/jquery-2.1.4.min.js"></script>
+
+
+<!--<script type="text/javascript" src="ipacsdv/js/lib/jquery-1.11.1.min.js" ></script>-->
+<script type="text/javascript" src="ipacsdv/js/comm/scrollbar2.js"></script>
+<script src="ipacsdv/js/libImgjoin/jquery-ui.js?v=1.110"></script>
+
+<script src="ipacsdv/js/libImgjoin/cropper.js?v=1.110"></script>
+<script src="ipacsdv/js/libImgjoin/cutlib_main.js?v=1.110"></script>
+
+<script type="text/javascript" src="ipacsdv/js/lib/underscore-min.js"></script>
+<script type="text/javascript" src="ipacsdv/js/lib/dataDictionary.js"></script>
+<script type="text/javascript" src="ipacsdv/js/comm/inputTranslate.js"></script>
+<script type="text/javascript" src="ipacsdv/js/comm/outputTranslate.js"></script>
+<script type="text/javascript" src="ipacsdv/js/lib/nouislider.min.js"></script>
+<script type="text/javascript" src="ipacsdv/js/lib/base64.min.js"></script>
+<script type="text/javascript" src="ipacsdv/js/lib/md5.min.js"></script>
+
+<script>var socketVR;//socket变量</script>
+<script>var IID;//病人ID ，用于返回胶片打印状态参数 </script>
+<script>var drawType; //信息绘制类型（前端后台）</script>
+<script>
+    var socketMsg;//用于发送消息和命令的socket
+    var dataSize_VR = 50;
+    var AuthorizeDateCheck=0;
+    var joinStruct={
+        _dragFlag:false,
+        _dragIn:false
+    };
+</script>
+
+
+<script type="text/javascript" src="ipacsdv/dist/ipacsPrint.js?v=2.11"></script>
+<script type="text/javascript" src="ipacsdv/js/lib/device.min.js"></script>
+
+
+<title>IPACS</title>
+<script type="text/javascript">
+    console.timeEnd('time1');
+</script>
+</head>
+<body>
+ <div class="setTxtBox" showState="true" style="display: none;">
+    <div id="printHeader">成都影达科技</div>
+    <div id="printAddr">地址：四川成都高新区天华一路天府软件园B7-313室</div>
+    <div id="printTele">联系电话：028-85287195</div>
+</div>
+
+
+<div id="container" style="width: 100%;height:100%;overflow: hidden">
+    <!--DPI of screen-->
+    <div id="dpiOfScreen" style="width:1mm;height:1mm; background-color: royalblue;display: none;"></div>
+    <!--sj add downloadBox-->
+    <!--下载弹出框-->
+    <div id="downloadBox">
+        <div class="topbar" style=" -webkit-user-select: none; -webkit-user-drag: none;touch-action: none;">
+            <div class="closeBtn">X</div>
+        </div>
+        <div class="calBoxLoad" style=" -webkit-user-select: none; -webkit-user-drag: none;touch-action: none;">
+            <ul>
+                <li id="dcmDownload" class="downselect">下载dcm文件</li>
+                <li id="jpgDownload" class="downselect">下载jpg文件</li>
+                <!--    <a style= 'color:white; text-decoration : none' href="JavaScript:jump()">下载dcm浏览器</a>-->
+                <li id="dcmViewerDownload" class="downselect">下载dcm浏览器</li>
+            </ul>
+        </div>
+    </div>
+    <!--主影像页面公用设置弹出框-->
+    <div id="commonSet" >
+        <div class="topbar" style=" -webkit-user-select: none; -webkit-user-drag: none;touch-action: none;">
+            <div class="closeBtn">X</div>
+        </div>
+        <div class="ceilBox" style=" -webkit-user-select: none; -webkit-user-drag: none;touch-action: none;">
+            <div style="width: 100%;height: 20px;color: gainsboro;margin: 5px;">端口配置</div>
+            <div class="comSet font12 ">
+                公用服务端口：
+                <input id="msgPort" style="margin: 5px;" value="8285">
+                <br>
+                V R 数据端口：
+                <input id="dataPort" style="margin: 5px;" value="8286">
+                <div>
+                    公用服务端口号默认为8285，VR数据端口号默认为8286。
+                </div>
+            </div>
+        </div>
+        <div class="calBox">
+            <div id="portSetOK" class="yes">
+                保存
+            </div>
+        </div>
+
+    </div>
+    <!--窗位窗宽弹出框-->
+    <div class="wwwlBox">
+        <div class="topbar">
+            <div class="closeBtn" onclick=" cancel($('.wwwlBox'))">X</div>
+        </div>
+        <div class="ceilBox">
+            设备：
+            <select name="device" class="device" style="width: 130px;">
+                <option>CR</option>
+                <option>CT</option>
+
+                <option>DX</option>
+                <option>MR</option>
+                <option>XA</option>
+                <option>RF</option>
+                <option>MG</option>
+                <option>NM</option>
+                <option>PT</option>
+            </select>
+
+            <div class="tableOne">
+                <div class="table1Box">
+                    <table class="table1-1">
+                        <thead>
+                        <tr>
+                            <th>名称</th>
+                            <th>窗位</th>
+                            <th>窗宽</th>
+                            <th>快捷键</th>
+                        </tr>
+                        </thead>
+                    </table>
+                </div>
+                <div class="table2Box">
+                    <table class="table1">
+                        <tbody class="table1Body" style="height: 200px;">
+
+                        </tbody>
+                    </table>
+                    <table class="table2" style="display: none;">
+                        <tbody class="table2Body">
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="yes" id="addwwwl">添加</div>
+            <div class="yes" id="deletewwwl">删除</div>
+            <div class="yes" id="modifywwwl">修改</div>
+        </div>
+    </div>
+    <!--窗位窗宽设置弹出框-->
+    <div class="wwwlSetBox">
+        <div class="topbar">
+            <div class="closeBtn" onclick="cancel($('.wwwlSetBox'))">✖</div>
+        </div>
+        <div class="ceilBox">
+            设备：
+            <select name="device" class="device1" style="width: 75px;">
+                <option>CT</option>
+                <option>CR</option>
+                <option>DX</option>
+                <option>MR</option>
+                <option>XA</option>
+                <option>RF</option>
+                <option>MG</option>
+                <option>NM</option>
+                <option>PT</option>
+
+            </select>
+            名称：
+            <input type="text" class="modifyName" style="width: 100px;"/>
+            <div class="inputBox">
+                <div class="inputContent">
+                    窗位：<input type="text" class="inputStyle wlInput"
+                              onkeyup="(this.v=function(){this.value=this.value.replace(/[^0-9-]+/,'');}).call(this)"
+                              onblur="this.v();"/>
+                </div>
+
+                <div class="inputBtnBox">
+                    <button class="inputBtn btn1 wlBtnAdd ">+</button>
+                    <button class="inputBtn btn2 wlBtnReduce">-</button>
+                </div>
+            </div>
+            <div class="inputBox">
+                <div class="inputContent">
+                    窗宽：<input type="text" class="inputStyle wwInput"
+                              onkeyup="(this.v=function(){this.value=this.value.replace(/[^0-9-]+/,'');}).call(this)"
+                              onblur="this.v();"/>
+                </div>
+
+                <div class="inputBtnBox">
+                    <button class="inputBtn btn1 wwBtnAdd font12">+</button>
+                    <button class="inputBtn btn2 wwBtnReduce">-</button>
+                </div>
+            </div>
+        </div>
+        <div class="calBox">
+            <div class="yes" id="addWwwlBtn" style="display: none">确定</div>
+            <div class="yes" id="modifyWwwlBtn" style="display: none">确定</div>
+        </div>
+    </div>
+    <!--胶片打印-->
+    <div id="printMain" class="main">
+        <div class="txt">
+            <div id="printDescr" class="items">胶片共1张，当前为第1张，胶片大小：14INx17IN</div>
+            <div id="closePrintMain" class="closeBtn" onclick="cancel($('.main'))">关闭</div>
+        </div>
+        <div class="context">
+            <div class="leftBox">
+                <!--  <div class="title">
+                      <div class="left">
+                          <span class="info" id="printDate">2016-21-12</span>
+                          <span class="info" id="printName">某某某</span>
+                      </div>
+                      <div class="right">
+                          &lt;!&ndash;   <i class="fa fa-plus-square" aria-hidden="true"></i>&ndash;&gt;
+                          <i class="fa fa-plus icon" style="display: none" aria-hidden="true"></i>
+                          <i class="fa fa-minus icon" aria-hidden="true"></i>
+                      </div>
+
+                  </div>-->
+
+                <div class="title">
+                    <div class="left"  style="padding-top: 5px;">
+                        <span class="info font14" id="printSeriSumTitle">序列总数：<span id="printSeriSum"></span></span>
+                    </div>
+                    <div class="right"  >
+                        <!--   <i class="fa fa-plus-square" aria-hidden="true"></i>-->
+                        <i class="fa fa-plus icon" style="display: none" aria-hidden="true"></i>
+                        <i class="fa fa-minus icon" aria-hidden="true"></i>
+                    </div>
+
+                </div>
+
+                <!-- <div class="title" style=" background-color: #00dba3">
+                 <div class="left">
+                     <span class="info" id="printDate">2016-21-12</span>
+                     <span class="info" id="printName">某某某</span>
+                 </div>
+                 </div>-->
+
+                <div id="printLeftImgBox" class="imgBox">
+                    <!--  <ul class="orderUl activeStyle-background activeStyle-boder">
+                          <li class="orderLi">
+                              <div class="orderTitle font12">
+                                  <div class="left">
+                                      <span id="total">共</span><span>num</span><span id="img">图片</span>
+                                  </div>
+                                  <div class="right">
+                                    &lt;!&ndash;  <i class="fa fa-chevron-right" aria-hidden="true"></i>&ndash;&gt;
+                                      <i class="fa fa-caret-down icon" style="display: none;" aria-hidden="true"></i>
+                                      <i class="fa fa-caret-right icon" aria-hidden="true"></i>
+                                  </div>
+
+                              </div>
+                              <ul class="imgUl">
+                                  <li class="imgLi"></li>
+                                  <li class="imgLi"></li>
+                                  <li class="imgLi"></li>
+                                  <li class="imgLi"></li>
+                              </ul>
+                          </li>
+                      </ul>
+                      <ul class="orderUl">
+                          <li class="orderLi">
+                              <div class="orderTitle font12">
+                                  <div class="left">
+                                    共<span>num</span>图片
+                                  </div>
+                                  <div class="right">
+                                      <i class="fa fa-caret-down  icon" style="display: none;" aria-hidden="true"></i>
+                                      <i class="fa fa-caret-right icon" aria-hidden="true"></i>
+                                  </div>
+
+                              </div>
+                              <ul class="imgUl">
+                                  <li class="imgLi"></li>
+                                  <li class="imgLi"></li>
+                              </ul>
+                          </li>
+                      </ul>-->
+
+                </div>
+            </div>
+
+            <!--拼接title-->
+            <div class="joinTitleBox">
+                <div class="describTxt">拼接页面</div>
+                <div class="join-close"  >
+                    关闭
+                    <!--<img src="ipacsdv/css/img/print/close.jpg">-->
+                </div></div>
+            <!--拼接功能盒子-->
+            <div class="joinMainBox">
+                <!--图像拼接工作区-->
+                <div class="joinBox ui-widget-content ">
+                    <!--<div class="joinImg draggable ui-widget-content" style="top: 210px;left: 210px;">-->
+
+                    <!--</div>-->
+                </div>
+                <!--图像裁剪工作区 -->
+                <div class="joinCutBox">
+                    <div class="cutBox img-container">
+                        <canvas id="cutCanv" class="cutWorkArea " style="width: 100%;height: 100%;"></canvas>
+
+                    </div>
+                    <div class="row" style="display:none;">
+                        <div class="col-md-9">
+                            <!-- <h3 class="page-header">Demo:</h3> -->
+                            <!-- <div class="img-container">
+                                 <img src="assets/img/picture.jpg" alt="Picture">
+                             </div>-->
+                        </div>
+                        <div class="col-md-3">
+                            <!-- <h3 class="page-header">Preview:</h3> -->
+                            <div class="docs-preview clearfix">
+                                <div class="img-preview preview-lg"></div>
+                                <div class="img-preview preview-md"></div>
+                                <div class="img-preview preview-sm"></div>
+                                <div class="img-preview preview-xs"></div>
+                            </div>
+
+                            <!-- <h3 class="page-header">Data:</h3> -->
+                            <div class="docs-data">
+                                <div class="input-group">
+                                    <label class="input-group-addon" for="dataX">X</label>
+                                    <input class="form-control" id="dataX" type="text" placeholder="x">
+                                    <span class="input-group-addon">px</span>
+                                </div>
+                                <div class="input-group">
+                                    <label class="input-group-addon" for="dataY">Y</label>
+                                    <input class="form-control" id="dataY" type="text" placeholder="y">
+                                    <span class="input-group-addon">px</span>
+                                </div>
+                                <div class="input-group">
+                                    <label class="input-group-addon" for="dataWidth">Width</label>
+                                    <input class="form-control" id="dataWidth" type="text" placeholder="width">
+                                    <span class="input-group-addon">px</span>
+                                </div>
+                                <div class="input-group">
+                                    <label class="input-group-addon" for="dataHeight">Height</label>
+                                    <input class="form-control" id="dataHeight" type="text" placeholder="height">
+                                    <span class="input-group-addon">px</span>
+                                </div>
+                                <div class="input-group">
+                                    <label class="input-group-addon" for="dataRotate">Rotate</label>
+                                    <input class="form-control" id="dataRotate" type="text" placeholder="rotate">
+                                    <span class="input-group-addon">deg</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--裁剪预览盒子-->
+                <div class="joinPreviewBox">
+                    <div class="joinPreview"></div>
+                    <div class="joinPreview1" style="display: none;">
+                        <canvas id="saveTest1"></canvas>
+                    </div>
+                </div>
+                <!--裁剪参数-->
+                <div style="display:none;">
+
+                    <div class="   join-disable" data-method="disable" title="Disable" style="display: none;">
+            <span class="docs-tooltip" data-toggle="tooltip">
+             Disable
+            </span></div>
+                    <div class="   join-enable" data-method="enable"   title="Enable" style="display: none;">
+            <span class="docs-tooltip" data-toggle="tooltip"  >
+              Enable
+            </span>
+                    </div>
+                    <div class="   join-clear" data-method="clear"   title="Clear" style="display: none;">
+            <span class="docs-tooltip" data-toggle="tooltip"  >
+              clear
+            </span>
+                    </div>
+
+                    <div class="   cut_reset" data-method="reset"   title="Reset" style="display: none;">
+            <span class="docs-tooltip" data-toggle="tooltip"  >
+               reset
+            </span>
+                    </div>
+                    <div class="   cut_destory" data-method="destroy"   title="Destroy" style="display: none;">
+            <span class="docs-tooltip" data-toggle="tooltip"  >
+              destory
+            </span>
+                    </div>
+                    <div class="   join-getCanvas" data-method="getCroppedCanvas"   style="display: none;">
+            <span class="docs-tooltip" data-toggle="tooltip"  >
+              GetCanvas
+            </span>
+                    </div>
+
+                    <button class="  btn btn-primary" data-method="setDragMode" data-option="move" type="button" title="Move" style="display: none;">
+            <span class="docs-tooltip" data-toggle="tooltip" title="$().cropper(&quot;setDragMode&quot;, &quot;move&quot;)">
+              move
+            </span>
+                    </button>
+                    <button class="  btn btn-primary" data-method="setDragMode" data-option="crop" type="button" title="Crop" style="display: none;">
+            <span class="docs-tooltip" data-toggle="tooltip" title="$().cropper(&quot;setDragMode&quot;, &quot;crop&quot;)">
+              <span class="icon icon-crop">crop</span>
+            </span>
+                    </button>
+                    <button class="  btn btn-primary" data-method="zoom" data-option="0.1" type="button" title="Zoom In" style="display: none;">
+            <span class="docs-tooltip" data-toggle="tooltip" title="$().cropper(&quot;zoom&quot;, 0.1)">
+              <span class="icon icon-zoom-in">zoomO</span>
+            </span>
+                    </button>
+                    <button class="    btn btn-primary" data-method="zoom" data-option="-0.1" type="button" title="Zoom Out" style="display: none;">
+            <span class="docs-tooltip" data-toggle="tooltip" title="$().cropper(&quot;zoom&quot;, -0.1)">
+              <span class="icon icon-zoom-out">zoomI</span>
+            </span>
+                    </button>
+                    <button class="  btn btn-primary" data-method="rotate" data-option="-45" type="button" title="Rotate Left" style="display: none;">
+            <span class="docs-tooltip" data-toggle="tooltip" title="$().cropper(&quot;rotate&quot;, -45)">
+              <span class="icon icon-rotate-left">rotateL</span>
+            </span>
+                    </button>
+                    <button class="  btn btn-primary" data-method="rotate" data-option="45" type="button" title="Rotate Right" style="display: none;">
+            <span class="docs-tooltip" data-toggle="tooltip" title="$().cropper(&quot;rotate&quot;, 45)">
+              <span class="icon icon-rotate-right">rotateR</span>
+            </span>
+                    </button>
+
+                    <div class="  btn btn-primary" data-method="disable"   title="Disable">
+            <span class="docs-tooltip" data-toggle="tooltip"  >
+             Disable
+            </span>
+                    </div>
+                    <button class="  btn btn-primary" data-method="enable" type="button" title="Enable">
+            <span class="docs-tooltip" data-toggle="tooltip" title="$().cropper(&quot;enable&quot;)">
+              <span class="icon icon-unlock">Enable</span>
+            </span>
+                    </button>
+
+                    <div class="  btn btn-primary" data-method="clear" type="button" title="Clear">
+            <span class="docs-tooltip" data-toggle="tooltip" title="$().cropper(&quot;clear&quot;)">
+              <span class="icon icon-remove">clear</span>
+            </span>
+                    </div>
+
+                    <button class="  btn btn-primary" data-method="reset" type="button" title="Reset">
+            <span class="docs-tooltip" data-toggle="tooltip" title="$().cropper(&quot;reset&quot;)">
+              <span class="icon icon-refresh">reset</span>
+            </span>
+                    </button>
+                    <label class="  btn btn-primary btn-upload" for="inputImage" title="Upload image file">
+                        <input class="sr-only" id="inputImage" name="file" type="file" accept="image/*">
+            <span class="docs-tooltip" data-toggle="tooltip" title="Import image with Blob URLs">
+              <span class="icon icon-upload">reload</span>
+            </span>
+                    </label>
+                    <button class="  btn btn-primary" data-method="destroy" type="button" title="Destroy">
+            <span class="docs-tooltip" data-toggle="tooltip" title="$().cropper(&quot;destroy&quot;)">
+              <span class="icon icon-off">destory</span>
+            </span>
+                    </button>
+
+
+
+                    <button class="  btn btn-primary" data-method="getCroppedCanvas" type="button"  >
+            <span class="docs-tooltip" data-toggle="tooltip" title="$().cropper(&quot;getCroppedCanvas&quot;)">
+              GetCanvas
+            </span>
+                    </button>
+
+
+                    <button class="  btn btn-primary" data-method="getCroppedCanvas" data-option="{ &quot;width&quot;: 160, &quot;height&quot;: 90 }" type="button"  style="display: none;">
+            <span class="docs-tooltip" data-toggle="tooltip" title="$().cropper(&quot;getCroppedCanvas&quot;, { &quot;width&quot;: 160, &quot;height&quot;: 90 })">
+              160 &times; 90
+            </span>
+                    </button>
+                    <button class="  btn btn-primary" data-method="getCroppedCanvas" data-option="{ &quot;width&quot;: 320, &quot;height&quot;: 180 }" type="button"  style="display: none;">
+            <span class="docs-tooltip" data-toggle="tooltip" title="$().cropper(&quot;getCroppedCanvas&quot;, { &quot;width&quot;: 320, &quot;height&quot;: 180 })">
+              320 &times; 180
+            </span>
+                    </button>
+
+
+                    <!-- Show the cropped image in modal -->
+                    <div class="modal fade docs-cropped" id="getCroppedCanvasModal" aria-hidden="true" aria-labelledby="getCroppedCanvasTitle" role="dialog" tabindex="-1"  style="display: none;">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button class="close" data-dismiss="modal" type="button" aria-hidden="true">&times;</button>
+                                    <h4 class="modal-title" id="getCroppedCanvasTitle">Cropped</h4>
+                                </div>
+                                <div class="modal-body"></div>
+                                <!-- <div class="modal-footer">
+                                  <button class="btn btn-primary" data-dismiss="modal" type="button">Close</button>
+                                </div> -->
+                            </div>
+                        </div>
+                    </div><!-- /.modal -->
+
+                    <button class="  btn btn-primary" data-method="getData" data-option="" data-target="#putData" type="button"  style="display: none;">
+          <span class="docs-tooltip" data-toggle="tooltip" title="$().cropper(&quot;getData&quot;)">
+            Get Data
+          </span>
+                    </button>
+                    <button class="  btn btn-primary" data-method="getImageData" data-option="" data-target="#putData" type="button"  style="display: none;">
+          <span class="docs-tooltip" data-toggle="tooltip" title="$().cropper(&quot;getImageData&quot;)">
+            Get Image Data
+          </span>
+                    </button>
+                    <button class="  btn btn-primary" data-method="getCanvasData" data-option="" data-target="#putData" type="button"  style="display: none;">
+          <span class="docs-tooltip" data-toggle="tooltip" title="$().cropper(&quot;getCanvasData&quot;)">
+            Get Canvas Data
+          </span>
+                    </button>
+                    <button class="  btn btn-primary" data-method="setCanvasData" data-target="#putData" type="button" style="display: none;">
+          <span class="docs-tooltip" data-toggle="tooltip" title="$().cropper(&quot;setCanvasData&quot;, data)">
+            Set Canvas Data
+          </span>
+                    </button>
+                    <button class="  btn btn-primary" data-method="getCropBoxData" data-option="" data-target="#putData" type="button" style="display: none;">
+          <span class="docs-tooltip" data-toggle="tooltip" title="$().cropper(&quot;getCropBoxData&quot;)">
+            Get Crop Box Data
+          </span>
+                    </button>
+                    <button class="  btn btn-primary" data-method="setCropBoxData" data-target="#putData" type="button" style="display: none;">
+          <span class="docs-tooltip" data-toggle="tooltip" title="$().cropper(&quot;setCropBoxData&quot;, data)">
+            Set Crop Box Data
+          </span>
+                    </button>
+                    <input class="form-control" id="putData" type="text" placeholder="Get data to here or set data with this value" style="display: none;">
+
+
+                    <label class="  btn btn-primary active" data-method="setAspectRatio" data-option="1.7777777777777777" title="Set Aspect Ratio" style="display: none;">
+                        <input class="sr-only" id="aspestRatio1" name="aspestRatio" value="1.7777777777777777" type="radio">
+            <span class="docs-tooltip" data-toggle="tooltip" title="$().cropper(&quot;setAspectRatio&quot;, 16 / 9)">
+
+            </span>
+                    </label>
+                    <label class="  btn btn-primary" data-method="setAspectRatio" data-option="1.3333333333333333" title="Set Aspect Ratio"  style="display: none;">
+                        <input class="sr-only" id="aspestRatio2" name="aspestRatio" value="1.3333333333333333" type="radio">
+            <span class="docs-tooltip" data-toggle="tooltip" title="$().cropper(&quot;setAspectRatio&quot;, 4 / 3)">
+              4:3
+            </span>
+                    </label>
+                    <label class="  btn btn-primary" data-method="setAspectRatio" data-option="1" title="Set Aspect Ratio"  style="display: none;">
+                        <input class="sr-only" id="aspestRatio3" name="aspestRatio" value="1" type="radio">
+            <span class="docs-tooltip" data-toggle="tooltip" title="$().cropper(&quot;setAspectRatio&quot;, 1 / 1)">
+              1:1
+            </span>
+                    </label>
+                    <label class="  btn btn-primary" data-method="setAspectRatio" data-option="0.6666666666666666" title="Set Aspect Ratio"  style="display: none;">
+                        <input class="sr-only" id="aspestRatio4" name="aspestRatio" value="0.6666666666666666" type="radio">
+            <span class="docs-tooltip" data-toggle="tooltip" title="$().cropper(&quot;setAspectRatio&quot;, 2 / 3)">
+              2:3
+            </span>
+                    </label>
+                    <label class="  btn btn-primary" data-method="setAspectRatio" data-option="NaN" title="Set Aspect Ratio"  style="display: none;">
+                        <input class="sr-only" id="aspestRatio5" name="aspestRatio" value="NaN" type="radio">
+            <span class="docs-tooltip" data-toggle="tooltip" title="$().cropper(&quot;setAspectRatio&quot;, NaN)">
+              Free
+            </span>
+                    </label>
+
+
+                    <div class="dropdown dropup docs-options"  style="display: none;">
+                        <button class="cutBtn btn btn-primary btn-block dropdown-toggle" id="toggleOptions" type="button" data-toggle="dropdown" aria-expanded="true">
+                            Toggle Options
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="toggleOptions">
+                            <li role="presentation">
+                                <label class="checkbox-inline">
+                                    <input type="checkbox" name="option" value="strict" checked>
+                                    strict
+                                </label>
+                            </li>
+                            <li role="presentation">
+                                <label class="checkbox-inline">
+                                    <input type="checkbox" name="option" value="responsive" checked>
+                                    responsive
+                                </label>
+                            </li>
+                            <li role="presentation">
+                                <label class="checkbox-inline">
+                                    <input type="checkbox" name="option" value="checkImageOrigin" checked>
+                                    checkImageOrigin
+                                </label>
+                            </li>
+
+                            <li role="presentation">
+                                <label class="checkbox-inline">
+                                    <input type="checkbox" name="option" value="modal" checked>
+                                    modal
+                                </label>
+                            </li>
+                            <li role="presentation">
+                                <label class="checkbox-inline">
+                                    <input type="checkbox" name="option" value="guides" checked>
+                                    guides
+                                </label>
+                            </li>
+                            <li role="presentation">
+                                <label class="checkbox-inline">
+                                    <input type="checkbox" name="option" value="highlight" checked>
+                                    highlight
+                                </label>
+                            </li>
+                            <li role="presentation">
+                                <label class="checkbox-inline">
+                                    <input type="checkbox" name="option" value="background" checked>
+                                    background
+                                </label>
+                            </li>
+
+                            <li role="presentation">
+                                <label class="checkbox-inline">
+                                    <input type="checkbox" name="option" value="autoCrop" checked>
+                                    autoCrop
+                                </label>
+                            </li>
+                            <li role="presentation">
+                                <label class="checkbox-inline">
+                                    <input type="checkbox" name="option" value="dragCrop" checked>
+                                    dragCrop
+                                </label>
+                            </li>
+                            <li role="presentation">
+                                <label class="checkbox-inline">
+                                    <input type="checkbox" name="option" value="movable" checked>
+                                    movable
+                                </label>
+                            </li>
+                            <li role="presentation">
+                                <label class="checkbox-inline">
+                                    <input type="checkbox" name="option" value="resizable" checked>
+                                    resizable
+                                </label>
+                            </li>
+                            <li role="presentation">
+                                <label class="checkbox-inline">
+                                    <input type="checkbox" name="option" value="rotatable" checked>
+                                    rotatable
+                                </label>
+                            </li>
+                            <li role="presentation">
+                                <label class="checkbox-inline">
+                                    <input type="checkbox" name="option" value="zoomable" checked>
+                                    zoomable
+                                </label>
+                            </li>
+                            <li role="presentation">
+                                <label class="checkbox-inline">
+                                    <input type="checkbox" name="option" value="touchDragZoom" checked>
+                                    touchDragZoom
+                                </label>
+                            </li>
+                            <li role="presentation">
+                                <label class="checkbox-inline">
+                                    <input type="checkbox" name="option" value="mouseWheelZoom" checked>
+                                    mouseWheelZoom
+                                </label>
+                            </li>
+                        </ul>
+                    </div><!-- /.dropdown -->
+
+
+                </div>
+            </div>
+
+            <!--图像拼接工具盒子-->
+            <div class="joinCutToolBox">
+                <div class="cutBtnBox">
+                    <div  class="cutBtn joinPageS join-sendToPrint1" title="打印">
+                        <img src="ipacsdv/css/img/print/join_print.png">
+                    </div>
+                    <div class="cutBtn previewPageS join-sendToPrint2" title="打印"  >
+
+                        <img src="ipacsdv/css/img/print/join_print.png">
+                    </div>
+                    <div  class="cutBtn joinPageS   join-save1" title="保存">
+
+                        <img src="ipacsdv/css/img/print/join_save.png">
+                    </div>
+                    <div  class="cutBtn   previewPageS join-save2" title="保存">
+                        <img src="ipacsdv/css/img/print/join_save.png">
+                    </div>
+                    <div class="cutBtn joinPageS join-cutBox" title="裁剪">
+                        <img src="ipacsdv/css/img/print/join_cut.png">
+                    </div>
+                    <div class="cutBtn previewPageS join-undo" title="撤销">
+                        <img src="ipacsdv/css/img/print/join_cancel.png">
+                    </div>
+                    <div class="cutBtn cropPageS   join-back" title="返回">
+                        <img src="ipacsdv/css/img/print/join_return.png">
+                    </div>
+                    <div class="cutBtn cropPageS join-cutSure" title="确认">
+                        <img src="ipacsdv/css/img/print/join_ok.png">
+                    </div>
+                    <div class="cutBtn join-reset" style="display: none">重置</div>
+                </div>
+            </div>
+
+            <!--绘制拼接图像的中间div-->
+            <div class="joinHelpBox">
+                <div class="joinOutputCanvBox">
+                    <canvas id="joinOutputCanv"></canvas>
+                    <canvas id="joinResultCanv"></canvas>
+                </div>
+                <div class="joinOutPutBox" style="position: absolute; left: 10000px;top: 10000px">
+
+                </div>
+            </div>
+            <!--胶片盒子-->
+            <div class="contentBox">
+                <div class="printPageBox">
+                    <div id="page0" class="printPage " style="display: none; ">
+                    </div>
+                </div>
+            </div>
+            <div style="width:220px; height:100%; position:absolute; right:0;top:30px; background:#3F3F3F; overflow-y:scroll;">
+                <div class="rightBox" style="top:0;right:0">
+                    <!--胶片-->
+                    <div class="filmBox">
+                        <div class="rBoxTitle font14">胶片</div>
+                        <!--////////////////////////////1223456-->
+                        <li class="publicSet" style="display: none">
+                            <i class="fa fa-cog" aria-hidden="true"></i>
+                        </li>
+                        <br/>
+                        <div class="filmBox-context font12">
+                            打印方向：
+                            <select class="paperDirection font12">
+                                <option class="font12" selected="" value="1">纵向打印</option>
+                                <option class="font12" value="0">横向打印</option>
+                            </select>
+
+                            <br>
+                            纸张大小：
+                            <select id="paperSize" class="font12">
+                                <option>8INX10IN</option>
+                                <option>8_5INX11IN</option>
+                                <option>10INX12IN</option>
+                                <option>10INX14IN</option>
+                                <option>11INX14IN</option>
+                                <option>11INX17IN</option>
+                                <option>14INX14IN</option>
+                                <!--<option selected="">14INX17IN</option>-->
+                                <option>14INX17IN</option>
+                                <option>24CMX24CM</option>
+                                <option>24CMX30CM</option>
+                                <option>A4</option>
+                                <option>A3</option>
+                            </select>
+
+
+                            <button type="button" class="merge font12">拆分
+                                <ul class="mergeUl">
+                                    <li id="merge1" class="mergeclick" data-id="1"><img src="ipacsdv/css/img/print/1.png"/>
+                                    </li>
+                                    <li id="merge2" class="mergeclick" data-id="2"><img src="ipacsdv/css/img/print/5.png"/>
+                                    </li>
+
+                                    <li id="merge3" class="mergeclick" data-id="3"><img src="ipacsdv/css/img/print/2.png"/>
+                                    </li>
+                                    <li id="merge4" class="mergeclick" data-id="4"><img src="ipacsdv/css/img/print/6.png"/>
+                                    </li>
+
+                                    <li id="merge5" class="mergeclick" data-id="5"><img src="ipacsdv/css/img/print/3.png"/>
+                                    </li>
+                                    <li id="merge6" class="mergeclick" data-id="6"><img src="ipacsdv/css/img/print/7.png"/>
+                                    </li>
+                                    <li id="merge7" class="mergeclick" data-id="7"><img src="ipacsdv/css/img/print/4.png"/>
+                                    </li>
+                                    <li id="merge8" class="mergeclick" data-id="8"><img src="ipacsdv/css/img/print/8.png"/>
+                                    </li>
+                                </ul>
+                            </button>
+                            <button type="button" class="breakup font12">还原布局</button>
+                            <button type="button" class="filmLayout font12">胶片布局(1X1)</button>
+                            <div class="printToolbar">
+                                <i id="firstPage" class="fa fa-step-backward" aria-hidden="true"></i>
+                                <i id="prePage" class="fa fa-caret-left" aria-hidden="true"></i>
+                                <input class="currentPageIndex font12" type="text" value="0">/<span class="totalImgNo font12">0</span>
+                                <i id="nextPage" class="fa fa-caret-right" aria-hidden="true"></i>
+                                <i id="lastPage" class="fa fa-step-forward" aria-hidden="true"></i>
+                                <i id="addPage" class="fa fa-plus" aria-hidden="true"></i>
+                                <i id="deletePage" class="fa fa-trash-o" aria-hidden="true"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 打印-->
+                    <div class="printBox">
+                        <div class="rBoxTitle font14">打印机</div>
+                        <!--////////////////////////////1223456-->
+                        <li class="publicSet">
+                            <i id="printerSet" title="打印机设置" class="fa fa-cog" aria-hidden="true"></i>
+                        </li>
+                        <br/>
+                        <select class="printBoxSelect font12">
+
+                            <option  data-id="localPrinter" data-name="localPrinter'" data-ip="localPrinter" data-AET="localPrinter" data-AETLocal="localPrinter" data-Port="localPrinter" data-Position=" localPrinter" data-Type="localPrinter" data-Priority="localPrinter"    data-magnifyType="localPrinter"   data-Color="localPrinter">localPrinter</option>
+
+                        </select>
+                        <div class="inputBox">
+                            <div class="inputContent font12"  >
+                                份数：<input  type="text"   class="inputStyle shareNum " maxlength="2" value="1"
+                                           onkeyup="(this.v=function(){this.value=this.value.replace(/[^0-9-]+/,'');}).call(this)"
+                                           onblur="this.v();"/>
+                            </div>
+                            <!--增减份数-->
+                            <button class="btnAddNum"  > + </button>
+                            <button class="btnPlusNum"  > - </button>
+
+                            <!-- <div class="inputBtnBox">
+                                 <button class="inputBtn btn1 ">+</button>
+                                 <button class="inputBtn btn2">-</button>
+                             </div>-->
+                        </div>
+                        <button id="printCurFilm" class="btn pCurBtn font12">打印当前页</button>
+                        <button id="printAllFilm" class="btn pAllBtn font12">打印全部页</button>
+
+                        <!--<button id="printLcalJpg" class="btn pLocal">打印jpg</button>-->
+                    </div>
+
+                    <!--图标-->
+                    <div class="iconBox">
+                        <div class="rBoxTitle font14"  >图像</div>
+
+                        <!--////////////////////////////1223456-->
+                        <li class="publicSet">
+                            <i id="filmTagSet" title="胶片四角信息设置" class="fa fa-cog" aria-hidden="true"></i>
+                        </li>
+                        <br/>
+                        <!--选择项 操作对象切换-->
+                        <div class="radioBox">
+                            <input id="procImg" type="radio" class="radio" name="way" checked/><span
+                                class="radioSpan font12" >图像</span>
+                            <input id="procSeri" type="radio" class="radio" name="way"/><span class="radioSpan font12"  >序列</span>
+                            <input id="procPage" type="radio" class="radio" name="way"/><span class="radioSpan font12"  >页</span>
+                            <input id="procAll" type="radio" class="radio" name="way"/><span class="radioSpan font12"  >所有</span>
+                        </div>
+                        <!--强制换个行-->
+                        <br />
+                        <div class="inputContent font12"  >
+                            <span  >窗宽/窗位:</span><br>
+                            <input id="printSetww"  type="text"
+                                   onkeyup="(this.v=function(){this.value=this.value.replace(/[^0-9-]+/,'');}).call(this)"
+                                   onblur="this.v();"/>
+                            <input id="printSetwc"   type="text"
+                                   onkeyup="(this.v=function(){this.value=this.value.replace(/[^0-9-]+/,'');}).call(this)"
+                                   onblur="this.v();"/>
+                            <select id="printSetwwwc"  >
+
+                                <!--<option>&#45;&#45;请选择&#45;&#45;</option>-->
+                                <!--<option>1</option>-->
+                                <!--<option>1</option>-->
+                            </select>
+                        </div>
+                        <div class="iconBtnBox">
+                            <!--     <li class="select" title="选择"></li>-->
+                            <li id="printZoom" class="magnify btnStyle2" title="放大" data-img="tool_zoom.bmp"></li>
+                            <li id="printMove" class="move btnStyle2" title="移动" data-img="tool_move.bmp"></li>
+                            <li id="printHflip" class="horizontal btnStyle1" title="水平镜像" data-img="tool_hFlip.bmp"></li>
+                            <li id="printVflip" class="vertical btnStyle1" title="垂直镜像" data-img="tool_vFlip.bmp"></li>
+                            <li id="printRrotate" class="clockwise btnStyle1" title="顺时针旋转"
+                                data-img="tool_rRotate.bmp"></li>
+                            <li id="printRotate" class="rotateMin btnStyle2" title="自由旋转" data-img="tool_rotate.jpg"></li>
+                            <li id="printLrotate" class="anticlockwise btnStyle1" title="逆时针旋转"
+                                data-img="tool_lRotate.bmp"></li>
+                            <li    class="referLineHover"  title="定位线" >
+                                <div id="printReferLine" class="btnStyle1" data-img="tool_posLine.jpg" style=" width: 100%; height: 100%; background-color: #6B6E84; " >
+                                </div>
+                            </li>
+                            <li id="printInvert" class="reverse btnStyle1" title="反色" data-img="tool_inv.bmp"></li>
+                            <li id="printWwwl" class="wwwl btnStyle2" title="窗位/窗宽" data-img="tool_wl.bmp"></li>
+                            <li id="printDelete" class="delete btnStyle1" title="删除" data-img="tool_deleteimage.bmp"></li>
+                            <li id="printReset" class="recover btnStyle1" title="恢复" data-img="tool_reset.bmp"></li>
+                            <li id="printFliter" class="filter btnStyle1" data-img="tool_filter.jpg" title="过滤" data-img="">
+                            </li>
+
+                            <li id="imgjoin" class="btnStyle1"  title="图像拼接"  data-img="join.bmp" >
+
+                            </li>
+
+                            <li id="space2" class="btnStyle1" title="" ></li>
+                            <li id="space3" class="btnStyle1" title=""  ></li>
+                        </div>
+
+                        <div class="directionLi">
+                            <li id="markL">L</li>
+                            <li id="markR">R</li>
+                            <li id="markA">A</li>
+                            <li id="markH">H</li>
+                        </div>
+
+                    </div>
+                    <!--右侧下方按钮区域-->
+                    <!--<div class="btnBox">-->
+                    <!--&lt;!&ndash;<button type="button" class="clearBtn">清除任务</button>&ndash;&gt;-->
+                    <!--<button type="button" class="setBtn font12"  >打印机设置</button>-->
+                    <!--</div>-->
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <!-- 遮罩层-->
+    <div class="printMask"></div>
+    <!--图像测量弹出框-->
+    <div class="magnifyBox">
+        <div class="topbar">
+            <div id="closeMagnifyBox" class="closeBtn">X</div>
+        </div>
+        <div class="calBox">
+            <li id="printLine" class="line btnStyle3" data-img="tool_line.bmp"></li>
+            <li id="printArrows" class="arrows btnStyle3" data-img="tool_arrow.bmp"></li>
+            <li id="printRect" class="rectangle btnStyle3" data-img="tool_rect.bmp"></li>
+            <li id="printEllipse" class="roundness btnStyle3" data-img="tool_ellipse.bmp"></li>
+            <li id="printAngle" class="role btnStyle3" data-img="tool_angle.bmp"></li>
+            <!--<li id="printWWWLmagnify" class="role btnStyle3" data-img="tool_angle.bmp"></li>-->
+            <li id="printWWWLmagnify" class="light btnStyle2" title="窗位/窗宽" data-img="tool_wl.bmp"></li>
+            <li id="printResetmagnify" class="recover btnStyle1" title="恢复" data-img="tool_reset.bmp"></li>
+            <li id="printClear" class="clear"></li>
+        </div>
+        <!--sj add-->
+        <dialog class="annotationDialog">
+            <h5>Enter your annotation</h5>
+            <div class="annotationTextInputOptions">
+                <label for="annotationTextInput">New label</label>
+                <input name="annotationTextInput" class="annotationTextInput" type="text"/>
+            </div>
+            <a class="annotationDialogConfirm btn btn-sm btn-primary">OK</a>
+        </dialog>
+        <dialog class="relabelDialog" oncontextmenu="return false">
+            <h5>Edit your annotation</h5>
+            <div class="annotationTextInputOptions">
+                <label for="annotationTextInput">New label</label>
+                <input name="annotationTextInput" class="annotationTextInput" type="text"/>
+            </div>
+            <div>
+                <a class="relabelRemove btn btn-sm btn-secondary">Remove marker</a>
+                <a class="relabelConfirm btn btn-sm btn-primary">OK</a>
+            </div>
+        </dialog>
+        <div id="imgMagnifyDiv" class="ceilBox">
+            <!--放图-->
+
+        </div>
+
+
+    </div>
+    <!--布局弹出框(先列后行)-->
+    <div class="layoutBox">
+        <div class="topbar">
+            <div class="closeBtn" onclick=" cancel($('.layoutBox'))">X</div>
+        </div>
+        <div class="ceilBox">
+            <li>
+                <input type="radio" id="layoutRadio1" name="layoutRadio" data-row="1" data-col="1" checked/><label
+                    for="layoutRadio1">1(1X1)</label>
+            </li>
+            <li>
+                <input type="radio" name="layoutRadio" id="layoutRadio2" data-row="1" data-col="2"/><label
+                    for="layoutRadio2">2(2X1)</label>
+            </li>
+            <li>
+                <input type="radio" name="layoutRadio" id="layoutRadio3" data-row="2" data-col="1"/><label
+                    for="layoutRadio3">2(1X2)</label>
+            </li>
+            <li>
+                <input type="radio" name="layoutRadio" data-row="2" id="layoutRadio4" data-col="2"/><label
+                    for="layoutRadio4">4(2X2)</label>
+            </li>
+            <li>
+                <input type="radio" name="layoutRadio" id="layoutRadio5" data-row="3" data-col="2"/><label
+                    for="layoutRadio5">6(2X3)</label>
+            </li>
+            <li>
+                <input type="radio" name="layoutRadio" id="layoutRadio6" data-row="3" data-col="3"/><label
+                    for="layoutRadio6">9(3X3)</label>
+            </li>
+            <li>
+                <input type="radio" name="layoutRadio" id="layoutRadio7" data-row="4" data-col="3"/><label
+                    for="layoutRadio7">12(3X4)</label>
+            </li>
+            <li>
+                <input type="radio" name="layoutRadio" id="layoutRadio8" data-row="4" data-col="4"/><label
+                    for="layoutRadio8">16(4X4)</label>
+            </li>
+
+            <li>
+                <input type="radio" name="layoutRadio" id="layoutRadio9" data-row="5" data-col="4"/><label
+                    for="layoutRadio9">20(4X5)</label>
+            </li>
+
+            <li>
+                <input type="radio" name="layoutRadio" id="layoutRadio10" data-row="6" data-col="4"/><label
+                    for="layoutRadio10">24(4X6)</label>
+            </li>
+            <Li>
+                <input type="radio" name="layoutRadio" id="layoutRadio11" data-row="5" data-col="5"/><label
+                    for="layoutRadio11">25(5X5)</label>
+            </Li>
+            <li>
+                <input type="radio" name="layoutRadio" id="layoutRadio12" data-row="6" data-col="5"/><label
+                    for="layoutRadio12">30(5X6)</label>
+            </li>
+            <li>
+                <input type="radio" name="layoutRadio" id="layoutRadio13" data-row="7" data-col="5"/><label
+                    for="layoutRadio13">35(5X7)</label>
+            </li>
+            <li>
+                <input type="radio" name="layoutRadio" id="layoutRadio14" data-row="6" data-col="6"/><label
+                    for="layoutRadio14">36(6X6)</label>
+            </li>
+            <li>
+                <input type="radio" name="layoutRadio" id="layoutRadio15" data-row="7" data-col="6"/><label
+                    for="layoutRadio15">42(6X7)</label>
+            </li>
+            <li>
+                <input type="radio" name="layoutRadio" id="layoutRadio16" data-row="8" data-col="6"/><label
+                    for="layoutRadio16">48(6X8)</label>
+            </li>
+            <li>
+                <input type="radio" name="layoutRadio" id="layoutRadio17" data-row="7" data-col="7"/><label
+                    for="layoutRadio17">49(7X7)</label>
+            </li>
+            <li>
+                <input type="radio" name="layoutRadio" id="layoutRadio18" data-row="8" data-col="7"/><label
+                    for="layoutRadio18">56(7X8)</label>
+            </li>
+            <li>
+                <input type="radio" name="layoutRadio" id="layoutRadio19" data-row="9" data-col="7"/><label
+                    for="layoutRadio19">63(7X9)</label>
+            </li>
+
+
+            <li style="width: 100%;">
+                <input type="radio" name="layoutRadio" id="layoutRadio20" class="specialRadio" data-row="6"
+                       data-col="8"/><label for="layoutRadio20"> 自定义行：
+                <select class="select-row">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                    <option>6</option>
+                    <option>7</option>
+                    <option>8</option>
+                    <option>9</option>
+                    <option>10</option>
+                </select>
+                自定义列：
+                <select class="select-col">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                    <option>6</option>
+                    <option>7</option>
+                    <option>8</option>
+                    <option>9</option>
+                    <option>10</option>
+                </select></label>
+            </li>
+
+        </div>
+        <div class="calBox">
+            <div class="yes" id="layoutBtn">确定</div>
+            <div class="yes" onclick=" cancel($('.layoutBox'))">取消</div>
+        </div>
+    </div>
+    <!--胶片打印页面过滤弹出框-->
+    <div class="filterBox">
+        <div class="topbar">
+            <div class="closeBtn" onclick="cancel($('.filterBox'))">✖</div>
+        </div>
+        <div class="ceilBox">
+            <div class="ceilBoxDiv">共有<span id="filterTotal">num</span>幅图像，InstanceNumber：1-<span id="filterEndIndex">num</span>
+            </div>
+            <div class="ceilBoxDiv">InstanceNumber起始：<input id="beginIndex" type="text"/></div>
+            <div class="ceilBoxDiv">InstanceNumber截止：<input id="endIndex" type="text"/></div>
+            <div class="ceilBoxDiv">InstanceNumber隔：<input id="interval" type="text" style="width: 50px;"/>个图像取一个</div>
+        </div>
+        <div class="calBox">
+            <div id="filterOk" class="yes">确定</div>
+            <div class="yes" onclick="cancel($('.filterBox'))">取消</div>
+        </div>
+    </div>
+    <!--设置弹出框 打印机增删改-->
+    <div class="setBox">
+        <div class="topbar">
+            <div class="closeBtn" onclick="cancel($('.setBox'));">✖</div>
+        </div>
+        <div class="ceilBox">
+            <div class="leftBox">
+                <ul class="temp"></ul>
+            </div>
+
+            <div class="rightBox">
+                <div class="yes" id="addPrint">添加</div>
+                <div class="yes" id="deletePrint">删除</div>
+                <div class="yes" id="modifyPrint">修改</div>
+            </div>
+
+        </div>
+        <div class="calBox">
+            <div class="yes" onclick="cancel($('.setBox'))">取消</div>
+        </div>
+    </div>
+    <!--打印机设置弹出框-->
+    <div class="printSetBox">
+        <div class="topbar">
+            <div class="closeBtn printCloseBtn">✖</div>
+        </div>
+        <div class="ceilBox">
+            打印机名称：<input type="text" name="name"/>
+            <fieldset>
+                <legend>目标打印机设置</legend>
+                IP：
+            <span class="inputBox">
+                <input type=text name=ip1 maxlength=3 class="ipInput" onkeyup="mask(this)" value="127"
+                       onbeforepaste=mask_c()>.<input type=text name=ip2 maxlength=3 class=ipInput onkeyup="mask(this)"
+                                                      value="0" onbeforepaste=mask_c()>.<input type=text name=ip3
+                                                                                               maxlength=3
+                                                                                               class="ipInput"
+                                                                                               onkeyup="mask(this)"
+                                                                                               value="0"
+                                                                                               onbeforepaste=mask_c()>.<input
+                    type=text name=ip4 maxlength=3 class="ipInput" onkeyup="mask(this)" value="1"
+                    onbeforepaste=mask_c()>
+            </span>
+                <script>
+                    function mask(obj) {
+                        obj.value = obj.value.replace(/[^\d]/g, '')
+                        key1 = event.keyCode
+                        if (key1 == 37 || key1 == 39) {
+                            obj.blur();
+                            nextip = parseInt(obj.name.substr(2, 1))
+                            nextip = key1 == 37 ? nextip - 1 : nextip + 1;
+                            nextip = nextip >= 5 ? 1 : nextip
+                            nextip = nextip <= 0 ? 4 : nextip
+                            eval("ip" + nextip + ".focus()")
+                        }
+                        if (obj.value.length >= 3)
+                            if (parseInt(obj.value) >= 256 || parseInt(obj.value) <= 0) {
+                                alert(parseInt(obj.value) + "IP地址错误！")
+                                obj.value = ""
+                                obj.focus()
+                                return false;
+                            }
+                            else {
+                                obj.blur();
+                                nextip = parseInt(obj.name.substr(2, 1)) + 1
+                                nextip = nextip >= 5 ? 1 : nextip
+                                nextip = nextip <= 0 ? 4 : nextip
+                                eval("ip" + nextip + ".focus()")
+                            }
+                    }
+                    function mask_c(obj) {
+                        clipboardData.setData('text', clipboardData.getData('text').replace(/[^\d]/g, ''))
+                    }
+
+                </script>
+                端口：<input type="text" class="portInput" name="port"/>
+                <!--应用程序标题：<input type="text" class="portitle" name="aet"/>-->
+                目标AET：<input type="text" class="portitle" name="aet"/>
+                <br>
+                本地AET：<input type="text" class="portitleLocal" name="aetLocal"/>
+            </fieldset>
+            <div class="printSet-select">
+                <li>胶片目标：
+                    <select name="position">
+                        <option>processor</option>
+                        <option>magazine</option>
+                    </select>
+                </li>
+                <li>胶片类型：
+                    <select name="type">
+                        <option>blue film</option>
+                        <option>clear film</option>
+                        <option>paper</option>
+                    </select>
+                </li>
+                <li>优先等级：
+                    <select name="priority">
+                        <option>low</option>
+                        <option>med</option>
+                        <option>high</option>
+                    </select>
+                </li>
+                <li>放大类型：
+                    <select name="magnifyType">
+                        <option>none</option>
+                        <option>cubic</option>
+                        <option>replicate</option>
+                        <option>bilinear</option>
+                    </select>
+                </li>
+
+            </div>
+            <div class="printSet-radio">
+                <input type="checkbox" name="gray" value="1"/><span style="margin-left: 10px;">彩色胶片打印</span>
+            </div>
+        </div>
+        <div class="calBox">
+            <div class="yes" id="printUpdataBoxBtn" style="display: none;">确定</div>
+            <div class="yes" id="printSetBoxBtn" style="display: none;">确定</div>
+            <div class="yes printCloseBtn" onclick="threeCancel($('.printSetBox'))">取消</div>
+        </div>
+    </div>
+    <!--四角设置弹出框-->
+    <div class="printTagSetbox" style="display: none">
+        <div class="topbar">
+            <div class="closeBtn" onclick="cancel($('.printTagSetbox'));">✖</div>
+            <!--<div class="closeBtn" >✖</div>-->
+        </div>
+        <div class="ceilBox">
+            <ul id="myTab" class="nav nav-tabs">
+                <li class="active">
+                    <a href="#setInfo" data-toggle="tab">
+                        四角信息设置
+                    </a>
+                </li>
+                <!--<li><a href="#viewFont" data-toggle="tab" class="viewFontHref">字体设置与预览</a></li>-->
+                <li><a href="#viewFont" data-toggle="tab" class="viewFontHref">设置预览</a></li>
+
+            </ul>
+            <div id="myTabContent" class="tab-content">
+                <div class="tab-pane fade in active" id="setInfo">
+                    <div class="leftBox">
+                        <ul class="selectBox">
+                            <li desc="print-info-SpacingBetweenSlices">层间距</li>
+                            <li desc="print-info-FS">FS</li>
+                            <li desc="print-info-TrTe">TR/TE</li>
+                            <li desc="print-info-fov">FOV</li>
+                            <li desc="print-info-imgPosition">图像位置</li>
+                            <li desc="print-info-imgOriention">图像方位</li>
+                            <li desc="print-info-studyTime">检查时间</li>
+                            <li desc="print-info-modality">检查模态</li>
+                            <li desc="print-info-samplesP">采样率</li>
+							<li desc="print-info-accessionNum">登记编号</li>
+
+                        </ul>
+                        <div class="yes" id="addPrintTag">添加</div>
+                    </div>
+                    <div class="rightBox">
+                        <!--左上信息-->
+                        <div class="fontDiv">
+                            <span class="font-write">左上信息</span>
+                            <ul id="ltTags">
+                                <li class="courseList" desc="print-info-SeNo">
+                                    <span class="pull-left">序列编号</span>&nbsp;
+                                    <div class="clearfix pull-right">
+                                        <a class="moveUpBtn" href="javascript:;"><span class="delTit">上移</span></a>
+                                        <a class="moveDownBtn" href="javascript:;"><span class="delTit">下移</span></a>
+                                        <a class="deleteBtn" href="javascript:;"><span class="delTit">删除</span></a>
+                                    </div>
+                                </li>
+                                <li class="courseList" desc="print-info-nowNo">
+                                    <span class="pull-left">图像序号</span>&nbsp;
+                                    <div class="clearfix pull-right">
+                                        <a class="moveUpBtn" href="javascript:;"><span class="delTit">上移</span></a>
+                                        <a class="moveDownBtn" href="javascript:;"><span class="delTit">下移</span></a>
+                                        <a class="deleteBtn" href="javascript:;"><span class="delTit">删除</span></a>
+                                    </div>
+                                </li>
+                                <li class="courseList" desc="print-info-ProtocolName">
+                                    <span class="pull-left">检查部位</span>&nbsp;
+                                    <div class="clearfix pull-right">
+                                        <a class="moveUpBtn" href="javascript:;"><span class="delTit">上移</span></a>
+                                        <a class="moveDownBtn" href="javascript:;"><span class="delTit">下移</span></a>
+                                        <a class="deleteBtn" href="javascript:;"><span class="delTit">删除</span></a>
+                                    </div>
+                                </li>
+                                <li class="courseList" desc="print-info-StudyDescription">
+                                    <span class="pull-left">检查描述</span>&nbsp;
+                                    <div class="clearfix pull-right">
+                                        <a class="moveUpBtn" href="javascript:;"><span class="delTit">上移</span></a>
+                                        <a class="moveDownBtn" href="javascript:;"><span class="delTit">下移</span></a>
+                                        <a class="deleteBtn" href="javascript:;"><span class="delTit">删除</span></a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <!--右上信息-->
+                        <div class="fontDiv">
+                            <span class="font-write">右上信息</span>
+                            <ul id="rtTags">
+                                <li class="courseList" desc="print-info-accessionNum">
+                                    <span class="pull-left">登记编号</span>&nbsp;
+                                    <div class="clearfix pull-right">
+                                        <a class="moveUpBtn" href="javascript:;"><span class="delTit">上移</span></a>
+                                        <a class="moveDownBtn" href="javascript:;"><span class="delTit">下移</span></a>
+                                        <a class="deleteBtn" href="javascript:;"><span class="delTit">删除</span></a>
+                                    </div>
+                                </li>
+                                <li class="courseList" desc="print-info-InstitutionName">
+                                    <span class="pull-left">机构名称</span>&nbsp;
+                                    <div class="clearfix pull-right">
+                                        <a class="moveUpBtn" href="javascript:;"><span class="delTit">上移</span></a>
+                                        <a class="moveDownBtn" href="javascript:;"><span class="delTit">下移</span></a>
+                                        <a class="deleteBtn" href="javascript:;"><span class="delTit">删除</span></a>
+                                    </div>
+                                </li>
+                                <li class="courseList" desc="print-info-PatientName">
+                                    <span class="pull-left">患者姓名</span>&nbsp;
+                                    <div class="clearfix pull-right">
+                                        <a class="moveUpBtn" href="javascript:;"><span class="delTit">上移</span></a>
+                                        <a class="moveDownBtn" href="javascript:;"><span class="delTit">下移</span></a>
+                                        <a class="deleteBtn" href="javascript:;"><span class="delTit">删除</span></a>
+                                    </div>
+                                </li>
+                                <li class="courseList" desc="print-info-PatientID">
+                                    <span class="pull-left">患者ID号</span>&nbsp;
+                                    <div class="clearfix pull-right">
+                                        <a class="moveUpBtn" href="javascript:;"><span class="delTit">上移</span></a>
+                                        <a class="moveDownBtn" href="javascript:;"><span class="delTit">下移</span></a>
+                                        <a class="deleteBtn" href="javascript:;"><span class="delTit">删除</span></a>
+                                    </div>
+                                </li>
+                                <li class="courseList" desc="print-info-PatientAge">
+                                    <span class="pull-left">患者年龄/性别</span>&nbsp;
+                                    <div class="clearfix pull-right">
+                                        <a class="moveUpBtn" href="javascript:;"><span class="delTit">上移</span></a>
+                                        <a class="moveDownBtn" href="javascript:;"><span class="delTit">下移</span></a>
+                                        <a class="deleteBtn" href="javascript:;"><span class="delTit">删除</span></a>
+                                    </div>
+                                </li>
+
+                                <!-- <li class="courseList" desc="print-info-PatientSex">
+                                     <span class="pull-left">患者性别</span>&nbsp;
+                                     <div class="clearfix pull-right">
+                                         <a class="moveUpBtn" href="javascript:;"><span class="delTit">上移</span></a>
+                                         <a class="moveDownBtn" href="javascript:;"><span class="delTit">下移</span></a>
+                                         <a class="deleteBtn" href="javascript:;"><span class="delTit">删除</span></a>
+                                     </div>
+                                 </li>-->
+
+                            </ul>
+                        </div>
+                        <!--左下信息-->
+                        <div class="fontDiv">
+                            <span class="font-write"> 左下信息</span>
+                            <ul id="lbTags">
+                                <li class="courseList" desc="print-info-wwwl">
+                                    <span class="pull-left">窗位窗宽</span>&nbsp;
+                                    <div class="clearfix pull-right">
+                                        <a class="moveUpBtn" href="javascript:;"><span class="delTit">上移</span></a>
+                                        <a class="moveDownBtn" href="javascript:;"><span class="delTit">下移</span></a>
+                                        <a class="deleteBtn" href="javascript:;"><span class="delTit">删除</span></a>
+                                    </div>
+                                </li>
+                                <li class="courseList" desc="print-info-TL">
+                                    <span class="pull-left">层厚/实际相对位置</span>&nbsp;
+                                    <div class="clearfix pull-right">
+                                        <a class="moveUpBtn" href="javascript:;"><span class="delTit">上移</span></a>
+                                        <a class="moveDownBtn" href="javascript:;"><span class="delTit">下移</span></a>
+                                        <a class="deleteBtn" href="javascript:;"><span class="delTit">删除</span></a>
+                                    </div>
+                                </li>
+                                <!--<li>wo shi mei<span>上移&nbsp;下移&nbsp;删除</span></li>-->
+                            </ul>
+                        </div>
+                        <!--右下信息-->
+                        <div class="fontDiv">
+                            <span class="font-write">右下信息</span>
+                            <ul id="rbTags">
+                                <li class="courseList" desc="print-info-mAkvp" >
+                                    <span class="pull-left">千伏/毫安</span>&nbsp;
+                                    <div class="clearfix pull-right">
+                                        <a class="moveUpBtn" href="javascript:;"><span class="delTit">上移</span></a>
+                                        <a class="moveDownBtn" href="javascript:;"><span class="delTit">下移</span></a>
+                                        <a class="deleteBtn" href="javascript:;"><span class="delTit">删除</span></a>
+                                    </div>
+                                </li>
+                                <!-- <li class="courseList" desc="print-info-mA" >
+                                     <span class="pull-left">毫安</span>&nbsp;
+                                     <div class="clearfix pull-right">
+                                         <a class="moveUpBtn" href="javascript:;"><span class="delTit">上移</span></a>
+                                         <a class="moveDownBtn" href="javascript:;"><span class="delTit">下移</span></a>
+                                         <a class="deleteBtn" href="javascript:;"><span class="delTit">删除</span></a>
+                                     </div>
+                                 </li>-->
+
+                                <li class="courseList" desc="print-info-datetime">
+                                    <span class="pull-left">检查日期</span>&nbsp;
+                                    <div class="clearfix pull-right">
+                                        <a class="moveUpBtn" href="javascript:;"><span class="delTit">上移</span></a>
+                                        <a class="moveDownBtn" href="javascript:;"><span class="delTit">下移</span></a>
+                                        <a class="deleteBtn" href="javascript:;"><span class="delTit">删除</span></a>
+                                    </div>
+                                </li>
+
+                                <!--<li>wo shi mei<span>上移&nbsp;下移&nbsp;删除</span></li>-->
+                            </ul>
+                        </div>
+                        <div class="yes" id="tagsetOK">保存</div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="viewFont">
+                    <!--字号设置与四角信息设置预览区域-->
+                    <div id="tagsPreView" class="viewImgBox">
+                        <div id='tagViewport' style=" margin: auto; margin-top: 20px;margin-bottom: 20px">
+                            <canvas id="preViewCanv" width="400px" height="400px"></canvas>
+                        </div>
+                        <div id="dobuleViewport" ></div>
+                    </div>
+                    <!--字号选择-->
+                    <select id="tagFontsize" class="font12">
+                        <option>26</option>
+                        <option>10</option>
+                        <!--<option selected="">12</option>-->
+                        <option>12</option>
+                        <option>14</option>
+                        <option>16</option>
+                        <option>18</option>
+                        <option>20</option>
+                        <option>22</option>
+                        <option>24</option>
+                        <option>28</option>
+                        <option>30</option>
+                        <option>32</option>
+                    </select>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--打印输出 中间绘制-->
+    <div style="display:none;">
+        <canvas id="canvas4PrintDraw" style="background-color: whitesmoke"></canvas>
+    </div>
+    <!--打印输出绘制(绘制合并图像)-->
+    <div style="display:none;">
+        <canvas id="canvas4PrintOut" style="background-color: whitesmoke"></canvas>
+    </div>
+
+    <!--用于等比例绘制-->
+    <div id="equalRationDraw" style="display:none;">
+        <!--<canvas id="canvas4Temp" style="background-color: whitesmoke" > </canvas>-->
+    </div>
+
+    <!--用于等比例绘制2 合并图像-->
+    <div id="equalRationDrawInner" style="display:none;">
+        <!--<canvas id="canvas4Temp" style="background-color: whitesmoke" > </canvas>-->
+    </div>
+
+    <!--绘制合并生成图像-->
+    <div id="mergeContainer" style="display:none;">
+        <div id="mergeDiv0" style="display:none;">
+            <!--<canvas id="mergeCanv0" style="background-color: whitesmoke"></canvas>-->
+        </div>
+    </div>
+
+</div>
+
+<!--缩略图模版-->
+<script type="template" id='dvPreviewTemp'>
+
+    <div class="imgBox">
+        <!--图像-->
+        <div class="img js-dragToCanv" iid="<%=iid %>" id="<%=id %>" suid="<%=suid %>" imageid="<%=imageId %>">
+        </div>
+        <!--图像总数-->
+        <div class="tag">
+            <span class="right"><span class="total"></span></span>
+        </div>
+        <!--图像序列编号-->
+        <div class="tagL">
+            <span class="left"><span class="se"></span></span>
+        </div>
+        <!--检查时间-->
+        <div class="tagB font10">
+            <span class="rightB studyDate"><span>20160305</span></span>
+        </div>
+
+    </div>
+</script>
+<script type="template" id="seriesWindowTemp">
+    <div id="<%=id %>" class="seriesWindow" no="<%=no %>">
+        <!-- 图像翻页滚动条-->
+        <div class="imgSlider"
+             style=" opacity:0; border-radius: 5px; background-color:#E9E7E2; width: 20px;height: 60%;z-index: 9999;position:absolute;bottom: 20%;top:20%;right: 5px;">
+            <div class="imgblock"
+                 style="opacity:0.8; border-radius: 5px; background-color: black;width: 20px;height: 15px;z-index: 10000;position:absolute;top: 0;left:0; border: 1px solid #00BC8C"></div>
+        </div>
+
+        <!--播发控制条-->
+        <ul class="playcontrol"  style="display: none">
+            <!--<ul class="playcontrol"   >-->
+            <div class="btnArea playFirst"   title="第一张"  >
+                <div class='btn'>
+                    <div class="icon icon-home-page2"></div>
+                </div>
+            </div>
+            <div class="btnArea playSlow"   title="减速">
+                <div class='btn'>
+                    <div class="icon icon-rewind2"></div>
+                </div>
+            </div>
+            <div class="btnArea playStop" style="display: none" title="暂停">
+                <div class='btn'>
+                    <div class="icon icon-stop2"></div>
+                </div>
+            </div>
+            <div class="btnArea playStart"   title="播放">
+                <div class='btn'>
+                    <div class="icon icon-paly2"></div>
+                </div>
+            </div>
+            <div class="btnArea playFast"   title="加速">
+                <div class='btn'>
+                    <div class="icon icon-fast2"></div>
+                </div>
+            </div>
+            <div class="btnArea playLast"   title="最后一张">
+                <div class='btn'>
+                    <div class="icon icon-shadowe2"></div>
+                </div>
+            </div>
+        </ul>
+        <!--图像框中的按钮区域-->
+        <div class="expand">
+            <!--最大化-->
+            <div class="btnArea js-fulScreen"  title="最大化">
+                <div class='btn'>
+                    <div class="icon icon-fullScreen" style="width: 22px;height: 22px"></div>
+                </div>
+            </div>
+
+            <div class="btnArea js-restore"  title="恢复布局" style="display: none" >
+                <div class='btn'>
+                    <div class="icon icon-restore" style="width: 22px;height: 22px"></div>
+                </div>
+            </div>
+
+            <!--同步-->
+            <div class="btnArea js-syn"  title="同步">
+                <div class='btn'>
+                    <div class="icon icon-layerSyn"></div>
+                </div>
+            </div>
+
+            <div class="btnArea js-lungAI"  title="肺结节AI诊断"  style="display: none">
+                <div class='btn' style="text-align: center; line-height: 15px;">
+                    <div class="icon icon-lungAI" ></div>
+                </div>
+            </div>
+
+            <!--vr-->
+
+            <div class="btnArea js-VR" style="display: none" title="VR-MPR">
+                <div class='btn'>
+                    <div class="icon icon-3D"></div>
+                </div>
+            </div>
+
+
+            <div class="btnArea js-mpr"  title="MPR" style="display: none">
+                <div class='btn'>
+                    <div class="icon icon-mpr"></div>
+                </div>
+            </div>
+
+
+
+
+            <!--联动-->
+            <!--<div class="btnArea js-scrollAll" style="display: none" title="联动">-->
+                <!--<div class='btn'>-->
+                    <!--<div class="icon icon-scrollSync"></div>-->
+                <!--</div>-->
+            <!--</div>-->
+
+
+
+
+        </div>
+    </div>
+</script>
+<script type="template" id="viewportWrapperTemp">
+    <div id="<%=id %>" class="viewportWrapper" no="<%=no %>" unselectable="on" onselectstart="return false;"
+         onmousedown="return false;">
+        <!-- Viewport -->
+        <div id="<%=eid %>" class="viewport ui-droppable"
+             style="touch-action: none; -webkit-user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
+        </div>
+
+        <div class="RulerBoxV"  >
+            <div class="masterV">
+                <div class="masterLineV"></div>
+            </div>
+            <div class="dividingV">
+                <div class="dividingLineV">
+                    <div class="  startLineV" style=" background-color: #00BC8C;   width: 13px;  height: 1px;  right: 0;  position: absolute; top: 0;"></div>
+                    <div class="cmLineBox">
+                        <div class="cmLineV"></div>
+                    </div>
+                    <div class="cmLineBox">
+                        <div class="cmLineV"></div>
+                    </div>
+                    <div class="cmLineBox">
+                        <div class="cmLineV"></div>
+                    </div>
+                    <div class="cmLineBox">
+                        <div class="cmLineV"></div>
+                    </div>
+                    <div class="cmLineBox">
+                        <div class="cmLineV" style="width:13px;"></div>
+                    </div>
+                    <div class="cmLineBox">
+                        <div class="cmLineV"></div>
+                    </div>
+                    <div class="cmLineBox">
+                        <div class="cmLineV"></div>
+                    </div>
+                    <div class="cmLineBox">
+                        <div class="cmLineV"></div>
+                    </div>
+                    <div class="cmLineBox">
+                        <div class="cmLineV"></div>
+                    </div>
+                    <div class="  endLineV" style=" background-color: #00BC8C; width: 13px; height: 1px; right: 0;  position: absolute; bottom: 0; "></div>
+                </div>
+            </div>
+        </div>
+        <div class="RulerBoxH"  >
+
+            <div class="dividingH">
+                <div class="dividingLineH">
+                    <div class="  startLineH" style=" background-color: #00BC8C;  height: 13px;  width: 1px; left: 0;  position: absolute; bottom: 0;"></div>
+                    <div class="cmLineBox">
+                        <div class="cmLineH"></div>
+                    </div>
+                    <div class="cmLineBox">
+                        <div class="cmLineH"></div>
+                    </div>
+                    <div class="cmLineBox">
+                        <div class="cmLineH"></div>
+                    </div>
+                    <div class="cmLineBox">
+                        <div class="cmLineH"></div>
+                    </div>
+                    <div class="cmLineBox">
+                        <div class="cmLineH" style="height:13px;"></div>
+                    </div>
+                    <div class="cmLineBox">
+                        <div class="cmLineH"></div>
+                    </div>
+                    <div class="cmLineBox">
+                        <div class="cmLineH"></div>
+                    </div>
+                    <div class="cmLineBox">
+                        <div class="cmLineH"></div>
+                    </div>
+                    <div class="cmLineBox">
+                        <div class="cmLineH"></div>
+                    </div>
+                    <div class="  endLineH" style=" background-color: #00BC8C;  height: 13px;  width: 1px;  right: 0;  position: absolute; bottom: 0; "></div>
+                </div>
+            </div>
+            <div class="masterH">
+                <div class="masterLineH"></div>
+            </div>
+        </div>
+
+        <!-- Overlays -->
+        <!--左上角信息-->
+        <div class="overlay js-lt" style="top:5px; left:5px">
+            <!--医院名称-->
+            <div class="js-info-InstitutionName js-info"></div>
+            <!--序列信息-->
+            <div>
+                <span class="js-info js-info-SeNo"></span>
+                <span class="js-info js-info-nowNo"></span>
+                <span class="js-info js-info-totalNo"></span>
+            </div>
+            <!--病人信息-->
+            <div class="js-info-PatientName js-info"></div>
+            <div class="js-info-PatientID js-info" title="病人ID"></div>
+            <div>
+                <span class="js-info-PatientAge js-info"></span>
+                <span class="js-info-PatientSex js-info"></span>
+            </div>
+        </div>
+        <!--右上角信息-->
+        <div class="overlay js-rt" style="top:5px; right:5px;text-align: right; display:none;" >
+        </div>
+        <!--左下角信息-->
+        <div class="overlay js-lb" style="bottom:5px; left:5px">
+            <!--图像信息-->
+            <div class="js-info-zoom js-info"></div>
+            <div class="js-info-wwwl js-info"></div>
+            <div class="js-TL js-info"></div>
+            <div class="js-info-fov js-info"></div>
+            <div class="js-info-MagneticFieldStrength js-info"></div>
+            <div class="js-info-TrTe js-info"></div>
+            <!--备注-->
+            <div class="js-info-CBZ js-info"></div>
+        </div>
+        <!--右下角信息-->
+        <div class="overlay js-rb" style="bottom:5px; right:5px;text-align: right">
+            <!--检查信息-->
+            <div class="js-info-Modality js-info"></div>
+            <div class="js-info-StudyDescription js-info"  ></div>
+            <div >
+                <span class="js-info-kvp js-info"></span>
+                <span class="js-info-mA js-info"></span>
+            </div>
+            <!--<div class="js-info-ProtocolName js-info"  > </div>-->
+
+            <div class="js-info-datetime js-info"></div>
+        </div>
+    </div>
+</script>
+<!--
+<script type="template" id="viewportWrapperTemp">
+    <div id="<%=id %>" class="viewportWrapper" no="<%=no %>" unselectable="on" onselectstart="return false;"
+         onmousedown="return false;">
+        &lt;!&ndash; Viewport &ndash;&gt;
+        <div id="<%=eid %>" class="viewport ui-droppable"
+             style="touch-action: none; -webkit-user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
+        </div>
+        &lt;!&ndash; Overlays &ndash;&gt;
+        <div class="overlay js-lt" style="top:5px; left:5px">
+            <div class=""><span class="js-info js-info-nowNo"></span><span class="js-info js-info-totalNo"></span></div>
+            <div class="js-info-SeNo js-info"></div>
+            <div class="js-info-Modality js-info"></div>
+            <div class="js-info-InstitutionName js-info"></div>
+            <div class="js-info-PatientName js-info"></div>
+            <div class="js-info-PatientID js-info"></div>
+            <div><span class="js-info-PatientBirthDate js-info"></span><span
+                    class="js-info-PatientAge js-info"></span><span class="js-info-PatientSex js-info"></span></div>
+            <div class="js-info-CBZ js-info"></div>
+        </div>
+       &lt;!&ndash; <div class="overlay js-rt" style="top:5px; right:5px;text-align: right">
+            <div class="js-info-InstitutionName js-info"></div>
+            <div class="js-info-PatientName js-info"></div>
+            <div class="js-info-PatientID js-info"></div>
+            <div><span class="js-info-PatientBirthDate js-info"></span><span
+                    class="js-info-PatientAge js-info"></span><span class="js-info-PatientSex js-info"></span></div>
+            <div class="js-info-CBZ js-info"></div>
+        </div>&ndash;&gt;
+        <div class="overlay js-lb" style="bottom:5px; left:5px">
+            <div class="js-info-zoom js-info"></div>
+            <div class="js-info-wwwl js-info"></div>
+            <div class="js-TL js-info"></div>
+            <div class="js-info-ProtocolName js-info"></div>
+            <div class="js-info-StudyDescription js-info"></div>
+        </div>
+        <div class="overlay js-rb" style="bottom:5px; right:5px;text-align: right">
+            &lt;!&ndash;sj add&ndash;&gt;
+            <span class="js-info-kvp js-info"></span>
+            <span class="js-info-mA js-info"></span>
+            &lt;!&ndash;sj add end&ndash;&gt;
+            <div class="js-info-fov js-info"></div>
+            <div class="js-info-MagneticFieldStrength js-info"></div>
+            <div class="js-info-TrTe js-info"></div>
+            <div class="js-info-datetime js-info"></div>
+        </div>
+    </div>
+</script>
+-->
+<!--主影像页面-->
+<script type="template" id="dvContainerTemp">
+    <div class='dvContainer' id='<%=containerId %>'>
+        <div class="dateTips" style="position: absolute;top: 5px;right: 5px;color: #b67878;z-index: 1000001;"></div>
+        <!--<di class="head"></di>-->
+        <!-- Toolbar -->
+        <div class="topPannel js-topPannel">
+            <div id="top_tool">
+                <!--<div class="logo"> Image Viewers</div>-->
+                <div class="logo" style="display: list-item;">
+                    <img src="ipacsdv/css/img/logoEngine.png" style="width: 75%; margin-bottom: 5px;  ">
+                </div>
+                <!--指针-->
+                <div class='stateTool tool_btn js-default' title="默认鼠标">
+                    <div class='btn'>
+                        <div class="icon icon-pointer"></div>
+                    </div>
+
+                </div>
+                <!--刷新恢复-->
+                <div class='tool_btn js-refresh' title="刷新">
+                    <div class='btn'>
+                        <div class="icon icon-refresh"></div>
+                    </div>
+                </div>
+
+                <!--浏览序列-->
+                <div class='stateTool  tool_btn js-browseSeries' title="翻页">
+                    <div class='btn '>
+                        <div class="icon icon-paging"></div>
+                    </div>
+                </div>
+
+
+                <!--分隔线-->
+                <div class='topLine' ></div>
+
+                <div class="tool_window"   >
+                    <li style="font-size: 12px;margin-left: 5px;margin-right: 5px;margin-top: 5px" >窗位: <input id="centerInput" type="text" class="windowInput centerInput" maxlength="6"  style="color:#ffffff; margin-right: 4px;" onblur="isFocus()">  窗宽: <input id="widthInput" type="text" class="windowInput widthInput" maxlength="6"  style="color: #ffffff;" onblur="isFocus()"></li>
+                    <li style="display: inline-block; width: 100% ;padding-right: 4px">
+                        <!--调窗-->
+                        <div class='imgTool  btnArea js-wwwl' title="调窗">
+                            <div class='btn'>
+                                <div class="icon icon-wwwl"></div>
+                            </div>
+                        </div>
+                        <!--快捷调窗-->
+                        <div class='  btnArea js-quickwwwl' title="预设调窗">
+                            <div class='btn'>
+                                <div class="icon icon-quickwwwl"></div>
+                            </div>
+                        </div>
+                        <!--反显-->
+                        <div class='  btnArea js-invert' title="反显">
+                            <div class='btn'>
+                                <div class="icon icon-inv"></div>
+                            </div>
+                        </div>
+                        <!--伪彩-->
+                        <div class='  btnArea js-fakecolor' title="伪彩" style="padding-right: 0px!important;">
+                            <div class='btn'>
+                                <div class="icon icon-fakecolor"></div>
+                            </div>
+                        </div>
+                    </li>
+                </div>
+
+
+                <!--分隔线-->
+                <div class='topLine'  ></div>
+
+
+                <!--左旋90-->
+                <div class='tool_btn js-ccw' title="左旋">
+                    <div class='btn'>
+                        <div class="icon icon-rotateL"></div>
+                    </div>
+                </div>
+
+                <!--右旋90-->
+                <div class='tool_btn js-cw' title="右旋">
+                    <div class='btn'>
+                        <div class="icon icon-rotateR"></div>
+                    </div>
+                </div>
+
+                <!--垂直镜像-->
+                <div class='tool_btn js-vRev' title="垂直镜像">
+                    <div class='btn'>
+                        <div class="icon icon-vRev"></div>
+                    </div>
+                </div>
+                <!--水平镜像-->
+                <div class='tool_btn js-hRev' title="水平镜像">
+                    <div class='btn'>
+                        <div class="icon icon-hRev"></div>
+                    </div>
+                </div>
+
+
+                <!--移动-->
+                <div class='imgTool tool_btn js-pan' title="移动">
+                    <div class='btn'>
+                        <div class="icon icon-drag"></div>
+                    </div>
+                </div>
+                <!--缩放-->
+                <div class='imgTool tool_btn js-zoom' title="缩放">
+                    <div class='btn'>
+                        <div class="icon icon-zoomInOut"></div>
+                    </div>
+
+                </div>
+                <!--局部放大-->
+                <div class='imgTool tool_btn js-zoomPart' title="局部放大">
+                    <div class='btn'>
+                        <div class="icon icon-zoomPart"></div>
+                    </div>
+                </div>
+
+                <!--定位线-->
+                <div class='stateTool tool_btn js-reference' title="定位线"  >
+                    <div class='btn '>
+                        <div class="icon icon-pos"></div>
+                    </div>
+                </div>
+
+
+                <!--显示/隐藏图像信息-->
+                <div class='stateTool tool_btn  checked js-infoVisible' title="文字信息"  >
+                    <div class='btn btnActive'>
+                        <div class="icon icon-font"></div>
+                    </div>
+                </div>
+                <!--分隔线-->
+                <div class='topLine'  ></div>
+
+                <!--播放-->
+                <div class='tool_btn js-play' title="播放" >
+                    <div class='btn'>
+                        <div class="icon icon-play"></div>
+                    </div>
+                </div>
+                <!--播放停止-->
+                <div class='tool_btn js-stop' style="display: none;" title="停止">
+                    <div class='btn'>
+                        <div class="icon icon-pause"></div>
+                    </div>
+                </div>
+
+                <!--联动-->
+                <div class="stateTool tool_btn js-scrollAll" title="联动">
+                    <div class='btn'>
+                        <div class="icon icon-scrollSync"></div>
+                    </div>
+                </div>
+
+
+
+                <!--影像布局-->
+                <div class='tool_btn js-layoutSelector ' title="窗口布局">
+                    <div class='btn'>
+                        <div class="icon icon-map"></div>
+                    </div>
+                </div>
+                <!--子分格布局-->
+                <div class='tool_btn js-innerlayoutSelector '  title="序列布局">
+                    <div class='btn'>
+                        <div class="icon icon-mapInner"></div>
+                    </div>
+                </div>
+
+                <!--分隔线-->
+                <div class='topLine' style="margin-left: -5px"></div>
+
+                <!--胶片打印-->
+                <div class='tool_btn js-dcmPrint' title="胶片打印">
+                    <div class='btn'>
+                        <div class="icon icon-print" ></div>
+                    </div>
+                </div>
+                <!--拼接-->
+                <div class='tool_btn js-dcmJoin' title="图像拼接">
+                    <div class='btn'>
+                        <div class="icon icon-join" ></div>
+                    </div>
+                </div>
+
+                <!--下载-->
+                <div class='tool_btn js-downloadset' title="图像下载">
+                    <div class='btn'>
+                        <div class="icon icon-download"></div>
+                    </div>
+                </div>
+
+                <!--本地上传文件-->
+                <div class='tool_btn ' title="打开本地文件" style="display: none" > <!--style="display: none"-->
+                    <div class='btn js-putFileBtn'>
+                        <div class="icon icon-upload"></div>
+                    </div>
+                    <input id="putFile" style="display: none" type="file"/>
+                </div>
+
+
+
+                <!--设置-->
+                <div class='tool_btn js-sets' title="设置" style="display: none;" >
+                    <div class='btn'>
+                        <div class="icon icon-setup" ></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--缩略图-->
+        <div class='leftGallery'></div>
+        <!--垂直工具栏-->
+        <div class="toolV">
+
+            <!--点测量1-->
+            <div class='imgTool btnArea js-probe' title="点值测量">
+                <div class='btn'>
+                    <div class="icon icon-spot"></div>
+                </div>
+            </div>
+            <!--点测量2-->
+            <div class='imgTool btnArea js-probeUnSave' title="点值" style="display: none;">
+                <div class='btn'>
+                    <div class="icon icon-spot"></div>
+                </div>
+            </div>
+            <!--长度测量-->
+            <div class='imgTool btnArea js-length' title="长度测量">
+                <div class='btn'>
+                    <div class="icon icon-line"></div>
+                </div>
+
+            </div>
+            <!--心胸比  js-heartScale-->
+            <div class='imgTool btnArea js-heartScale' title="心胸比">
+                <div class='btn'>
+                    <div class="icon icon-twolines"></div>
+                </div>
+
+            </div>
+            <!--twolines-->
+            <div class='btnArea js-twolines' style="display: none">
+                <div class='btn'>
+                    <div class="icon icon-twolines"></div>
+                </div>
+
+            </div>
+            <!--角度测量-->
+            <div class='imgTool btnArea js-angle' title="角度测量">
+                <div class='btn'>
+                    <div class="icon icon-angle"></div>
+                </div>
+
+            </div>
+            <!--椭圆测量-->
+            <div class='imgTool btnArea js-ellipse' title="椭圆测量">
+                <div class='btn'>
+                    <div class="icon icon-ellipse"></div>
+                    <!--<div class="icon "><span class="fa fa-circle-o"></span></div>-->
+                </div>
+
+            </div>
+            <!--矩形测量-->
+            <div class='imgTool btnArea js-rect ' title="矩形测量">
+                <div class='btn'>
+                    <div class="icon icon-rect"></div>
+                </div>
+
+            </div>
+            <!--分隔线-->
+            <li class="leftLine"></li>
+            <!--清除测量-->
+            <div class='btnArea js-clearToolState' title="清空测量">
+                <div class='btn'>
+                    <div class="icon icon-clear"></div>
+                </div>
+            </div>
+
+            <!--隐藏右侧缩略图-->
+
+            <div class="btnBottom js-hideLeft" state="hide" title="隐藏右侧缩略图">
+                <div class='btn'>
+                    <div class="icon icon-shrink"></div>
+                </div>
+
+            </div>
+            <!--<div class="btnBottom js-hideLeft" state="hide" title="隐藏右侧缩略图"><span>《</span></div>-->
+
+        </div>
+
+        <!--sj add end-->
+        <div class="viewer">
+
+
+
+            <!-- Viewer -->
+            <div class="imageViewer js-imageViewer" oncontextmenu="return false;">
+                <div class="mprPage" style="display: none">
+                </div>
+
+                <div class="printPageM" style="display: none">
+                </div>
+                <!--播放速度控制干-->
+                <div id="playSpeedSet" style="display: none;">
+                    &lt;!&ndash;<span>慢</span><div class="rangeBar"></div><span>快</span>&ndash;&gt;
+                    <span style="font-size: 20px;padding-right: 10px;padding-left: 10px;"><i class="fa fa-minus"
+                                                                                             aria-hidden="true"></i></span>
+                    <div class="rangeBar"></div>
+                    <span style="padding-left: 28px;font-size: 20px;padding-right: 10px;"><i class="fa fa-plus"
+                                                                                             aria-hidden="true"></i></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</script>
+
+
+<div id="shareflag" style="display: none"></div>
+
+<div id="rid" style="display: none"><?php echo $rid; ?></div>
+
+
+<!--<div id="papaFrame" style="visibility: hidden">
+    <div class="bg"></div>
+    <div class="mprClose js-mprClose">X</div>
+
+    <div style="text-align:center;background-color: white;width: 80px;height: 30px;line-height: 30px;font-size: 18px;position: absolute;top:0;left: 0;color: black;z-index: 100000000000">
+        V1.0
+    </div>
+    <iframe id="mprFrame" name="mprFrame" style="width: 96%;height: 96%;" src="papa_gai/html/papa.html" width="96%"
+            height="96%">
+    </iframe>
+</div>-->
+<div id="papaFrame" style="visibility: hidden">
+    <!--<div class="bg"></div>-->
+     <div class="mprClose js-mprClose" style="display: none;">✖</div>
+    <!--<div class="mprSmall js-mprHide">-</div>-->
+    <!-- <div style="text-align:center;background-color: white;width: 80px;height: 30px;line-height: 30px;font-size: 18px;position: absolute;top:0;left: 0;color: black;z-index: 100000000000">
+
+     </div>-->
+    <iframe id="mprFrame" name="mprFrame" style="width: 100%;height:100%;" src="papa_gai/html/main.html" width="100%" height="100%">
+    </iframe>
+    <!--  <iframe id="mprFrame" name="mprFrame" style="width: 95%;height: 95%;" src="papa_gai/html/papa.html" width="95%" height="95%">
+        </iframe>-->
+
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#papaFrame").hide();//解决papaya的不同版本google兼容问题
+        var dvIniSetOpts = {};
+        try {
+            //  线上
+            var id = getRID();
+            var pcode = GetPlatCode();
+            var localurl = GetLocalurl();
+            var urls = getUrls();
+            console.log(id);//2016-12-29
+            console.log(pcode);//2016-12-29
+            IID = id;
+
+            drawType = GetDrawType("type");
+            if (drawType == "" || drawType == undefined || drawType == null) {
+                drawType = "web";
+            }
+
+           // var outputObj = JSON.parse(Getoutput(id, pcode, localurl));//JSON.parse($("#dicomOutput").text());
+            var outputObj = JSON.parse(Getoutput1(urls));
+
+            if (_.isNull(outputObj)) {
+                alert("无数据或数据异常");
+            }
+            if (_.isArray(outputObj.dicom) && outputObj.dicom.length > 0) {
+                if (outputObj.edu) {
+                    var outputSeriesArr = outputTranslateEdu(outputObj.dicom);
+                } else {
+
+                    var outputSeriesArr = outputTranslate(outputObj.dicom);
+                }
+
+                dvIniSetOpts.defaultShow = {
+                    num: outputSeriesArr.length,
+                    suidArr: []
+                }
+                for (var i = 0; i < outputSeriesArr.length; i++) {
+                    dvIniSetOpts.defaultShow.suidArr.push(outputSeriesArr[i].suid);
+                }
+                dvStruct.outputSeriesArr = outputSeriesArr;
+                var shareflag = Getshareflag();
+                console.log(shareflag);
+                if (shareflag == "1") {
+                    dvStruct.share = false;
+                }
+                else {
+                    dvStruct.share = true;
+                }
+
+                //线上
+                dvStruct.userCode = GetUserCode();
+                dvStruct.hospitalCode = GetHospitalCode();
+                dvStruct.localIP = GetLocalIP();
+                console.log("dvStruct.userCode================================");
+                console.log(dvStruct.userCode);
+                console.log("dvStruct.hospitalCode================================");
+                console.log(dvStruct.hospitalCode);
+                //打印 end
+
+            }
+        } catch (e) {
+            console.error(e);
+        }
+
+        var dv = $('#container').dv(dvIniSetOpts);
+
+       /*   $('.js-putFileBtn').click(function () {
+            $('#putFile').click();
+        });
+
+        $('#putFile').change(function (e) {
+            var files = e.target.files;
+            //console.log(files);
+            if (files.length !== 0) {
+                io.File.load(files);
+            }
+        });*/
+
+        var initcnt = 0;
+        if (_.isArray(outputSeriesArr)) {
+            //      初始快捷调窗信息
+            var d00 = outputSeriesArr[0].dicoms[0];
+
+            if (dvStruct.hospitalCode != undefined && dvStruct.hospitalCode != null) {
+                if (dvStruct.hospitalCode.length > 0) {
+                    var code = dvStruct.hospitalCode;
+                    showPrintInfo(code);
+                }
+            }
+
+            for (var i = 0; i < outputSeriesArr.length; i++) {
+                initcnt += outputSeriesArr[i].dicoms.length;
+            }
+            unit.loadingProcessing.init(initcnt);
+        }
+        /*if (_.isArray(outputSeriesArr)) {
+            for (var i = 0; i < outputSeriesArr.length; i++) {
+                for (var j = 0; j < outputSeriesArr[i].dicoms.length; j++) {
+                    var dO = outputSeriesArr[i].dicoms[j];
+                    if (dO.theUrl) {
+                        io.Url.load(dO.theUrl, dO);
+                    }
+                }
+            }
+        }*/
+        if (_.isArray(outputSeriesArr)) {
+            for (var i = 0; i < outputSeriesArr.length; i++) {
+                for (var j = 0; j < outputSeriesArr[i].dicoms.length; j++) {
+                    var dO = outputSeriesArr[i].dicoms[j];
+                   console.log(dO);
+                    if (dO.theUrl) {
+                        io.Url.load(dO.theUrl, dO);
+                    }
+                    
+                }
+            }
+
+            /*  if(thawFlag){
+             console.log("123");
+             callFlaw();//数据解冻
+             };*/
+//            console.log("==============================================");
+//            console.log(dvStruct);
+        }
+
+    });
+</script>
+</body>
+</html>

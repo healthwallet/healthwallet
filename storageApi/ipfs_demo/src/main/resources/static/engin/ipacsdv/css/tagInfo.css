@@ -1,0 +1,82 @@
+@font-face {
+  /* font-properties */
+  font-family: pictos;
+  src: url('../css/font/PingFang Light.ttf');
+}
+.infoConBox {
+  position: relative;
+  display: block;
+  background: rgba(255, 255, 255, 0);
+  width: 500px;
+  height: 500px;
+  float: left;
+}
+.infoConBox .rtInfoCon {
+  position: absolute;
+  display: block;
+  width: 100%;
+  top: 0;
+  right: 0;
+  text-align: right;
+}
+.infoConBox .rbInfoCon {
+  position: absolute;
+  display: block;
+  width: 100%;
+  right: 0;
+  bottom: 0;
+  text-align: right;
+}
+.infoConBox .ltInfoCon {
+  position: absolute;
+  display: block;
+  width: 100%;
+  top: 0;
+  left: 5px;
+  text-align: left;
+}
+.infoConBox .lbInfoCon {
+  position: absolute;
+  display: block;
+  width: 100%;
+  bottom: 0;
+  left: 5px;
+  text-align: left;
+}
+#infoPage {
+  position: absolute;
+  top: 0;
+  z-index: 9999;
+  font-family: pictos !important;
+}
+.topMask {
+  position: absolute;
+  left: 0;
+  display: none;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: #ccc;
+  filter: alpha(opacity=40);
+  opacity: 0.40;
+  font-size: 1px;
+  z-index: 100010;
+  overflow: hidden;
+}
+.topMask .topMaskText {
+  height: 40px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  font-size: 20px;
+  line-height: 40px;
+  border-radius: 5px;
+  width: 200px;
+  background: #2e2b34;
+  color: greenyellow;
+  text-align: center;
+  opacity: 1!important;
+}

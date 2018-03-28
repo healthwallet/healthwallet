@@ -1,0 +1,9 @@
+server:
+  port: 8087
+  connstr: /ip4/192.168.2.7/tcp/5001|/ip4/192.168.2.226/tcp/5001|/ip4/192.168.2.9/tcp/5001
+spring:
+  http:
+    multipart:
+      enabled: true
+      max-file-size: 301024MB
+      max-request-size: 301024MB

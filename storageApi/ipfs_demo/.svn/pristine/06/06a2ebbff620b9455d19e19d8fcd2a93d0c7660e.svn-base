@@ -1,0 +1,787 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+html,
+body {
+  height: 100%;
+}
+body {
+  font-size: 16px;
+  height: 100%;
+  font-family: "Microsoft YaHei", "微软雅黑", "Helvetica Neue", "Luxi Sans", "Microsoft JhengHei", "华文细黑", STHeiti, MingLiu;
+  color: white;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+a {
+  cursor: pointer;
+  text-decoration: none;
+}
+ul,
+ol {
+  list-style: none;
+}
+#unitMask {
+  z-index: 9000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+#unitLayoutSelector,
+#unitInnerLayoutSelector {
+  position: absolute;
+  box-sizing: content-box;
+  border: 1px solid #5A5A5A;
+  padding: 1px;
+  background-color: #5A5A5A;
+  z-index: 10000;
+}
+#unitLayoutSelector .urow,
+#unitInnerLayoutSelector .urow {
+  margin-left: 0;
+  width: 100%;
+  margin-right: 0;
+}
+#unitLayoutSelector .urow:after,
+#unitInnerLayoutSelector .urow:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+#unitLayoutSelector .ucol,
+#unitInnerLayoutSelector .ucol {
+  float: left;
+  width: 40px;
+  height: 40px;
+  margin: 2px;
+  text-align: center;
+  font-size: 12px;
+  line-height: 40px;
+  color: white;
+  background-color: #828282;
+  box-sizing: border-box;
+  border: 1px solid transparent;
+}
+#unitLayoutSelector .ucol.lighten,
+#unitInnerLayoutSelector .ucol.lighten {
+  border: 1px solid white;
+  background-color: #B4B4B4;
+}
+#quickWWWLBox {
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  position: absolute;
+  margin: auto;
+  z-index: 10000;
+  width: 360px;
+  height: 400px;
+  padding: 0 5px 10px;
+  background-color: #E9E7E2;
+  font-size: 14px;
+}
+#quickWWWLBox .topbar {
+  height: 30px;
+}
+#quickWWWLBox .topbar .closeBtn {
+  font-size: 14px;
+  position: absolute;
+  background-color: #FF7D6F;
+  color: white;
+  top: -2px;
+  right: 10px;
+  padding: 2px 5px;
+}
+#quickWWWLBox .calBox {
+  background-color: #4D4D4D;
+  height: 40px;
+  padding: 8px 10px;
+}
+#quickWWWLBox .calBox .inputArea,
+#quickWWWLBox .calBox .yes {
+  display: inline-block;
+}
+#quickWWWLBox .calBox .inputArea {
+  width: 120px;
+}
+#quickWWWLBox .calBox .inputArea input {
+  display: inline-block;
+  color: black;
+  height: 24px;
+  padding-left: 8px;
+  background-color: #e9e7e2;
+  border: 0;
+  width: 60px;
+}
+#quickWWWLBox .calBox .yes {
+  cursor: pointer;
+  height: 24px;
+  line-height: 24px;
+  display: inline-block;
+  text-align: center;
+  background-color: #918b87;
+  margin-right: 5px;
+  width: 45px;
+  color: #e9e7e2;
+}
+#quickWWWLBox .calBox .yes:hover {
+  background-color: #77726e;
+}
+#quickWWWLBox .ceilBox {
+  padding: 5px;
+  height: 300px;
+  position: relative;
+  background-color: #3F3F3F;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  color: #888888;
+}
+#quickWWWLBox .ceilBox::-webkit-scrollbar {
+  /*滚动条，这里不倒腾用户体验了，暂时在满足webkit，这里主要是想节约空间，其实大可不必通过滚动条*/
+  width: 8px;
+  height: 8px;
+}
+#quickWWWLBox .ceilBox::-webkit-scrollbar-thumb {
+  background: #888888;
+  border-radius: 4px;
+}
+#quickWWWLBox .ceilBox::-webkit-scrollbar-track {
+  background: #424242;
+  width: 8px;
+}
+#quickWWWLBox .ceilBox::-webkit-scrollbar-button {
+  background-color: #424242;
+  height: 4px;
+}
+#quickWWWLBox .ceilBox .aCeil {
+  background-color: #E9E7E2;
+  padding: 6px 10px;
+  cursor: pointer;
+  margin: 8px;
+  text-align: center;
+  display: block;
+  float: left;
+}
+#quickWWWLBox .ceilBox .aCeil:hover {
+  background-color: #bdb7a8;
+  color: black;
+}
+.processingBox {
+  box-sizing: border-box;
+  width: 100%;
+  border-right: 8px solid #888888 ;
+  margin: 0 auto;
+  position: relative;
+  padding-left: 5px;
+}
+.processingBox .progress {
+  margin-bottom: 0;
+}
+.processingBox .hidebtn {
+  font-size: 12px;
+  border-radius: 3px;
+  line-height: 16px;
+  cursor: pointer;
+  position: absolute;
+  background-color: #FF7D6F;
+  color: white;
+  top: 2px;
+  right: 0px;
+  padding: 1px 3px;
+}
+.processingBox .loadingTxt {
+  font-size: 12px;
+}
+.processingBox .failed {
+  font-size: 12px;
+  display: inline-block;
+}
+.processingBox .failed .tryAgain {
+  color: #00aaff;
+  cursor: pointer;
+}
+#playSpeedSet {
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  position: absolute;
+  margin: auto;
+  z-index: 11000;
+  width: 300px;
+  height: 40px;
+  background-color: #0b97c4;
+  padding-left: 10px;
+  padding-top: 10px;
+}
+#playSpeedSet .rangeBar,
+#playSpeedSet span {
+  display: inline-block;
+}
+#playSpeedSet span {
+  text-align: center;
+  width: 30px;
+  font-size: 14px;
+}
+#playSpeedSet .rangeBar {
+  width: 200px;
+}
+.icon-lock {
+  background-image: url("img/seriesLock.png");
+}
+.icon-wwwc {
+  background-image: url("img/wwwcMouse.png");
+}
+.icon-wwwl {
+  background-image: url("img/wwwl.png");
+}
+.icon-zoom {
+  background-image: url("img/zoom1.png");
+}
+.icon-wwwchand {
+  background-image: url("img/wwwcHand.png");
+}
+.icon-paging {
+  background-image: url("img/pagingMouse.png");
+}
+.icon-wwwc2 {
+  background-image: url("img/wwwc.png");
+}
+.icon-drag {
+  background-image: url("img/drag.png");
+}
+.icon-cw {
+  background-image: url("img/cw.png");
+}
+.icon-ccw {
+  background-image: url("img/ccw.png");
+}
+.icon-rotateR {
+  background-image: url("img/rotater.png");
+}
+.icon-rotateL {
+  background-image: url("img/rotatel.png");
+}
+.icon-download {
+  background-image: url("img/download.png");
+}
+.icon-map {
+  background-image: url("img/map.png");
+}
+.icon-mapInner {
+  background-image: url("img/mapInner.png");
+}
+.icon-fakecolor {
+  background-image: url("img/fakecolor.png");
+}
+.icon-inv {
+  background-image: url("img/inv.png");
+}
+.icon-refresh {
+  background-image: url("img/refresh3.png");
+}
+.icon-pos {
+  background-image: url("img/posLine.png");
+}
+.icon-zoomIn {
+  background-image: url("img/zoomin.png");
+}
+.icon-zoomOut {
+  background-image: url("img/zoomout.png");
+}
+.icon-glass {
+  background-image: url("img/zoom.png");
+}
+.icon-scrollSync {
+  background-image: url("img/scrollSync.png");
+}
+.icon-hRev {
+  background-image: url("img/hRev.png");
+}
+.icon-vRev {
+  background-image: url("img/vRev.png");
+}
+.icon-rulerR {
+  background-image: url("img/ruler.png");
+}
+.icon-ct {
+  background-image: url("img/ct.png");
+}
+.icon-eye {
+  background-image: url("img/eye.png");
+}
+.icon-eye2 {
+  background-image: url("img/eye2.png");
+}
+.icon-cancel {
+  background-image: url("img/back.png");
+}
+.icon-pen {
+  background-image: url("img/pen.png");
+}
+.icon-rect {
+  background-image: url("img/rect.png");
+}
+.icon-angle {
+  background-image: url("img/angle.png");
+}
+.icon-text {
+  background-image: url("img/text.png");
+}
+.icon-line {
+  background-image: url("img/line.png");
+}
+.icon-help {
+  background-image: url("img/help.png");
+}
+.icon-left {
+  background-image: url("img/left.png");
+}
+.icon-right {
+  background-image: url("img/right.png");
+}
+.icon-img {
+  background-image: url("img/img.png");
+}
+.icon-menu {
+  background-image: url("img/menu.png");
+}
+.icon-ipacs {
+  background-image: url("img/ipacs.png");
+}
+.icon-ipacsBlue {
+  background-image: url("img/ipacsBlue.png");
+}
+.icon-mpr {
+  background-image: url("img/mpr.png");
+}
+.icon-change {
+  background-image: url("img/change.png");
+}
+.icon-close {
+  background-image: url("img/close.png");
+}
+.icon-fwwwl1 {
+  background-image: url("img/fwwwl1-1.png");
+}
+.icon-fwwwl2 {
+  background-image: url("img/fwwwl2.png");
+}
+.icon-fwwwl3 {
+  background-image: url("img/fwwwl3.png");
+}
+.icon-fwwwl4 {
+  background-image: url("img/fwwwl4.png");
+}
+.icon-fwwwl5 {
+  background-image: url("img/fwwwl5-1.png");
+}
+.icon-fullScreen {
+  background-image: url("img/fullScreen.png");
+}
+.icon-mouse {
+  background-image: url("img/mouse.png");
+}
+.icon-mouseL {
+  background-image: url("img/mouseL.png");
+}
+.icon-mouseR {
+  background-image: url("img/mouseR.png");
+}
+.icon-mouseLR {
+  background-image: url("img/mouseLR.png");
+}
+.icon-clear {
+  background-image: url("img/clear.png");
+}
+.icon-font {
+  background-image: url("img/font.png");
+}
+.icon-pagingCircle {
+  background-image: url("img/pagingCircle.png");
+}
+.icon-pointer {
+  background-image: url("img/pointer.png");
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+li {
+  list-style: none;
+}
+#container {
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  position: absolute;
+  margin: auto;
+  height: 100%;
+}
+.secondMenuActive {
+  background: #00bc8c;
+  color: #fff;
+}
+.firstMenuSpanActive {
+  color: #00bc8c;
+}
+.sequenceActive {
+  border: 0.1em solid #00bc8c !important;
+}
+html,
+body {
+  height: 100%;
+}
+body {
+  overflow: hidden;
+}
+body ::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+.font20 {
+  font-size: 20px;
+}
+.dvContainer {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  /*影像窗口*/
+}
+.dvContainer .viewer {
+  background: #000;
+  float: left;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  box-sizing: border-box;
+  position: relative;
+}
+.dvContainer .viewer .rightTool {
+  z-index: 2;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 40px;
+  margin-right: 10px;
+  padding-bottom: 10px;
+}
+.dvContainer .viewer .rightTool .btn {
+  margin-top: 10px;
+  margin-bottom: 0 !important;
+  float: right;
+  opacity: 0.8;
+}
+.dvContainer .viewer .viewport {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+.dvContainer .viewer .seriesWindow {
+  position: relative;
+  float: left;
+  border: 1px solid #777777;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+.dvContainer .viewer .seriesWindow .nextPage,
+.dvContainer .viewer .seriesWindow .prevPage {
+  padding-top: 9px;
+  opacity: 0.5;
+  z-index: 2;
+  background-color: #fff;
+  border-radius: 2px;
+  width: 40px;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  position: absolute;
+}
+.dvContainer .viewer .seriesWindow .nextPage img,
+.dvContainer .viewer .seriesWindow .prevPage img {
+  position: relative;
+}
+.dvContainer .viewer .seriesWindow .nextPage.checked,
+.dvContainer .viewer .seriesWindow .prevPage.checked {
+  opacity: 0.8;
+}
+.dvContainer .viewer .seriesWindow .nextPage {
+  left: 10px;
+}
+.dvContainer .viewer .seriesWindow .prevPage {
+  right: 10px;
+}
+.dvContainer .viewer .seriesWindow.checked {
+  border: 2px solid #00bc8c;
+}
+.dvContainer .viewer .viewportWrapper {
+  float: left;
+  box-sizing: border-box;
+  position: relative;
+  border: 2px solid #777777;
+}
+.dvContainer .viewer .viewportWrapper .overlay {
+  position: absolute;
+  color: #c8c8c8;
+  font-size: 10px;
+}
+.dvContainer .viewer .fullScreen {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  bottom: 30px;
+  right: 15px;
+  z-index: 4000;
+}
+.dvContainer .viewer .fullScreen span {
+  display: block;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  position: absolute;
+  margin: auto;
+  width: 30px;
+  height: 30px;
+  color: white;
+  line-height: 30px;
+  text-align: center;
+}
+.dvContainer .operationBox {
+  width: 100%;
+  float: left;
+  position: absolute;
+  bottom: 0;
+  /*菜单*/
+}
+.dvContainer .operationBox .operationBtnGroup {
+  background: #f5f5f5;
+  width: 100%;
+  float: left;
+}
+.dvContainer .operationBox .operationBtnGroup .firstMenu {
+  width: 100%;
+  position: relative;
+  float: left;
+}
+.dvContainer .operationBox .operationBtnGroup .firstMenu li {
+  width: 20%;
+  text-align: center;
+  float: left;
+  padding: 6px 0;
+}
+.dvContainer .operationBox .operationBtnGroup .firstMenu li span {
+  color: #777;
+  display: block;
+  margin-top: 6px;
+  font-size: 14px;
+}
+.dvContainer .operationBox .operationBtnGroup .firstMenu li img {
+  height: 42px;
+}
+.dvContainer .operationBox .operationBtnGroup .firstMenu .secondMenu {
+  white-space: nowrap;
+  overflow: hidden;
+  overflow-x: auto;
+  z-index: 3;
+  width: 100%;
+  position: absolute;
+  top: -80px;
+  height: 80px;
+  display: none;
+  background: #ecfffb;
+  padding: 20px 10px;
+  text-align: center;
+}
+.dvContainer .operationBox .operationBtnGroup .firstMenu .secondMenu .secondMenuSpan {
+  padding-top: 0 !important;
+  margin-top: 0 !important;
+  display: inline-block;
+  height: 40px;
+  line-height: 40px;
+  padding: 0 20px;
+  border: 0.1em solid #00bc8c;
+  color: #00bc8c;
+  font-size: 14px;
+  border-radius: 2px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.dvContainer .operationBox .operationBtnGroup .firstMenu .secondMenu span.checked {
+  border: 0.1em solid #ecfffb !important;
+  background: -webkit-gradient(linear, 0% 0%, 100% 0%, from(#00bc8c), to(#11f0c3));
+  color: #ecfffb;
+}
+.dvContainer .operationBox .operationBtnGroup .firstMenu .sequenceMenu {
+  z-index: 2;
+  position: absolute;
+  top: -80px;
+  background: #000;
+  width: 100%;
+  height: 80px;
+  padding: 10px 5px;
+  border-top: 1px solid #00bc8c;
+}
+.dvContainer .operationBox .operationBtnGroup .firstMenu .sequenceMenu .imgBox {
+  position: relative;
+  display: block;
+  width: 60px;
+  height: 60px;
+  margin: 0 5px;
+  float: left;
+  border: 0.1em solid #ecfffb;
+}
+.dvContainer .operationBox .operationBtnGroup .firstMenu .sequenceMenu .imgBox .img {
+  height: 100%;
+  width: 100%;
+}
+.dvContainer .operationBox .operationBtnGroup .firstMenu .sequenceMenu .imgBox .tagBottom {
+  position: absolute;
+  bottom: 0;
+  left: 2px;
+  color: #c8c8c8;
+}
+.dvContainer .operationBox .operationBtnGroup .firstMenu .sequenceMenu .imgBox .tagBottom span {
+  float: left;
+}
+.dvContainer .operationBox .operationBtnGroup .firstMenu .sequenceMenu .imgBox.checked,
+.dvContainer .operationBox .operationBtnGroup .firstMenu .sequenceMenu .imgBox:hover {
+  border: 0.1em solid #00bc8c !important;
+}
+.dvContainer .operationBox .operationBtnGroup .firstMenu .scrollBox {
+  display: none;
+  position: absolute;
+  top: -80px;
+  z-index: 4;
+  width: 100%;
+  height: 80px;
+  background: #000;
+  float: left;
+}
+.dvContainer .operationBox .operationBtnGroup .firstMenu .scrollBox img {
+  margin-top: 0px !important;
+}
+.dvContainer .operationBox .operationBtnGroup .firstMenu .scrollBox .speed {
+  position: absolute;
+  font-weight: bold;
+  font-size: 20px;
+  margin: auto;
+  height: 80px;
+  line-height: 76px;
+  text-align: center;
+  color: #ecfffb;
+  top: 0;
+}
+.dvContainer .operationBox .operationBtnGroup .firstMenu .scrollBox .speed.checked {
+  color: #00bc8c;
+  background-color: #ecfffb;
+}
+.dvContainer .operationBox .operationBtnGroup .firstMenu .scrollBox .scrollBarBox {
+  height: 80px;
+  width: 100%;
+  line-height: 80px;
+  text-align: center;
+  float: left;
+}
+.dvContainer .operationBox .operationBtnGroup .firstMenu .scrollBox .scrollBarBox .scrollBar {
+  width: 100%;
+  margin-top: 38px;
+  position: relative;
+  height: 4px;
+  background: #ecfffb;
+  border-radius: 2px;
+}
+.dvContainer .operationBox .operationBtnGroup .firstMenu .scrollBox .scrollBarBox .scrollBar .rectBox {
+  top: -38px;
+  position: absolute;
+  left: -1px;
+  width: 40px;
+  height: 80px;
+  line-height: 0 !important;
+  text-align: center;
+}
+.dvContainer .operationBox .operationBtnGroup .firstMenu .scrollBox .scrollBarBox .scrollBar .rectBox .rect {
+  width: 40px;
+  height: 20px;
+  margin-top: 30px !important;
+}
+@media screen and (max-height: 736px) {
+  .firstMenu img {
+    margin-top: 2px;
+    height: 20px !important;
+  }
+  .firstMenu span {
+    margin-top: 5px !important;
+    font-size: 14px !important;
+  }
+}
+#papaFrame {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 109000;
+}
+#papaFrame .bg {
+  z-index: 108999;
+  background-color: white;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0.5;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(opacity=(@opacity * 100))";
+  filter: "alpha(opacity = (@opacity * 100))";
+}
+#papaFrame .mprClose {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  cursor: pointer;
+  color: red;
+  background-color: #CCCCCC;
+  width: 30px;
+  height: 30px;
+  z-index: 109002;
+  font-size: 30px;
+  line-height: 30px;
+  text-align: center;
+}
+#papaFrame .mprSmall {
+  position: absolute;
+  top: 10px;
+  right: 60px;
+  cursor: pointer;
+  color: black;
+  font-weight: 700;
+  background-color: #CCCCCC;
+  width: 30px;
+  height: 30px;
+  z-index: 109002;
+  font-size: 30px;
+  line-height: 30px;
+  text-align: center;
+}
+#papaFrame #mprFrame {
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  position: absolute;
+  margin: auto;
+  background-color: white;
+  z-index: 109001;
+}
