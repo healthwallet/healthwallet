@@ -24,7 +24,7 @@
             box-shadow: none;
         }
 
-        .hashError,.passError {
+        .hashError, .passError, .urlError, .messageSpan {
             display: none;
         }
 
@@ -39,7 +39,9 @@
             text-align: center
         }
 
-
+        .messageSpan {
+            margin-left: 20px;
+        }
 
 
     </style>
@@ -53,71 +55,131 @@
                 <img src="logo_HealthWallet01.png"/>
             </header>
             <div class="panel-body">
-                <div class="col-md-9">
-                    <form action="#" class="form-horizontal" id="imageDate" method="post" enctype="multipart/form-data">
-                        <div class="form-group last">
-                            <label class="control-label col-md-3">上传文件</label>
-                            <div class="col-md-5">
-                                <div class="fileupload fileupload-new" data-provides="fileupload">
+                <div class="col-md-12">
+                    <section class="panel">
+                        <header class="panel-heading custom-tab ">
+                            <ul class="nav nav-tabs">
+                                <li class="active">
+                                    <a href="#file" data-toggle="tab">文件上传</a>
+                                </li>
+                                <li class="">
+                                    <a href="#catalog" data-toggle="tab">目录上传</a>
+                                </li>
+                            </ul>
+                        </header>
+                        <div class="panel-body">
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="file">
+                                    <form action="#" class="form-horizontal" id="imageDate" method="post"
+                                          enctype="multipart/form-data" style="width: 400px; margin: 0 auto;">
+                                        <div class="form-group last">
+                                            <label class="control-label col-md-3">上传文件</label>
+                                            <div class="col-md-5">
+                                                <div class="fileupload fileupload-new" data-provides="fileupload">
 
-                                    <div class="fileupload-new thumbnail" style="width: 300px; height: 200px;">
-                                        <img src="http://www.placehold.it/270x190/EFEFEF/AAAAAA&amp;text=no+file" alt=""/>
-                                    </div>
-                                    <div class="fileupload-preview fileupload-exists thumbnail"
-                                         style="max-width: 300px; max-height: 190px; line-height: 20px;"></div>
-                                    <div>
+                                                    <div class="fileupload-new thumbnail"
+                                                         style="width: 300px; height: 200px;">
+                                                        <img src="http://www.placehold.it/270x190/EFEFEF/AAAAAA&amp;text=no+file"
+                                                             alt=""/>
+                                                    </div>
+                                                    <div class="fileupload-preview fileupload-exists thumbnail"
+                                                         style="max-width: 300px; max-height: 190px; line-height: 20px;"></div>
+                                                    <div>
                                     <span class="btn btn-default btn-file">
                                         <span class="fileupload-new"> 选择文件</span>
                                         <span class="fileupload-exists">重选</span>
                                         <input type="file" id="inputFile" class="default inputFile"/>
                                     </span>
-                                        <a href="#" class="btn btn-danger fileupload-exists"
-                                           data-dismiss="fileupload">取消</a>
-                                        <span class="btn btn-primary fileupload-upload">上传</span>
-                                        <input type="text" class="fileupload-pass form-control" style="width: 300px;margin-top: 20px" placeholder="请输入密码" />
-                                        <p style="margin-top: 10px" class="passError">
-                                            <span class="label label-danger">注意</span>
-                                            <span class="passErrorSpan"> </span>
-                                        </p>
-                                        <span id="output"></span>
-                                    </div>
+                                                        <a href="#" class="btn btn-danger fileupload-exists"
+                                                           data-dismiss="fileupload">取消</a>
+                                                        <span class="btn btn-primary fileupload-upload">上传</span>
+                                                        <input type="text" class="fileupload-pass form-control"
+                                                               style="width: 300px;margin-top: 20px"
+                                                               placeholder="请输入密码"/>
+                                                        <p style="margin-top: 10px" class="passError">
+                                                            <span class="label label-danger">注意</span>
+                                                            <span class="passErrorSpan"> </span>
+                                                        </p>
+                                                        <span id="output"></span>
+                                                    </div>
+                                                </div>
+                                                <br/>
+                                            </div>
+
+                                        </div>
+                                    </form>
                                 </div>
-                                <br/>
-                            </div>
-                            <div class="col-md-3">
-                                <input type="text" class="form-control" style="width: 300px;margin-top: 20px" placeholder="请输入文件目录" />
-                                 <br/>
-                                <button type="button" class="btn-primary">上传</button>
+                                <div class="tab-pane" id="catalog">
+                                    <form class="form-horizontal" style="width: 400px;margin: 0 auto">
+                                        <div class="col-md-12">
+                                            <label class="col-md-3 control-label"
+                                                   style="text-align: right">目录名：</label>
+                                            <div class="col-md-3">
+                                                <input type="text" class="form-control fileUrl" style="width: 300px;"
+                                                       placeholder="请输入文件目录"/>
+
+                                                <!-- <span id="getProgress"></span>-->
+                                            </div>
+
+                                        </div>
+                                        <div class="col-md-12" style="margin-top: 20px">
+                                            <label class="col-md-3 control-label"
+                                                   style="text-align: right">密码：</label>
+                                            <div class="col-md-3">
+                                                <input type="text" class="form-control fileUrlPass"
+                                                       style="width: 300px;"
+                                                       placeholder="请输入密码"/>
+                                                <p style="margin-top: 10px;width: 300px;" class="urlError">
+                                                    <span class="label label-danger">注意</span>
+                                                    <span class="urlErrorSpan"> </span>
+                                                </p>
+
+                                                <!-- <span id="getProgress"></span>-->
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12" style="margin-top: 20px">
+                                            <div class="col-md-3"></div>
+                                            <div class="col-md-8">
+                                                <button type="button" class="btn btn-primary text-center uploadUrl">上传
+                                                </button>
+                                                <span class="messageSpan">dsdsdsd</span>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
                             </div>
                         </div>
-                    </form>
-                    <p style="margin-left: -15px;margin-right: -15px;margin-bottom: 15px;overflow: hidden">
-                        <span class="col-md-3 text-right">hash展示：</span><span class="col-md-9 showHash"></span>
-                    </p>
-                    <form class="form-horizontal" role="form">
-                        <div class="form-group hashform">
-                            <label for="inputHash" class="col-md-3 control-label">读取文件：</label>
-                            <div class="col-md-3">
-                                <input type="text" class="form-control" id="inputHash" placeholder="hash值"/>
-                                <p style="margin-top: 10px" class="hashError">
-                                    <span class="label label-danger">注意</span>
-                                    <span class="errorSpan"> </span>
-                                </p>
-                                <!-- <span id="getProgress"></span>-->
-                            </div>
-                            <div class="col-md-3">
-                                <input type="text" class="form-control" id="password" placeholder="密码"/>
-                            </div>
-
-                            <div class="col-md-3 text-left">
-                                <!--   图像浏览地址-->
-                                <button type="button" id="typeBtn" class="btn btn-primary text-center read-hash-btn">确定</button>
-                            </div>
-
-                        </div>
-                    </form>
-
+                    </section>
                 </div>
+
+
+                <p style="width:100%;padding:15px;margin-left: -15px;margin-right: -15px;margin-bottom: 15px;overflow: hidden">
+                    <span class="col-md-3 text-right">hash展示：</span><span class="col-md-9 showHash"></span>
+                </p>
+                <form class="form-horizontal" role="form">
+                    <div class="form-group hashform">
+                        <label for="inputHash" class="col-md-3 control-label">读取文件：</label>
+                        <div class="col-md-3">
+                            <input type="text" class="form-control" id="inputHash" placeholder="hash值"/>
+                            <p style="margin-top: 10px" class="hashError">
+                                <span class="label label-danger">注意</span>
+                                <span class="errorSpan"> </span>
+                            </p>
+                            <!-- <span id="getProgress"></span>-->
+                        </div>
+                        <div class="col-md-3">
+                            <input type="text" class="form-control" id="password" placeholder="密码"/>
+                        </div>
+
+                        <div class="col-md-3 text-left">
+                            <!--   图像浏览地址-->
+                            <button type="button" id="typeBtn" class="btn btn-primary text-center read-hash-btn">
+                                确定
+                            </button>
+                        </div>
+
+                    </div>
+                </form>
 
 
             </div>
