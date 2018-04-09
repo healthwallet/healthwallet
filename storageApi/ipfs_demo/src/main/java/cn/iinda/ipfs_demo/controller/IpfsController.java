@@ -52,14 +52,6 @@ public class IpfsController {
     int iread = 0;
     //处理文件上传
     @RequestMapping(value = "/testuploadimg", method = RequestMethod.POST)
-    /*
-    public String uploadImg(@RequestParam("myfile") MultipartFile myfile, @RequestParam("pass") String pass,
-                            HttpServletRequest request) {
-        String fileName = myfile.getOriginalFilename();
-        return "ok";
-    }
-
-*/
 
     public String uploadImg(@RequestParam("myfile") MultipartFile myfile, @RequestParam("pass") String pass, @RequestParam("index") int index,
                             @RequestParam("total") int total,@RequestParam("name") String name,
@@ -126,14 +118,6 @@ public class IpfsController {
         }
         return "continue";
     }
-    //处理目录上传
-    @RequestMapping(value = "/testdiruploadimg")
-    public String uploaddir(@RequestParam("fileUrl")  String fileUrl, @RequestParam("pass") String pass,
-                            HttpServletRequest request) {
-        fileUrl = fileUrl + pass;
-        return "ok";
-    }
-
 
     @GetMapping(value = "showImg/{hash}/{password}")
     public ElectronicFilmResult showImg(HttpServletRequest request, @PathVariable("hash") String hash, @PathVariable("password") String password) throws IOException {
