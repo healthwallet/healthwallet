@@ -8,7 +8,8 @@ $(function () {
             return
         }else{
             PostFile(document.getElementById("inputFile").files[0],0);
-         /*   var formData = new FormData();
+         /*
+         var formData = new FormData();
             console.log(document.getElementById("inputFile").files[0]);
             formData.append("myfile", document.getElementById("inputFile").files[0]);
             formData.append("pass", pass);
@@ -34,7 +35,7 @@ $(function () {
                 },
                 error: function () {
                 }
-            });*/
+            });//*/
         }
        function PostFile(file,i){
             var name = file.name,        //文件名
@@ -135,6 +136,53 @@ $(function () {
             });
 //                window.open('http://127.0.0.1:8087/dicomviewer?urls=["http://127.0.0.1:8087/1519788792143"]', 'dicom', "_blank", "toolbar=yes, location=yes, directories=no, status=no, menubar=yes, scrollbars=yes, resizable=no, copyhistory=yes, width=728, height=500");
         }
+
+    });
+    $('.uploadUrl').bind('click',function(){
+        var fileUrl = $('.fileUrl').val();
+        var pass=$('.fileUrlPass').val();
+        if(fileUrl==''||fileUrl==null){
+            $('.urlError').show();
+            $('.urlErrorSpan').text('目录名不能为空');
+            return
+        }
+        if(pass==''||pass==null){
+            $('.urlError').show();
+            $('.urlErrorSpan').text('密码不能为空');
+            return
+        }else{
+            $('.uploadUrl').text('正在上传');
+            $('.uploadUrl').attr('disabled','disabled');
+            $('.urlError').hide();
+        }
+        console.log(fileUrl,pass);
+        var form = new FormData();
+        form.append('fileUrl',fileUrl);
+        form.append('pass',pass);
+        $.ajax({
+            url: "testdiruploadimg",//接口
+            type: "POST",
+            data:form,
+            // data: {//参数
+            //     // fileUrl:fileUrl,
+            //     // pass:pass
+            //     "fileUrl="+fileUrl+"&pass="+pass;
+            // },
+            success: function(data){
+                console.log('90909090');
+                $('.uploadUrl').attr('disabled',false);
+                $('.uploadUrl').text('上传');
+                //成功
+                 if(data.status==200){//status是通过接口返回来的
+                     $('.messageSpan').text('上传成功');
+
+                 }  //失败
+                 else{
+                     $('.messageSpan').text('上传失败');
+                 }
+
+            }
+        });
 
     });
 });

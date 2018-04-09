@@ -304,8 +304,7 @@ public class healthwallet_ipfs_api {
     public  boolean networkcheck(IPFS parIPFS)
     {
         try {
-            ipfs =(IPFS) listIPFS.get(intIPFS);
-            ipfs.id();
+            parIPFS.id();
             return true;
         } catch (IOException e1) {
             return false;

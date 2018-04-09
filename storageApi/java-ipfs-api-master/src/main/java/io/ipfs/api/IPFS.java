@@ -590,6 +590,7 @@ public class IPFS {
         conn.setChunkedStreamingMode(16000);
         conn.setReadTimeout(10000);
         conn.setRequestMethod("GET");
+        conn.setConnectTimeout(10000);
         conn.setDoOutput(true);
         conn.setDoInput(true);
         conn.setRequestProperty("Content-Type", "application/json");
