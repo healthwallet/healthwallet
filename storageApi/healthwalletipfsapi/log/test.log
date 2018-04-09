@@ -1,6 +1,5 @@
-14:07:47.848 INFO  cn.iinda.healthwallet_ipfs_api 83 <init> - /ip4/192.168.2.9/tcp/5001connect success!
-14:07:47.872 INFO  cn.iinda.healthwallet_ipfs_api 110 AddFile - Add File begin! file:/Users/lwy1218/shihj/text1.txt
-14:07:47.992 INFO  cn.iinda.healthwallet_ipfs_api 114 AddFile - Add File success! file:/Users/lwy1218/shihj/text1.txt hash:QmYgQZhJRD9GQX62vNTyfZbp5hVRCoqMsYuikgJCfXSH7f
-14:07:47.992 INFO  cn.iinda.healthwallet_ipfs_api 119 GetFile - get File begin! hash:QmYgQZhJRD9GQX62vNTyfZbp5hVRCoqMsYuikgJCfXSH7f
-14:07:48.001 INFO  cn.iinda.healthwallet_ipfs_api 123 GetFile - get File success! hash:QmYgQZhJRD9GQX62vNTyfZbp5hVRCoqMsYuikgJCfXSH7f
-14:07:48.002 INFO  cn.iinda.healthwallet_ipfs_api 139 AddFileEncrypt - AddFileEncrypt Begin add file! file:/tmp/testipfs.7z
+10:39:15.365 INFO  cn.iinda.healthwallet_ipfs_api 83 <init> - /ip4/192.168.2.9/tcp/5001connect success!
+10:39:15.505 INFO  cn.iinda.healthwallet_ipfs_api 113 AddFile - Add File success! file:/Users/lwy1218/shihj/text1.txt hash:QmYgQZhJRD9GQX62vNTyfZbp5hVRCoqMsYuikgJCfXSH7f
+10:39:15.523 INFO  cn.iinda.healthwallet_ipfs_api 121 GetFile - get File success! hash:QmYgQZhJRD9GQX62vNTyfZbp5hVRCoqMsYuikgJCfXSH7f
+10:39:15.530 INFO  cn.iinda.healthwallet_ipfs_api 126 AddFileEncrypt - AddFileEncrypt Begin add file! file:/tmp/testipfs.7z
+10:39:16.923 INFO  cn.iinda.healthwallet_ipfs_api 161 AddFileEncrypt - AddFileEncrypt Begin add file! file:/tmp/testipfs.7z
